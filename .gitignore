@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -29,8 +27,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env files (can opt-in for commiting if needed)
-.env*
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
@@ -38,3 +40,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editor directories
+.vscode/
+.idea/
+
+# OS-specific files
+Thumbs.db
+desktop.ini
+
+# TailwindCSS and PostCSS
+tailwind.config.js
+postcss.config.js
+
+# cache and temporary files
+.cache/
+*.bak
+*.pid
+*.seed
+*.lock
+*.tmp
