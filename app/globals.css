@@ -2,20 +2,389 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* 0 0% 100% */
+    --foreground: #0a0a0a; /* 240 10% 3.9% */
+    --card: #ffffff; /* 0 0% 100% */
+    --card-foreground: #0a0a0a; /* 240 10% 3.9% */
+    --popover: #ffffff; /* 0 0% 100% */
+    --popover-foreground: #0a0a0a; /* 240 10% 3.9% */
+    --primary: #1a1a1a; /* 240 5.9% 10% */
+    --primary-foreground: #fafafa; /* 0 0% 98% */
+    --secondary: #f2f2f2; /* 240 4.8% 95.9% */
+    --secondary-foreground: #1a1a1a; /* 240 5.9% 10% */
+    --muted: #f2f2f2; /* 240 4.8% 95.9% */
+    --muted-foreground: #787878; /* 240 3.8% 46.1% */
+    --accent: #f2f2f2; /* 240 4.8% 95.9% */
+    --accent-foreground: #1a1a1a; /* 240 5.9% 10% */
+    --destructive: #ff6666; /* 0 84.2% 60.2% */
+    --destructive-foreground: #fafafa; /* 0 0% 98% */
+    --border: #e6e6e6; /* 240 5.9% 90% */
+    --input: #e6e6e6; /* 240 5.9% 90% */
+    --ring: #0a0a0a; /* 240 10% 3.9% */
+
+    --chart-1: #ff7733; /* 12 76% 61% */
+    --chart-2: #26a69a; /* 173 58% 39% */
+    --chart-3: #3d6d9f; /* 197 37% 24% */
+    --chart-4: #f5ba42; /* 43 74% 66% */
+    --chart-5: #ff7e39; /* 27 87% 67% */
+    --radius: 0.5rem;
+  }
+
+  :root .prose{
+    color: black;
+  }
+  
+  :root .prose code {
+    color: black; /* Adjust as needed for better contrast */
+    background-color: white; /* Darker background for inline code */
+  }
+  
+  :root .prose pre {
+    color: #e5e7eb; /* Light text color for code block */
+    background-color: #111827; /* Dark background for code block */
+  }
+  
+  .dark {
+    --background: #0a0a0a; /* 240 10% 3.9% */
+    --foreground: #fafafa; /* 0 0% 98% */
+    --card: #0a0a0a; /* 240 10% 3.9% */
+    --card-foreground: #fafafa; /* 0 0% 98% */
+    --popover: #0a0a0a; /* 240 10% 3.9% */
+    --popover-foreground: #fafafa; /* 0 0% 98% */
+    --primary: #fafafa; /* 0 0% 98% */
+    --primary-foreground: #1a1a1a; /* 240 5.9% 10% */
+    --secondary: #262626; /* 240 3.7% 15.9% */
+    --secondary-foreground: #fafafa; /* 0 0% 98% */
+    --muted: #262626; /* 240 3.7% 15.9% */
+    --muted-foreground: #a3a3a3; /* 240 5% 64.9% */
+    --accent: #262626; /* 240 3.7% 15.9% */
+    --accent-foreground: #fafafa; /* 0 0% 98% */
+    --destructive: #993333; /* 0 62.8% 30.6% */
+    --destructive-foreground: #fafafa; /* 0 0% 98% */
+    --border: #262626; /* 240 3.7% 15.9% */
+    --input: #262626; /* 240 3.7% 15.9% */
+    --ring: #d1d1d1; /* 240 4.9% 83.9% */
+
+    --chart-1: #357edd; /* 220 70% 50% */
+    --chart-2: #26a69a; /* 160 60% 45% */
+    --chart-3: #ffbb55; /* 30 80% 55% */
+    --chart-4: #d95fce; /* 280 65% 60% */
+    --chart-5: #ff597d; /* 340 75% 55% */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.dark .prose{
+  color: white;
 }
+
+.dark .prose code {
+  color: #e5e7eb; /* Adjust as needed for better contrast */
+  background-color: #0a0a0a; /* Darker background for inline code */
+}
+
+.dark .prose pre {
+  color: #e5e7eb; /* Light text color for code block */
+  background-color: #111827; /* Dark background for code block */
+}
+
+.dark .prose strong {
+  color: white; /* Adjust as needed for better contrast */
+  background-color: #0a0a0a; /* Darker background for inline code */
+}
+
+.red {
+  --background: #0a0a0a; /* Black background */
+  --foreground: #ff4d4d; /* Red foreground */
+  --card: #1a1a1a; /* Darker black for cards */
+  --card-foreground: #ff4d4d; /* Red text on cards */
+  --popover: #1a1a1a; /* Dark background for popovers */
+  --popover-foreground: #ff4d4d; /* Red text in popovers */
+  --primary: #ff4d4d; /* Red for primary elements */
+  --primary-foreground: #0a0a0a; /* Black text for primary foregrounds */
+  --secondary: #333333; /* Dark gray for secondary elements */
+  --secondary-foreground: #ff4d4d; /* Red text for secondary elements */
+  --muted: #333333; /* Muted background with dark gray */
+  --muted-foreground: #ff9999; /* Lighter red for muted text */
+  --accent: #4d0000; /* Dark red for accents */
+  --accent-foreground: #ff4d4d; /* Red text on accent elements */
+  --destructive: #b30000; /* Stronger red for destructive actions */
+  --destructive-foreground: #0a0a0a; /* Black text for destructive actions */
+  --border: #262626; /* Dark gray for borders */
+  --input: #262626; /* Dark gray for inputs */
+  --ring: #ff4d4d; /* Red for focus rings */
+
+  --chart-1: #ff6666; /* Different shades of red for charts */
+  --chart-2: #ff3333;
+  --chart-3: #e60000;
+  --chart-4: #b30000;
+  --chart-5: #800000;
+}
+
+.red .prose{
+  color: #ff4d4d;
+}
+
+.red .prose code {
+  color: #f16c6c; /* Adjust as needed for better contrast */
+  background-color: #1a1a1a; /* Darker background for inline code */
+}
+
+.red .prose pre {
+  color: #e5e7eb; /* Light text color for code block */
+  background-color: #111827; /* Dark background for code block */
+}
+
+.red .prose strong {
+  color: #f16c6c; /* Adjust as needed for better contrast */
+  background-color: #1a1a1a; /* Darker background for inline code */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+
+/* SCROLL ANIMATIONS */
+/* Side scroll watcher */
+.scroll-watcher {
+  width: 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+  height: 100%;
+  scale: 1 0;
+  transform-origin: top; 
+
+  animation: scroll-watcher linear;
+  animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher {
+  to { scale: 1 1; }
+}
+
+
+/*  colors for hero svgs by theme */
+:root {
+  --color-bg1: rgb(8, 10, 15);
+  --color-bg2: rgb(0, 17, 32);
+  --color1: 18, 113, 255;
+  --color2: 107, 74, 255;
+  --color3: 100, 100, 255;
+  --color4: 50, 160, 220;
+  --color5: 80, 47, 122;
+  --color-interactive: 140, 100, 255;
+  --circle-size: 80%;
+  --blending: hard-light;
+
+  --scroll-bar: #7e1eba;
+  --bg-color: white;
+}
+
+.dark {
+  --color-bg1: rgb(15, 15, 20); /* Change for dark mode */
+  --color-bg2: rgb(20, 20, 30);
+  --color1: 100, 200, 255; /* Change colors */
+  --color2: 150, 100, 255;
+  --color3: 150, 150, 255;
+  --color4: 80, 200, 220;
+  --color5: 100, 60, 160;
+  --color-interactive: 180, 150, 255;
+
+  --scroll-bar: white;
+  --bg-color: black;
+}
+
+.red {
+  --color-bg1: rgb(255, 0, 0); /* Change for red mode */
+  --color-bg2: rgb(150, 0, 0);
+  --color1: 255, 100, 100; /* Change colors */
+  --color2: 255, 50, 50;
+  --color3: 255, 150, 150;
+  --color4: 200, 100, 100;
+  --color5: 255, 50, 100;
+  --color-interactive: 255, 0, 100;
+
+  --scroll-bar: rgb(188, 44, 104);
+
+  --bg-color: black;
+}
+
+
+.card {
+  
+  max-width: 600px;
+  padding: 100px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 90px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background-color: var(--bg-color);
+
+  .noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    opacity: 0.1;
+  }
+
+  .content {
+    position: relative;
+
+    /* z-index: 2; */
+    text-shadow: -3px 0px 2px rgba(0,0,0,0.1);
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+.gradient-bg {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Make .gradient-bg a flex container */
+  flex-direction: column;
+  
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  top: 0;
+  left: 0;
+
+  .svgBlur {
+    display: none;
+  }
+
+  .noiseBg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    mix-blend-mode: soft-light;
+    opacity: 0.3;
+    position: absolute; /* Positioned within .gradient-bg */
+  }
+
+  .gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .g1, .g2, .g3, .g4, .g5 {
+    position: absolute; /* Contain each gradient element within .gradient-bg */
+    width: var(--circle-size);
+    height: var(--circle-size);
+    mix-blend-mode: var(--blending);
+    opacity: 1;
+  }
+
+  .g1 {
+    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: center;
+    animation: moveVertical 30s ease infinite;
+  }
+
+  .g2 {
+    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+  }
+
+  .g3 {
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+  }
+
+  .g4 {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+    opacity: 0.7;
+  }
+
+  .g5 {
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+  }
+
+  .interactive {
+    background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: -50%;
+    position: absolute; /* Keep positioned within .gradient-bg */
+    opacity: 0.7;
+  }
+}
+
