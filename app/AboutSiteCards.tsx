@@ -51,9 +51,9 @@ export default function AboutSiteCards() {
         About the Site
       </h1>
       <div className="flex flex-row flex-wrap gap-x-20 gap-y-20 m-20 items-baseline">
-        <Card className="min-w-40 h-fit p-10 prose grow">
+        <Card className="min-w-96 h-fit prose grow basis-2">
           <CardHeader>
-            <CardTitle>Next.js</CardTitle>
+            <CardTitle className="mb-5">Next.js</CardTitle>
             <CardDescription>
               The app itself was created in a powershell terminal, uing the
               command <br />
@@ -88,7 +88,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* SHADCN/UI */}
-        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center">
+        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center grow basis-2">
           <CardHeader>
             <CardTitle>Shadcn/ui</CardTitle>
             <CardDescription>

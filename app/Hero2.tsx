@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
-import { FaArrowDown } from "react-icons/fa6";
 
-export default function Hero() {
-  const [viewportWidth, setViewportWidth] = useState<number | undefined>(undefined);
+function Hero2() {
+
+    const [viewportWidth, setViewportWidth] = useState<number | undefined>(undefined);
   const [viewportHeight, setViewportHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
@@ -19,7 +19,9 @@ export default function Hero() {
       let tgY = 0;
 
       const move = () => {
+        //console.log("moving bubble")
         curX += (tgX - curX) / 20;
+        //console.log(curX)
         curY += (tgY - curY) / 20;
         if (interBubble) {
           interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
@@ -50,25 +52,13 @@ export default function Hero() {
   }
 
   return (
-    <section className="h-fit">
-      <div className="gradient-bg">
-        <div className="card mt-40 mb-40 w-fit h-fit bg-blend-difference" style={{ zIndex: 10 }}>
-          <div className="content">
-            <h1>Welcome to my Portfolio</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-              tempore unde ex pariatur distinctio laboriosam, dolorem quibusdam
-              aperiam expedita consequuntur dolorum porro vitae earum quos
-              voluptates et maxime. Tempora, mollitia.
-            </p>
-            <Button variant={"secondary"}>Websites</Button>
-          </div>
-        </div>
+    <div className="w-full h-[100vh]">
+      <div className="grad-bg">
 
-        <Button variant={"outline"} style={{ zIndex: 20 }} className="mb-32 mt-auto">
-          <FaArrowDown />
-        </Button>
-
+        <Card className="absolute top-[50%] left-[50%] ">
+            <CardContent > Hello There I am a Card</CardContent>
+        </Card>
+      
         <svg
           viewBox={`0 0 100vh 100vh`}
           xmlns="http://www.w3.org/2000/svg"
@@ -109,16 +99,21 @@ export default function Hero() {
             </filter>
           </defs>
         </svg>
+        
 
-        <div className="gradients-container" style={{ zIndex: 0 }}>
+        <div className="gradients-container">
           <div className="g1"></div>
           <div className="g2"></div>
           <div className="g3"></div>
           <div className="g4"></div>
           <div className="g5"></div>
+          {/* <div className="interactive"></div> */}
           <div className="interactive"></div>
+          
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+
+export default Hero2;

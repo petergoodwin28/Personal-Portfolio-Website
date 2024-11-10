@@ -1,15 +1,21 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
+// font import
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+
 @layer base {
   :root {
     --background: #ffffff;
@@ -50,6 +56,7 @@
     /* 240 5.9% 90% */
     --ring: #0a0a0a;
     /* 240 10% 3.9% */
+
     --chart-1: #ff7733;
     /* 12 76% 61% */
     --chart-2: #26a69a;
@@ -62,21 +69,26 @@
     /* 27 87% 67% */
     --radius: 0.5rem;
   }
+
+  // prose formatting for root theme
   :root .prose {
     color: black;
   }
+
   :root .prose code {
     color: black;
     /* Adjust as needed for better contrast */
     background-color: white;
     /* Darker background for inline code */
   }
+
   :root .prose pre {
     color: #e5e7eb;
     /* Light text color for code block */
     background-color: #111827;
     /* Dark background for code block */
   }
+
   .dark {
     --background: #0a0a0a;
     /* 240 10% 3.9% */
@@ -116,6 +128,7 @@
     /* 240 3.7% 15.9% */
     --ring: #d1d1d1;
     /* 240 4.9% 83.9% */
+
     --chart-1: #357edd;
     /* 220 70% 50% */
     --chart-2: #26a69a;
@@ -128,6 +141,8 @@
     /* 340 75% 55% */
   }
 }
+
+  // prose formatting for dark theme
 .dark .prose {
   color: white;
 }
@@ -192,6 +207,7 @@
   /* Dark gray for inputs */
   --ring: #ff4d4d;
   /* Red for focus rings */
+
   --chart-1: #ff6666;
   /* Different shades of red for charts */
   --chart-2: #ff3333;
@@ -200,6 +216,7 @@
   --chart-5: #800000;
 }
 
+  // prose formatting for red theme
 .red .prose {
   color: #ff4d4d;
 }
@@ -225,11 +242,21 @@
   /* Darker background for inline code */
 }
 
+// ABOUT SECTION ELEVATE TEXT -------------------------------
+
+// @for $i from 1 through 10 {
+//    .elevate-text-container .elevate-text:nth-child(#{$i}n) {
+//       animation-delay: #{$i * 0.5}s;
+//   }
+// }
+
 .elevate-text {
+
   padding-left: 8rem;
   padding-right: 8rem;
+
   animation: elevate-text 3s linear forwards;
-  animation-timeline: scroll();
+  animation-timeline:  scroll();
   animation-range-start: contain -100px;
   animation-range-end: 450px;
 }
@@ -238,10 +265,12 @@
   from {
     transform: translateY(500%);
   }
+
   to {
     transform: translateY(0%);
   }
 }
+
 .appear {
   animation: appear 3s ease-in-out;
   animation-timeline: scroll();
@@ -257,6 +286,7 @@
     opacity: 1;
   }
 }
+
 /* SCROLL ANIMATIONS -------------------------------------- */
 /* Side scroll watcher */
 .scroll-watcher {
@@ -269,6 +299,7 @@
   height: 100%;
   scale: 1 0;
   transform-origin: top;
+
   animation: scroll-watcher linear;
   animation-timeline: scroll();
 }
@@ -278,7 +309,9 @@
     scale: 1 1;
   }
 }
+
 /* AUTOSCROLL ------------------------------------------- */
+
 /* Autoscroll container */
 .autoscroll {
   font-size: 15px;
@@ -286,6 +319,7 @@
   border-block: 1px solid;
   overflow: hidden;
   user-select: none;
+
   --gap: 10px;
   display: flex;
   gap: var(--gap);
@@ -299,6 +333,7 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--gap);
+
   animation: scroll 10s linear infinite;
 }
 
@@ -312,7 +347,30 @@
     transform: translateX(calc(-100% - var(--gap)));
   }
 }
+
 /* SCROLL-IN-LEFT/RIGHT --------------------------------------- */
+
+// .card {
+//   // width: 300px;
+//   // height: 200px;
+//   // background-color: #26a69a;
+//   // position: fixed; /* Keep it fixed to the viewport for smooth entry */
+//   top: 50%; /* Vertically center */
+//   right: -300px; /* Start off-screen to the right */
+//   transform: translateY(-50%);
+//   animation: slideIn 1s ease forwards; /* Slide in animation */
+// }
+
+// /* Animation for sliding in */
+// @keyframes slideIn {
+//   from {
+//     transform: translateX(100vw) translateY(-50%);
+//   }
+//   to {
+//     transform: translateX(0) translateY(-50%);
+//   }
+// }
+
 @media (prefers-reduced-motion: no-preference) {
   .scroll-in-left {
     position: absolute;
@@ -323,46 +381,58 @@
     animation-range-end: 2100px;
     animation-timeline: scroll();
   }
+
   .scroll-in-right {
     position: absolute;
     top: 280%;
+
     animation-fill-mode: both;
     animation: scroll-in-right linear forwards;
     animation-range-start: entry 800px;
     animation-range-end: 2200px;
     animation-timeline: scroll();
   }
+
   .scroll-in-left-delay {
     position: absolute;
     top: 300%;
+
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
-    animation-range-start: entry 1100px;
+    animation-range-start: entry 1100px ;
     animation-range-end: 2200px;
     animation-timeline: scroll();
   }
+
+
+
   @keyframes scroll-in-left {
     from {
       transform: translateX(100%);
       opacity: 0;
     }
+
     to {
       transform: translateX(0%);
       opacity: 1;
     }
   }
+
   @keyframes scroll-in-right {
     from {
       transform: translateX(-100%);
       opacity: 0;
     }
+
     to {
       transform: translateX(0%);
       opacity: 1;
     }
   }
 }
+
 /* Image Scroll Fade ------------------------------ */
+
 .fade-out-scroll {
   animation: fade-out linear;
   animation-timeline: view();
@@ -375,18 +445,59 @@
     scale: 1;
     opacity: 1;
   }
+
   to {
     scale: 0.5;
     opacity: 0;
   }
 }
+
+// Resume Work Card CSS
+// section id
+// #work-experience {
+
+
+// .work-card {
+//   border: none;
+//   border-radius: 10%;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+
+//   position: relative;
+
+//   // transition: color 1s ease-in-out;
+
+//   animation: elevate;
+//   animation-duration: 5s;
+//   animation-fill-mode: both;
+//   animation-timeline: scroll();
+//   animation-range-start: entry -400%;
+//   animation-range-end: 900px;
+  
+// }
+// .work-card::after{
+//   content: '';
+//   position: absolute;
+//   width: 102%;
+//   height: 102%;
+
+//   border-radius: 10%;
+//   background-image: linear-gradient(to bottom right, red, purple);
+//   z-index: -1;
+// }
+
+
 /* Add a wrapper for the gradient border effect */
 .gradient-border-wrapper {
   position: relative;
   border-radius: 10%;
   padding: 5px; /* Control thickness of the border */
-  /* Animation properties */
-  animation: elevate;
+
+    /* Animation properties */
+    animation: elevate;
   animation-duration: 5s;
   animation-fill-mode: both;
   animation-timeline: scroll();
@@ -402,10 +513,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+
 }
 
 .gradient-border-wrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -417,15 +530,35 @@
   transform: scale(1.02); /* Slight scale for the border effect */
 }
 
-@keyframes elevate {
+
+// .work-card:hover{
+//   // h-offset v-offset blur spread color
+//   box-shadow: 0 0 10px 5px red, 0 0 20px 10px purple;
+
+
+//    //z-index: 0;
+// }
+
+// @for $i from 1 through 10 {
+//   .work-card-container .work-card:nth-child(#{$i}n) {
+//       animation-delay: #{$i * 0.5}s;
+//   }
+// }
+
+
+@keyframes elevate{
   from {
     transform: translateY(200%);
+    
   }
   to {
     transform: translateY(0%);
   }
+
 }
+
 /* HERO CSS -------------------------------------  */
+
 /*  colors for hero svgs by theme */
 :root {
   --color-bg1: rgb(8, 10, 15);
@@ -468,56 +601,93 @@
   --bg-color: black;
 }
 
+// g1 -g5 common attributes
 .g1,
 .g2,
 .g3,
 .g4,
 .g5 {
-  position: absolute;
+  position: absolute; 
   width: var(--circle-size);
   height: var(--circle-size);
   mix-blend-mode: var(--blending);
   opacity: 0.8;
 }
 
+// .red {
+//   --color-bg1: rgb(76, 17, 17);
+//   /* Change for red mode */
+//   --color-bg2: rgb(10, 9, 9);
+//   --color1: 255, 100, 100;
+//   /* Change colors */
+//   --color2: 255, 50, 50;
+//   --color3: 255, 150, 150;
+//   --color4: 200, 100, 100;
+//   --color5: 255, 50, 100;
+//   --color-interactive: 255, 0, 100;
+
+//   --scroll-bar: rgb(188, 44, 104);
+
+//   --bg-color: black;
+// }
+
+// Hero animations ------------------------
 @keyframes moveInCircle {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes moveVertical {
   0% {
     transform: translateY(-50%);
   }
+
   50% {
     transform: translateY(50%);
   }
+
   100% {
     transform: translateY(-50%);
   }
 }
+
 @keyframes moveHorizontal {
   0% {
     transform: translateX(-50%) translateY(-10%);
   }
+
   50% {
     transform: translateX(50%) translateY(10%);
   }
+
   100% {
     transform: translateX(-50%) translateY(-10%);
   }
 }
+
+// -----------------------------------------------
+
+
+
+
+
+// HERO CSS --------------------------------------
+// big container
 .grad-bg {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
+
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
 }
 
@@ -536,7 +706,7 @@
   position: absolute;
   /* Positioned within .gradient-bg */
 }
-
+// container of g1-g5 bubbles
 .gradients-container {
   position: absolute;
   width: 100%;
@@ -544,18 +714,29 @@
   top: 0;
   left: 0;
 }
-
+// gradient bubbles for hero 
 .g1 {
   position: absolute;
-  background: radial-gradient(circle, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 30%);
+  background: radial-gradient(
+    circle,
+    rgba(var(--color1), 0.8) 0,
+    rgba(var(--color1), 0) 30%
+  );
+
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
+
   opacity: 1;
   animation: moveVertical 30s ease infinite;
 }
 
 .g2 {
-  background: radial-gradient(circle, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 30%) no-repeat;
+  background: radial-gradient(
+      circle,
+      rgba(var(--color2), 0.8) 0,
+      rgba(var(--color2), 0) 30%
+    )
+    no-repeat;
   top: calc(50% - var(--circle-size));
   left: calc(50% - var(--circle-size));
   transform-origin: calc(50% - 400px);
@@ -563,7 +744,12 @@
 }
 
 .g3 {
-  background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 30%) no-repeat;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color3), 0.8) 0,
+      rgba(var(--color3), 0) 30%
+    )
+    no-repeat;
   top: calc(50% - var(--circle-size) / 2 + 200px);
   left: calc(50% - var(--circle-size) / 2 - 500px);
   transform-origin: calc(50% + 400px);
@@ -571,7 +757,12 @@
 }
 
 .g4 {
-  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 30%) no-repeat;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color4), 0.8) 0,
+      rgba(var(--color4), 0) 30%
+    )
+    no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: calc(50% - 200px);
@@ -580,7 +771,12 @@
 }
 
 .g5 {
-  background: radial-gradient(circle, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 30%) no-repeat;
+  background: radial-gradient(
+      circle,
+      rgba(var(--color5), 0.8) 0,
+      rgba(var(--color5), 0) 30%
+    )
+    no-repeat;
   width: calc(var(--circle-size) * 2);
   height: calc(var(--circle-size) * 2);
   top: calc(50% - var(--circle-size));
@@ -588,13 +784,18 @@
   transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveInCircle 20s ease infinite;
 }
-
+// mouse drag bubble
 .interactive {
-  background: radial-gradient(circle, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 10%) no-repeat;
+  background: radial-gradient(
+      circle,
+      rgba(var(--color-interactive), 0.8) 0,
+      rgba(var(--color-interactive), 0) 10%
+    )
+    no-repeat;
   width: 100%;
   height: 100%;
   top: -50%;
   left: -50%;
   position: absolute;
   opacity: 0.7;
-}/*# sourceMappingURL=globals.css.map */
+}
