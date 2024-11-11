@@ -15,7 +15,6 @@
 // font import
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
-
 @layer base {
   :root {
     --background: #ffffff;
@@ -142,7 +141,7 @@
   }
 }
 
-  // prose formatting for dark theme
+// prose formatting for dark theme
 .dark .prose {
   color: white;
 }
@@ -216,7 +215,7 @@
   --chart-5: #800000;
 }
 
-  // prose formatting for red theme
+// prose formatting for red theme
 .red .prose {
   color: #ff4d4d;
 }
@@ -242,28 +241,132 @@
   /* Darker background for inline code */
 }
 
+// ABOUT SITE CARD ANIMATIONS
+
+.shake:hover {
+  animation: shake 1.5s linear both;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(10deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-10deg);
+  }
+
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+// -----------------------------------------
+.move-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.move-right button {
+  --move-button-width: 50px;
+  width: var(--move-button-width);
+
+  /* Initial transform and transition setup */
+  transform: translateX(0);
+  transition: transform 2s ease; /* Smooth transition */
+}
+
+.move-right:hover button {
+  /* Use transform instead of animation to move the button */
+  transform: translateX(
+    calc(var(--move-button-container-width) - var(--move-button-width))
+  );
+}
+
+// -----------------------------------------------------------
+
+.move-left-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  overflow: hidden;
+}
+
+.move-left-right button {
+  --move-button-width: 50px;
+
+  transform: translateX(0);
+  transition: transform 3s ease;
+  width: var(--move-button-width);
+  -webkit-transition: transform 2s ease;
+}
+
+.move-left-right:hover button {
+  animation: move-left-right 3s ease-in-out forwards infinite;
+  // animation-fill-mode: forwards;
+}
+
+@keyframes move-left-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(
+      calc(var(--move-button-container-width) - var(--move-button-width))
+    );
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.thing {
+  border: 10px solid black;
+  padding: 10px;
+  border-radius: 5px;
+
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+}
+
+.thing:hover {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 15px;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+
 // ABOUT SECTION ELEVATE TEXT -------------------------------
 
-// @for $i from 1 through 10 {
-//    .elevate-text-container .elevate-text:nth-child(#{$i}n) {
-//       animation-delay: #{$i * 0.5}s;
-//   }
-// }
+@for $i from 1 through 10 {
+  .elevate-text-container .elevate-text:nth-child(#{$i}n) {
+    animation-delay: #{$i * 0.5}s;
+  }
+}
 
 .elevate-text {
-
   padding-left: 8rem;
   padding-right: 8rem;
 
   animation: elevate-text 3s linear forwards;
-  animation-timeline:  scroll();
-  animation-range-start: contain -100px;
-  animation-range-end: 450px;
+  animation-timeline: scroll();
+  animation-range-start: entry;
+  animation-range-end: 550px;
 }
 
 @keyframes elevate-text {
   from {
-    transform: translateY(500%);
+    transform: translateY(700%);
   }
 
   to {
@@ -302,6 +405,45 @@
 
   animation: scroll-watcher linear;
   animation-timeline: scroll();
+}
+.scroll-watcher-right-horizontal {
+  width: 100%; /* Full width of the screen */
+  height: 2px; /* Thickness of the scroll bar */
+  position: relative;
+  // top: 170%; /* Position at the top of the screen */
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+
+  /* Horizontal scale animation */
+  scale: 0 1;
+  transform-origin: left;
+
+  /* Animation properties */
+  animation: scroll-watcher 5s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry();
+  animation-range-end: 1400px;
+}
+
+.scroll-watcher-left-horizontal {
+  width: 100%; /* Full width of the screen */
+  height: 2px; /* Thickness of the scroll bar */
+
+  /* Position at the top of the screen */
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+
+  /* Horizontal scale animation */
+  scale: 0 1;
+  transform-origin: right;
+
+  /* Animation properties */
+  animation: scroll-watcher 5s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry();
+  animation-range-end: 1800px;
 }
 
 @keyframes scroll-watcher {
@@ -350,61 +492,38 @@
 
 /* SCROLL-IN-LEFT/RIGHT --------------------------------------- */
 
-// .card {
-//   // width: 300px;
-//   // height: 200px;
-//   // background-color: #26a69a;
-//   // position: fixed; /* Keep it fixed to the viewport for smooth entry */
-//   top: 50%; /* Vertically center */
-//   right: -300px; /* Start off-screen to the right */
-//   transform: translateY(-50%);
-//   animation: slideIn 1s ease forwards; /* Slide in animation */
-// }
-
-// /* Animation for sliding in */
-// @keyframes slideIn {
-//   from {
-//     transform: translateX(100vw) translateY(-50%);
-//   }
-//   to {
-//     transform: translateX(0) translateY(-50%);
-//   }
-// }
-
 @media (prefers-reduced-motion: no-preference) {
   .scroll-in-left {
     position: absolute;
-    top: 260%;
+    top: 290%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 600px;
-    animation-range-end: 2100px;
+    animation-range-end: 2200px;
     animation-timeline: scroll();
   }
 
   .scroll-in-right {
     position: absolute;
-    top: 280%;
+    top: 310%;
 
     animation-fill-mode: both;
     animation: scroll-in-right linear forwards;
     animation-range-start: entry 800px;
-    animation-range-end: 2200px;
+    animation-range-end: 2300px;
     animation-timeline: scroll();
   }
 
   .scroll-in-left-delay {
     position: absolute;
-    top: 300%;
+    top: 330%;
 
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
-    animation-range-start: entry 1100px ;
-    animation-range-end: 2200px;
+    animation-range-start: entry 1100px;
+    animation-range-end: 2350px;
     animation-timeline: scroll();
   }
-
-
 
   @keyframes scroll-in-left {
     from {
@@ -453,57 +572,6 @@
 }
 
 // Resume Work Card CSS
-// section id
-// #work-experience {
-
-
-// .work-card {
-//   border: none;
-//   border-radius: 10%;
-
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   position: relative;
-
-//   // transition: color 1s ease-in-out;
-
-//   animation: elevate;
-//   animation-duration: 5s;
-//   animation-fill-mode: both;
-//   animation-timeline: scroll();
-//   animation-range-start: entry -400%;
-//   animation-range-end: 900px;
-  
-// }
-// .work-card::after{
-//   content: '';
-//   position: absolute;
-//   width: 102%;
-//   height: 102%;
-
-//   border-radius: 10%;
-//   background-image: linear-gradient(to bottom right, red, purple);
-//   z-index: -1;
-// }
-
-
-/* Add a wrapper for the gradient border effect */
-.gradient-border-wrapper {
-  position: relative;
-  border-radius: 10%;
-  padding: 5px; /* Control thickness of the border */
-
-    /* Animation properties */
-    animation: elevate;
-  animation-duration: 5s;
-  animation-fill-mode: both;
-  animation-timeline: scroll();
-  animation-range-start: entry -400%;
-  animation-range-end: 900px;
-}
 
 .work-card {
   position: relative;
@@ -513,48 +581,49 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 
+  /* Animation shorthand */
+  animation: elevate 5s ease-in-out forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry -900px;
+  animation-range-end: 3600px;
 }
 
-.gradient-border-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background-image: linear-gradient(to bottom right, red, purple);
-  z-index: -1;
-  transform: scale(1.02); /* Slight scale for the border effect */
-}
-
+// .gradient-border-wrapper::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: inherit;
+//   background-image: linear-gradient(to bottom right, red, purple);
+//   z-index: -1;
+//   transform: scale(1.02); /* Slight scale for the border effect */
+// }
 
 // .work-card:hover{
 //   // h-offset v-offset blur spread color
 //   box-shadow: 0 0 10px 5px red, 0 0 20px 10px purple;
 
-
 //    //z-index: 0;
 // }
 
-// @for $i from 1 through 10 {
-//   .work-card-container .work-card:nth-child(#{$i}n) {
-//       animation-delay: #{$i * 0.5}s;
-//   }
-// }
+@for $i from 1 through 10 {
+  .work-card-container .work-card:nth-child(#{$i}n) {
+    animation-delay: #{$i * 0.5}s;
+  }
+}
 
-
-@keyframes elevate{
+@keyframes elevate {
   from {
-    transform: translateY(200%);
-    
+    transform: translateY(-400%);
+    opacity: 0;
   }
   to {
     transform: translateY(0%);
+    opacity: 1;
   }
-
 }
 
 /* HERO CSS -------------------------------------  */
@@ -607,29 +676,12 @@
 .g3,
 .g4,
 .g5 {
-  position: absolute; 
+  position: absolute;
   width: var(--circle-size);
   height: var(--circle-size);
   mix-blend-mode: var(--blending);
   opacity: 0.8;
 }
-
-// .red {
-//   --color-bg1: rgb(76, 17, 17);
-//   /* Change for red mode */
-//   --color-bg2: rgb(10, 9, 9);
-//   --color1: 255, 100, 100;
-//   /* Change colors */
-//   --color2: 255, 50, 50;
-//   --color3: 255, 150, 150;
-//   --color4: 200, 100, 100;
-//   --color5: 255, 50, 100;
-//   --color-interactive: 255, 0, 100;
-
-//   --scroll-bar: rgb(188, 44, 104);
-
-//   --bg-color: black;
-// }
 
 // Hero animations ------------------------
 @keyframes moveInCircle {
@@ -676,10 +728,6 @@
 
 // -----------------------------------------------
 
-
-
-
-
 // HERO CSS --------------------------------------
 // big container
 .grad-bg {
@@ -714,7 +762,7 @@
   top: 0;
   left: 0;
 }
-// gradient bubbles for hero 
+// gradient bubbles for hero
 .g1 {
   position: absolute;
   background: radial-gradient(

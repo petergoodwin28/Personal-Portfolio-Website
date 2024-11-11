@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
 function About() {
@@ -26,6 +27,8 @@ function About() {
           I hope you enjoy the effects that I have put in place!
         </p>
       </div>
+
+        <div className="scroll-watcher-right-horizontal mt-44"></div>
     </section>
   );
 }

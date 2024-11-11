@@ -23,21 +23,45 @@ function WorkExperience() {
         </h1>
         <div className="flex flex-row gap-x-20 mt-52 mb-96 work-card-container">
           <div className="gradient-border-wrapper">
-            <Card className="work-card ">
+            <Card className="work-card w-64 ">
               <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+                <CardTitle>It Consultant/ Web Developer</CardTitle>
+                <CardDescription>Omnia Health</CardDescription>
               </CardHeader>
               <CardContent>
-                <p>Card Content</p>
+                <p>Plan and Implement tech solutions</p>
+                <p>
+                  Developing a website for bussiness, implementing payment
+                  processing with Stripe API.
+                </p>
+                <p>Helped with bussiness decisions and marketing plans.</p>
               </CardContent>
-              <CardFooter>
+              {/* <CardFooter>
                 <p>Card Footer</p>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </div>
 
-          <Card className="work-card ">
+          <Card className="work-card w-64">
+            <CardHeader>
+              <CardTitle>Front Desk Attendent</CardTitle>
+              <CardDescription>Midway Motion & Fitness</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Sells memberships to new members.</p>
+              <p>
+                Updates member and account information through a POS system.
+              </p>
+              <p>
+                Maintain the gym facilities and close up without supervision.
+              </p>
+            </CardContent>
+            {/* <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter> */}
+          </Card>
+
+          <Card className="work-card w-64">
             <CardHeader>
               <CardTitle>Card Title</CardTitle>
               <CardDescription>Card Description</CardDescription>
@@ -50,20 +74,7 @@ function WorkExperience() {
             </CardFooter>
           </Card>
 
-          <Card className="work-card ">
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Card Content</p>
-            </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter>
-          </Card>
-
-          <Card className="work-card ">
+          <Card className="work-card w-64">
             <CardHeader>
               <CardTitle>Card Title</CardTitle>
               <CardDescription>Card Description</CardDescription>

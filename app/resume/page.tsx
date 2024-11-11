@@ -17,7 +17,6 @@ function page() {
         
       <WorkExperience></WorkExperience>
 
-      <div className="bg-purple-500 h-[1000px]"></div>
     </div>
   );
 }

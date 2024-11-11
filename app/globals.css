@@ -225,18 +225,145 @@
   /* Darker background for inline code */
 }
 
+.shake:hover {
+  animation: shake 1.5s linear both;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(10deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(-10deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+.move-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.move-right button {
+  --move-button-width: 50px;
+  width: var(--move-button-width);
+  /* Initial transform and transition setup */
+  transform: translateX(0);
+  transition: transform 2s ease; /* Smooth transition */
+}
+
+.move-right:hover button {
+  /* Use transform instead of animation to move the button */
+  transform: translateX(calc(var(--move-button-container-width) - var(--move-button-width)));
+}
+
+.move-left-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  overflow: hidden;
+}
+
+.move-left-right button {
+  --move-button-width: 50px;
+  transform: translateX(0);
+  transition: transform 3s ease;
+  width: var(--move-button-width);
+  -webkit-transition: transform 2s ease;
+}
+
+.move-left-right:hover button {
+  animation: move-left-right 3s ease-in-out forwards infinite;
+}
+
+@keyframes move-left-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(var(--move-button-container-width) - var(--move-button-width)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.thing {
+  border: 10px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+}
+
+.thing:hover {
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 15px;
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+
+.elevate-text-container .elevate-text:nth-child(1n) {
+  animation-delay: 0.5s;
+}
+
+.elevate-text-container .elevate-text:nth-child(2n) {
+  animation-delay: 1s;
+}
+
+.elevate-text-container .elevate-text:nth-child(3n) {
+  animation-delay: 1.5s;
+}
+
+.elevate-text-container .elevate-text:nth-child(4n) {
+  animation-delay: 2s;
+}
+
+.elevate-text-container .elevate-text:nth-child(5n) {
+  animation-delay: 2.5s;
+}
+
+.elevate-text-container .elevate-text:nth-child(6n) {
+  animation-delay: 3s;
+}
+
+.elevate-text-container .elevate-text:nth-child(7n) {
+  animation-delay: 3.5s;
+}
+
+.elevate-text-container .elevate-text:nth-child(8n) {
+  animation-delay: 4s;
+}
+
+.elevate-text-container .elevate-text:nth-child(9n) {
+  animation-delay: 4.5s;
+}
+
+.elevate-text-container .elevate-text:nth-child(10n) {
+  animation-delay: 5s;
+}
+
 .elevate-text {
   padding-left: 8rem;
   padding-right: 8rem;
   animation: elevate-text 3s linear forwards;
   animation-timeline: scroll();
-  animation-range-start: contain -100px;
-  animation-range-end: 450px;
+  animation-range-start: entry;
+  animation-range-end: 550px;
 }
 
 @keyframes elevate-text {
   from {
-    transform: translateY(500%);
+    transform: translateY(700%);
   }
   to {
     transform: translateY(0%);
@@ -271,6 +398,40 @@
   transform-origin: top;
   animation: scroll-watcher linear;
   animation-timeline: scroll();
+}
+
+.scroll-watcher-right-horizontal {
+  width: 100%; /* Full width of the screen */
+  height: 2px; /* Thickness of the scroll bar */
+  position: relative;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+  /* Horizontal scale animation */
+  scale: 0 1;
+  transform-origin: left;
+  /* Animation properties */
+  animation: scroll-watcher 5s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry();
+  animation-range-end: 1400px;
+}
+
+.scroll-watcher-left-horizontal {
+  width: 100%; /* Full width of the screen */
+  height: 2px; /* Thickness of the scroll bar */
+  /* Position at the top of the screen */
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+  /* Horizontal scale animation */
+  scale: 0 1;
+  transform-origin: right;
+  /* Animation properties */
+  animation: scroll-watcher 5s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry();
+  animation-range-end: 1800px;
 }
 
 @keyframes scroll-watcher {
@@ -316,29 +477,29 @@
 @media (prefers-reduced-motion: no-preference) {
   .scroll-in-left {
     position: absolute;
-    top: 260%;
+    top: 290%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 600px;
-    animation-range-end: 2100px;
+    animation-range-end: 2200px;
     animation-timeline: scroll();
   }
   .scroll-in-right {
     position: absolute;
-    top: 280%;
+    top: 310%;
     animation-fill-mode: both;
     animation: scroll-in-right linear forwards;
     animation-range-start: entry 800px;
-    animation-range-end: 2200px;
+    animation-range-end: 2300px;
     animation-timeline: scroll();
   }
   .scroll-in-left-delay {
     position: absolute;
-    top: 300%;
+    top: 330%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 1100px;
-    animation-range-end: 2200px;
+    animation-range-end: 2350px;
     animation-timeline: scroll();
   }
   @keyframes scroll-in-left {
@@ -380,20 +541,6 @@
     opacity: 0;
   }
 }
-/* Add a wrapper for the gradient border effect */
-.gradient-border-wrapper {
-  position: relative;
-  border-radius: 10%;
-  padding: 5px; /* Control thickness of the border */
-  /* Animation properties */
-  animation: elevate;
-  animation-duration: 5s;
-  animation-fill-mode: both;
-  animation-timeline: scroll();
-  animation-range-start: entry -400%;
-  animation-range-end: 900px;
-}
-
 .work-card {
   position: relative;
   border-radius: 10%;
@@ -402,27 +549,61 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Animation shorthand */
+  animation: elevate 5s ease-in-out forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry -900px;
+  animation-range-end: 3600px;
 }
 
-.gradient-border-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background-image: linear-gradient(to bottom right, red, purple);
-  z-index: -1;
-  transform: scale(1.02); /* Slight scale for the border effect */
+.work-card-container .work-card:nth-child(1n) {
+  animation-delay: 0.5s;
+}
+
+.work-card-container .work-card:nth-child(2n) {
+  animation-delay: 1s;
+}
+
+.work-card-container .work-card:nth-child(3n) {
+  animation-delay: 1.5s;
+}
+
+.work-card-container .work-card:nth-child(4n) {
+  animation-delay: 2s;
+}
+
+.work-card-container .work-card:nth-child(5n) {
+  animation-delay: 2.5s;
+}
+
+.work-card-container .work-card:nth-child(6n) {
+  animation-delay: 3s;
+}
+
+.work-card-container .work-card:nth-child(7n) {
+  animation-delay: 3.5s;
+}
+
+.work-card-container .work-card:nth-child(8n) {
+  animation-delay: 4s;
+}
+
+.work-card-container .work-card:nth-child(9n) {
+  animation-delay: 4.5s;
+}
+
+.work-card-container .work-card:nth-child(10n) {
+  animation-delay: 5s;
 }
 
 @keyframes elevate {
   from {
-    transform: translateY(200%);
+    transform: translateY(-400%);
+    opacity: 0;
   }
   to {
     transform: translateY(0%);
+    opacity: 1;
   }
 }
 /* HERO CSS -------------------------------------  */

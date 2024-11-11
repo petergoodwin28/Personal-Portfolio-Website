@@ -15,7 +15,7 @@ function Skills() {
     "Next.js",
   ];
   return (
-    <section className="mt-96 flex flex-col items-center w-full">
+    <section className="mt-44 mb-52 flex flex-col items-center w-full">
       {/* className="autoscroll-container ml-auto mr-auto" */}
       <h1 className="prose font-extralight text-3xl mb-20 ">
         Skills, Languages, and Tools
@@ -41,6 +41,8 @@ function Skills() {
           ))}
         </ul>
       </div>
+
+      <div className="scroll-watcher-left-horizontal mt-32"></div>
     </section>
   );
 }

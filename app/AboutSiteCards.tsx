@@ -88,7 +88,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* SHADCN/UI */}
-        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center grow basis-2">
+        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center grow basis-1">
           <CardHeader>
             <CardTitle>Shadcn/ui</CardTitle>
             <CardDescription>
@@ -238,38 +238,36 @@ export default function AboutSiteCards() {
         {/* NEXT-THEMES */}
         <Card className="w-[350px] grow">
           <CardHeader>
-            <CardTitle>Next-Themes</CardTitle>
+            <CardTitle>CSS Animations</CardTitle>
             <CardDescription>
-              Deploy your new project in one-click.
+              This website uses CSS animations and avoids assistance from javascript.
+              <strong> Some animations may only be visible to browsers like Chrome and and Microsoft Edge. Also recommended is using a laptop or monitor to view the site.</strong> 
+              Here are some examples using transitions and animations:
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Name of your project" />
+              <div className="flex flex-col justify-around items-center gap-y-5">
+                Button shake
+                <Button className="shake">Shake!</Button>
+                Move right and left with Animation
+                <div className="border move-left-right">
+                  <Button ></Button>
                 </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="framework">Framework</Label>
-                  <Select>
-                    <SelectTrigger id="framework">
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent position="popper">
-                      <SelectItem value="next">Next.js</SelectItem>
-                      <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                      <SelectItem value="astro">Astro</SelectItem>
-                      <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  Move right with transitions
+                <div className="border move-right">
+                  <Button></Button>
                 </div>
+
+                <div>
+                  <button className="thing">Hello</button>
+                </div>
+
+
               </div>
-            </form>
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button variant="outline">Cancel</Button>
-            <Button>Deploy</Button>
+            {/* <Button variant="outline">Cancel</Button>
+            <Button>Deploy</Button> */}
           </CardFooter>
         </Card>
       </div>

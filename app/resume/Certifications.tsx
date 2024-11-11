@@ -3,7 +3,7 @@ import React from "react";
 
 function Certifications() {
   return (
-    <section className="mt-96 w-full flex flex-col items-center h-[100vh]">
+    <section className=" w-full flex flex-col items-center h-[100vh]">
       <h1 className="font-extralight text-3xl prose text-center">
         Certifications
       </h1>
