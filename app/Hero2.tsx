@@ -55,8 +55,8 @@ function Hero2() {
     <div className="w-full h-[100vh]">
       <div className="grad-bg">
 
-        <Card className="absolute top-[50%] left-[50%] ">
-            <CardContent > Hello There I am a Card</CardContent>
+        <Card className="hero-card">
+            <CardContent > Hello and Welcome! I hope you enjoy the Site!</CardContent>
         </Card>
       
         <svg

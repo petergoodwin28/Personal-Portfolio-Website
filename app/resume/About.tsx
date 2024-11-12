@@ -6,7 +6,7 @@ function About() {
     <section className="flex flex-col items-center mt-20 ">
       {/* Image */}
       <div className="fade-out-scroll border-2 rounded-full overflow-hidden w-[500px] h-[500px] mb-32">
-        <img className="mt-32" src="/14772577.jpg" alt="image" />
+        <img className="mt-32 translate-y-[-280px] " src="/meImage1.jpg" alt="image" />
       </div>
 
       {/* Description */}

@@ -31,7 +31,7 @@ function Skills() {
           ))}
         </ul>
 
-        <ul aria-hidden >
+        <ul aria-hidden>
           {allLangsAndTools.map((item, index) => (
             <li key={index}>
               <Card className="border-none hover:bg-white hover:text-black pt-5">

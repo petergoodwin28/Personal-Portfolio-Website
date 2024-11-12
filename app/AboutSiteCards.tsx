@@ -240,30 +240,30 @@ export default function AboutSiteCards() {
           <CardHeader>
             <CardTitle>CSS Animations</CardTitle>
             <CardDescription>
-              This website uses CSS animations and avoids assistance from javascript.
-              <strong> Some animations may only be visible to browsers like Chrome and and Microsoft Edge. Also recommended is using a laptop or monitor to view the site.</strong> 
+              This website uses CSS animations and avoids assistance from
+              javascript.
+              <strong>
+                {" "}
+                Some animations may only be visible to browsers like Chrome and
+                and Microsoft Edge. Also recommended is using a laptop or
+                monitor to view the site.
+              </strong>
               Here are some examples using transitions and animations:
             </CardDescription>
           </CardHeader>
           <CardContent>
-              <div className="flex flex-col justify-around items-center gap-y-5">
-                Button shake
-                <Button className="shake">Shake!</Button>
-                Move right and left with Animation
-                <div className="border move-left-right">
-                  <Button ></Button>
-                </div>
-                  Move right with transitions
-                <div className="border move-right">
-                  <Button></Button>
-                </div>
-
-                <div>
-                  <button className="thing">Hello</button>
-                </div>
-
-
+            <div className="flex flex-col justify-around items-center gap-y-5">
+              Button shake
+              <Button className="shake">Shake!</Button>
+              Move right and left with Animation
+              <div className="border move-left-right">
+                <Button></Button>
               </div>
+              Move right with transitions
+              <div className="border move-right">
+                <Button></Button>
+              </div>
+            </div>
           </CardContent>
           <CardFooter className="flex justify-between">
             {/* <Button variant="outline">Cancel</Button>

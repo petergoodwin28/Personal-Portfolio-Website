@@ -26,7 +26,7 @@ function ProjectCarousel() {
         different routes depending on your login status. For instance, logged in users will be sent to a \
         dashboard page where their name is displayed, before accessing the chart page.",
       link: "https://github.com/petergoodwin28/StockDashboard",
-      imageURL: "/battleSpaceMarines.jpg",
+      imageURL: "/stockdash-login-page.png",
     },
     {
       name: "ThemeChangeSite",
@@ -38,7 +38,8 @@ function ProjectCarousel() {
         to make it all work. The images are revolved around one of my new interests: Warhammer 40,000. Specifically\
         the Space Marines.",
       link: "https://github.com/petergoodwin28/ThemeChangeSite",
-      imageURL: "/battleSpaceMarines.jpg",
+      imageURL: "/theme-site-battle-image.png",
+    //   my-project/public/theme-site-battle-image.png
     },
   ];
 

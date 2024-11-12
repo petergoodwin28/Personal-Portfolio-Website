@@ -8,15 +8,14 @@ import WorkExperience from "./WorkExperience";
 function page() {
   return (
     <div className="">
-        <div className="scroll-watcher"></div>
+      <div className="scroll-watcher"></div>
       <About></About>
 
       <Skills></Skills>
 
       <Certifications></Certifications>
-        
-      <WorkExperience></WorkExperience>
 
+      <WorkExperience></WorkExperience>
     </div>
   );
 }

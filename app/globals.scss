@@ -628,6 +628,16 @@
 
 /* HERO CSS -------------------------------------  */
 
+.hero-card {
+  position: absolute;
+  --hero-card-width: 25rem;
+  width: var(--hero-card-width);
+ // absolute top-[50%] left-1/2 
+  top: 50%;
+  left: calc(50% );
+  transform: translate(-50%, -50%);
+}
+
 /*  colors for hero svgs by theme */
 :root {
   --color-bg1: rgb(8, 10, 15);
@@ -666,7 +676,7 @@
   --color4: 80, 200, 220;
   --color5: 100, 60, 160;
   --color-interactive: 180, 150, 255;
-  --scroll-bar: white;
+  --scroll-bar: #e61010;
   --bg-color: black;
 }
 
