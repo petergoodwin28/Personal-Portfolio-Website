@@ -44,7 +44,7 @@ function ProjectCarousel() {
   ];
 
   return (
-    <section className="w-full h-fit flex flex-col items-center gap-y-28 mt-48 mb-32 text-center">
+    <section id="portfolio" className="w-full h-fit flex flex-col items-center gap-y-28 mt-48 mb-32 text-center">
       <h1 className="font-extrabold text-3xl">Portfolio</h1>
 
       <Carousel className="w-[700px] ">

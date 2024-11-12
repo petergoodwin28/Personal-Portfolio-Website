@@ -57,24 +57,27 @@ export default function Navbar() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-      <NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Home
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        
 
         <NavigationMenuItem>
-          <Link href="https://github.com/petergoodwin28?tab=repositories" legacyBehavior passHref>
+          <Link
+            href="https://github.com/petergoodwin28?tab=repositories"
+            legacyBehavior
+            passHref
+          >
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Github
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/portfolio" legacyBehavior passHref>
+          <Link href="/#portfolio" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Portfolio
             </NavigationMenuLink>
@@ -118,7 +121,8 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-{/* <NavigationMenuItem>
+{
+  /* <NavigationMenuItem>
 <NavigationMenuTrigger>Components</NavigationMenuTrigger>
 <NavigationMenuContent>
   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -133,10 +137,11 @@ ListItem.displayName = "ListItem";
     ))}
   </ul>
 </NavigationMenuContent>
-</NavigationMenuItem> */}
+</NavigationMenuItem> */
+}
 
-
-{/* <NavigationMenuItem>
+{
+  /* <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -167,4 +172,5 @@ ListItem.displayName = "ListItem";
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem> */}
+        </NavigationMenuItem> */
+}

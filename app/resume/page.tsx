@@ -7,7 +7,7 @@ import WorkExperience from "./WorkExperience";
 
 function page() {
   return (
-    <div className="">
+    <div suppressHydrationWarning>
       <div className="scroll-watcher"></div>
       <About></About>
 

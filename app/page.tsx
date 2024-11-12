@@ -8,9 +8,6 @@ export default function Home() {
   return (
     <div className="flex flex-col">
 
-      
-
-
       <Hero2/>
 
       <ProjectCarousel></ProjectCarousel>
