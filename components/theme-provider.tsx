@@ -17,7 +17,7 @@ interface ScriptProps
     React.ScriptHTMLAttributes<HTMLScriptElement>,
     HTMLScriptElement
   > {
-  [dataAttribute: DataAttribute]: any
+  [dataAttribute: DataAttribute]: string
 }
 
 export interface UseThemeProps {

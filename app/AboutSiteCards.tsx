@@ -9,8 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -181,10 +179,10 @@ export default function AboutSiteCards() {
           <CardContent>
             <div className="flex flex-col items-center text-left prose">
               <ModeToggle className="m-10"></ModeToggle>
-              This is created using Shadcn/ui's DarkMode which uses next-themes.
-              Simply enter <code className="">npm install next-themes</code>
+              This is created using Shadcn/ui&apos;s DarkMode which uses next-themes.
+              Simply enter <code>npm install next-themes</code>
               into your console, then wrap your root layout in a theme provider
-              and finally, create a toggle button that uses{" "}
+              and finally, create a toggle button that uses
               <code> useTheme() </code> to communicate with the theme provider.
             </div>
           </CardContent>
@@ -209,9 +207,9 @@ export default function AboutSiteCards() {
               <br />
               <strong>HTML : </strong> <br />
               <code>
-                &lt;button class="button-red"&gt; <br />{" "}
+                &lt;button class="button-red"&gt; <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;Click Me <br /> &lt;/button&gt;
-              </code>{" "}
+              </code>
               <br />
               <br />
               <strong>CSS : </strong> <br />
@@ -223,13 +221,13 @@ export default function AboutSiteCards() {
               <br /> <br />
               <strong>In Tailwind : </strong> <br />
               <code>
-                &lt;button className="text-red-600 border-4 border-red-600" &gt;
+                &lt;button className=&quot;text-red-600 border-4 border-red-600&quot; &gt;
                 Click Me &lt;/button&gt;
               </code>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col justify-between ">
-            As you can see, it makes development quicker as you don't need to
+            As you can see, it makes development quicker as you don&apos;t need to
             create more files or remember class or id names. <br />
             <Button variant="outline">Tailwindcss</Button>
           </CardFooter>
@@ -243,7 +241,7 @@ export default function AboutSiteCards() {
               This website uses CSS animations and avoids assistance from
               javascript.
               <strong>
-                {" "}
+                
                 Some animations may only be visible to browsers like Chrome and
                 and Microsoft Edge. Also recommended is using a laptop or
                 monitor to view the site.

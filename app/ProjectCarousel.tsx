@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image"
 import {
   Carousel,
   CarouselContent,
@@ -54,8 +54,10 @@ function ProjectCarousel() {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex flex-col items-center p-6">
-                    <img
+                    <Image
                       className="embla__slide__img"
+                      width={500}
+                      height={300}
                       src={project.imageURL}
                       alt={`${project.name} project image`}
                     />
