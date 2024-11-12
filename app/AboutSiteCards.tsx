@@ -143,24 +143,6 @@ export default function AboutSiteCards() {
                   </div>
                 </ScrollArea>
               )}
-
-              {/* {component == "Scroll Area" && (
-                <ScrollArea className="h-72 w-48 rounded-md border mt-4">
-                  <div className="p-4">
-                    <h4 className="mb-4 text-sm font-medium leading-none">
-                      Tags
-                    </h4>
-                    {tags.map((tag) => (
-                      <>
-                        <div key={tag} className="text-sm">
-                          {tag}
-                        </div>
-                        <Separator className="my-2" />
-                      </>
-                    ))}
-                  </div>
-                </ScrollArea>
-              )} */}
             </div>
           </CardContent>
           <CardFooter className="flex justify-around ml-auto mr-auto mt-auto mb-1">
@@ -207,7 +189,7 @@ export default function AboutSiteCards() {
               <br />
               <strong>HTML : </strong> <br />
               <code>
-                &lt;button class="button-red"&gt; <br />
+                &lt;button class=&quot;button-red&quot;&gt; <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;Click Me <br /> &lt;/button&gt;
               </code>
               <br />
