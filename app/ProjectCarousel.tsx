@@ -25,7 +25,7 @@ function ProjectCarousel() {
         between price and volume charts. It uses next's app router to route you where needed and gives \
         different routes depending on your login status. For instance, logged in users will be sent to a \
         dashboard page where their name is displayed, before accessing the chart page.",
-      link: "https://github.com/petergoodwin28/StockDashboard",
+      link: "https://github.com/petergoodwin28/Stock-Dashboard-Login-Watchlist",
       imageURL: "/stockdash-login-page.png",
     },
     {
@@ -37,7 +37,7 @@ function ProjectCarousel() {
         that I found appealing. It is a Next.js app that uses Tailwind CSS themes, CSS, and some state management\
         to make it all work. The images are revolved around one of my new interests: Warhammer 40,000. Specifically\
         the Space Marines.",
-      link: "https://github.com/petergoodwin28/ThemeChangeSite",
+      link: "https://github.com/petergoodwin28/Theme-Change-Site",
       imageURL: "/theme-site-battle-image.png",
     //   my-project/public/theme-site-battle-image.png
     },
