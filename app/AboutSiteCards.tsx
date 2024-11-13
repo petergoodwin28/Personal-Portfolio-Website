@@ -237,11 +237,11 @@ export default function AboutSiteCards() {
               <Button className="shake">Shake!</Button>
               Move right and left with Animation
               <div className="border move-left-right">
-                <Button></Button>
+                <button></button>
               </div>
               Move right with transitions
               <div className="border move-right">
-                <Button></Button>
+                <button></button>
               </div>
             </div>
           </CardContent>

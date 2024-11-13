@@ -279,6 +279,9 @@
 .move-right button {
   --move-button-width: 50px;
   width: var(--move-button-width);
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
 
   /* Initial transform and transition setup */
   transform: translateX(0);
@@ -297,11 +300,15 @@
 .move-left-right {
   --move-button-container-width: 600px;
   width: var(--move-button-container-width);
+  height: 43px;
   overflow: hidden;
 }
 
 .move-left-right button {
   --move-button-width: 50px;
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
 
   transform: translateX(0);
   transition: transform 3s ease;
@@ -496,7 +503,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .scroll-in-left {
     position: absolute;
-    top: 290%;
+    // top: 290%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 600px;
@@ -506,7 +513,7 @@
 
   .scroll-in-right {
     position: absolute;
-    top: 310%;
+    // top: 310%;
 
     animation-fill-mode: both;
     animation: scroll-in-right linear forwards;
@@ -517,7 +524,7 @@
 
   .scroll-in-left-delay {
     position: absolute;
-    top: 330%;
+    // top: 330%;
 
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;

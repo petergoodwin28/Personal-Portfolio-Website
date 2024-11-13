@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 function About() {
   return (
-    <section className="flex flex-col items-center mt-20 ">
+    <section id="about" className="flex flex-col items-center mt-20 ">
       {/* Image */}
       <div className="fade-out-scroll border-2 rounded-full overflow-hidden w-[500px] h-[500px] mb-32">
-        <Image src="/meImage1.jpg"  width={500} height={500} alt="image" />
+        <Image src="/meImage1.jpg"  width={500} height={500}  alt="image" className="transform translate-y-[-170px]"/>
       </div>
 
       {/* Description */}
