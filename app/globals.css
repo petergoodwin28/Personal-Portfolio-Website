@@ -779,3 +779,77 @@
   position: absolute;
   opacity: 0.7;
 }/*# sourceMappingURL=globals.css.map */
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Revolving card - resume > work experience */
+
+.flip-card {
+  width: 16rem; /* w-64 */
+  height: 20rem; /* h-80 */
+  perspective: 1000px;
+  position: relative;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+
+
+
+
+
+
+
+/**/
+
+
+/**/
+.perspective {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.group-hover\:rotate-y-180:hover {
+  transform: rotateY(180deg);
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */

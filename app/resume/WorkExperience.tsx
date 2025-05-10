@@ -16,6 +16,44 @@ function WorkExperience() {
         <h1 className="text-center font-extralight text-5xl">
           Work Experience
         </h1>
+        <div className="relative w-64 h-80 group perspective">
+  <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d group-hover:rotate-y-180">
+    {/* Front Side */}
+    <div className="absolute inset-0 backface-hidden">
+      <Card className="w-full h-full">
+        <CardHeader>
+          <CardTitle>Front Side</CardTitle>
+          <CardDescription>Web Developer</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>WordPress & ASP.Net</p>
+          <p>IT Support in M365</p>
+        </CardContent>
+      </Card>
+    </div>
+
+    {/* Back Side */}
+    <div className="absolute inset-0 rotate-y-180 backface-hidden">
+      <Card className="w-full h-full">
+        <CardHeader>
+          <CardTitle>Back Side</CardTitle>
+          <CardDescription>Serigor Inc.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>Admin tasks</p>
+          <p>Remote desktop, Windows</p>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
         <div className="flex flex-row gap-x-20 mt-52 mb-96 work-card-container">
           <div className="gradient-border-wrapper">
             <Card className="work-card w-64 ">
