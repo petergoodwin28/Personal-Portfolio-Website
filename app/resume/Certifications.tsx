@@ -33,7 +33,7 @@ function Certifications() {
       </h1>
 
       <div className="scroll-in-left overflow-x-hidden">
-        <Card className="w-fit">
+        <Card className="w-fit shadow-certCard">
           <CardHeader>AWS Cloud Practitioner</CardHeader>
           <CardContent>
             Learned about AWS services, pricing, and responsibility. <br />
@@ -43,7 +43,7 @@ function Certifications() {
       </div>
 
       <div className="scroll-in-right overflow-x-hidden">
-        <Card className="w-fit">
+        <Card className=" shadow-certCard">
           <CardHeader>AWS Cloud Practitioner</CardHeader>
           <CardContent>
             Learned about AWS services, pricing, and responsibility. <br />
@@ -53,7 +53,7 @@ function Certifications() {
       </div>
 
       <div className="scroll-in-left-delay overflow-x-hidden">
-        <Card className="w-fit">
+        <Card className="w-fit shadow-certCard">
           <CardHeader>Networking / IT </CardHeader>
           <CardContent>
             While I dont have any more certifications, I often watch youtube

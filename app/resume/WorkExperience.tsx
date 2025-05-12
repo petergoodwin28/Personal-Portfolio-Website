@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -16,37 +17,7 @@ function WorkExperience() {
         <h1 className="text-center font-extralight text-5xl">
           Work Experience
         </h1>
-        <div className="relative w-64 h-80 group perspective">
-  <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d group-hover:rotate-y-180">
-    {/* Front Side */}
-    <div className="absolute inset-0 backface-hidden">
-      <Card className="w-full h-full">
-        <CardHeader>
-          <CardTitle>Front Side</CardTitle>
-          <CardDescription>Web Developer</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>WordPress & ASP.Net</p>
-          <p>IT Support in M365</p>
-        </CardContent>
-      </Card>
-    </div>
-
-    {/* Back Side */}
-    <div className="absolute inset-0 rotate-y-180 backface-hidden">
-      <Card className="w-full h-full">
-        <CardHeader>
-          <CardTitle>Back Side</CardTitle>
-          <CardDescription>Serigor Inc.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Admin tasks</p>
-          <p>Remote desktop, Windows</p>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
-</div>
+    
 
 
 
@@ -56,7 +27,7 @@ function WorkExperience() {
 
         <div className="flex flex-row gap-x-20 mt-52 mb-96 work-card-container">
           <div className="gradient-border-wrapper">
-            <Card className="work-card w-64 ">
+            <Card className="work-card h-96 w-96 shadow-workCard ">
               <CardHeader>
                 <CardTitle>It Consultant/ Web Developer</CardTitle>
                 <CardDescription>Omnia Health</CardDescription>
@@ -75,7 +46,7 @@ function WorkExperience() {
             </Card>
           </div>
 
-          <Card className="work-card w-64">
+          {/* <Card className="work-card w-64 shadow-lg">
             <CardHeader>
               <CardTitle>Front Desk Attendent</CardTitle>
               <CardDescription>Midway Motion & Fitness</CardDescription>
@@ -91,32 +62,30 @@ function WorkExperience() {
             </CardContent>
             {/* <CardFooter>
               <p>Card Footer</p>
-            </CardFooter> */}
-          </Card>
+            </CardFooter> 
+          </Card> */}
 
-          <Card className="work-card w-64">
+          <Card className="work-card h-96 w-96 shadow-workCard ">
             <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
+              <CardTitle>Web Developer</CardTitle>
+              <CardDescription>Serigor Inc.</CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
-            </CardContent>
-            <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter>
-          </Card>
+              <p className="prose">
+                Wordpress Development <br />
+                HTML/CSS/JS Development <br />
+                .NET Development <br />
+                ASP.NET Development <br />
+                Microsoft 365 Admin Consoles <br />
+                IT Support <br />
+                Networking <br />
+                Windows OS <br />
 
-          <Card className="work-card w-64">
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Card Content</p>
+
+              </p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <Button variant="outline" className="">Website</Button>
             </CardFooter>
           </Card>
         </div>

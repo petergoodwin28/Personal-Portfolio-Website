@@ -48,8 +48,8 @@ export default function AboutSiteCards() {
       <h1 className="font-extrabold text-3xl text-center m-20">
         About the Site
       </h1>
-      <div className="flex flex-row flex-wrap gap-x-20 gap-y-20 m-20 items-baseline">
-        <Card className="min-w-96 h-fit prose grow basis-2">
+      <div className="flex flex-row flex-wrap gap-x-10 m-10 items-baseline">
+        <Card className="  w-96 prose ">
           <CardHeader>
             <CardTitle className="mb-5">Next.js</CardTitle>
             <CardDescription>
@@ -86,7 +86,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* SHADCN/UI */}
-        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center grow basis-1">
+        <Card className="w-96 h-[700px] p-10 flex flex-col items-center">
           <CardHeader>
             <CardTitle>Shadcn/ui</CardTitle>
             <CardDescription>
@@ -151,7 +151,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* Dark Mode */}
-        <Card className="w-[350px] grow h-fit p-10 ">
+        <Card className="w-96 h-fit p-10 ">
           <CardHeader>
             <CardTitle>Dark Mode</CardTitle>
             <CardDescription>
@@ -174,7 +174,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* TAILWINDCSS */}
-        <Card className="w-[500px] h-fit p-10">
+        <Card className="w-96 h-fit p-10">
           <CardHeader>
             <CardTitle>Tailwindcss</CardTitle>
             <CardDescription>
@@ -216,7 +216,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* NEXT-THEMES */}
-        <Card className="w-[350px] grow">
+        <Card className="w-[90vw] ">
           <CardHeader>
             <CardTitle>CSS Animations</CardTitle>
             <CardDescription>

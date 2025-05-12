@@ -4,7 +4,7 @@
 @tailwind utilities;
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[var(--border)];
   }
   body {
     @apply bg-background text-foreground;
@@ -61,6 +61,7 @@
     --chart-5: #ff7e39;
     /* 27 87% 67% */
     --radius: 0.5rem;
+    --shadow: rgb(115, 0, 255);
   }
   :root .prose {
     color: black;
@@ -126,6 +127,7 @@
     /* 280 65% 60% */
     --chart-5: #ff597d;
     /* 340 75% 55% */
+    --shadow: rgb(246, 246, 250);
   }
 }
 .dark .prose {
@@ -198,6 +200,7 @@
   --chart-3: #e60000;
   --chart-4: #b30000;
   --chart-5: #800000;
+  --shadow: red;
 }
 
 .red .prose {
@@ -223,6 +226,35 @@
   /* Adjust as needed for better contrast */
   background-color: #1a1a1a;
   /* Darker background for inline code */
+}
+
+/* Green */
+.green {
+  --background: #0a0a0a; /* Black background */
+  --foreground: #00c805; /* Robinhood green foreground */
+  --card: #1a1a1a; /* Darker black for cards */
+  --card-foreground: #00c805; /* Green text on cards */
+  --popover: #1a1a1a; /* Dark background for popovers */
+  --popover-foreground: #00c805; /* Green text in popovers */
+  --primary: #00c805; /* Green for primary elements */
+  --primary-foreground: #0a0a0a; /* Black text for primary foregrounds */
+  --secondary: #333333; /* Dark gray for secondary elements */
+  --secondary-foreground: #00c805; /* Green text for secondary elements */
+  --muted: #333333; /* Muted background with dark gray */
+  --muted-foreground: #66ff66; /* Lighter green for muted text */
+  --accent: #004d00; /* Dark green for accents */
+  --accent-foreground: #00c805; /* Green text on accent elements */
+  --destructive: #006400; /* Deep green (warning alternative) */
+  --destructive-foreground: #0a0a0a; /* Black text for destructive actions */
+  --border: #262626; /* Dark gray for borders */
+  --input: #262626; /* Dark gray for inputs */
+  --ring: #00c805; /* Green for focus rings */
+  --chart-1: #33ff33; /* Different shades of green for charts */
+  --chart-2: #00e600;
+  --chart-3: #00b300;
+  --chart-4: #008000;
+  --chart-5: #004d00;
+  --shadow: #00c805;
 }
 
 .shake:hover {
@@ -257,6 +289,9 @@
 .move-right button {
   --move-button-width: 50px;
   width: var(--move-button-width);
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
   /* Initial transform and transition setup */
   transform: translateX(0);
   transition: transform 2s ease; /* Smooth transition */
@@ -270,11 +305,15 @@
 .move-left-right {
   --move-button-container-width: 600px;
   width: var(--move-button-container-width);
+  height: 43px;
   overflow: hidden;
 }
 
 .move-left-right button {
   --move-button-width: 50px;
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
   transform: translateX(0);
   transition: transform 3s ease;
   width: var(--move-button-width);
@@ -477,7 +516,6 @@
 @media (prefers-reduced-motion: no-preference) {
   .scroll-in-left {
     position: absolute;
-    top: 290%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 600px;
@@ -486,7 +524,6 @@
   }
   .scroll-in-right {
     position: absolute;
-    top: 310%;
     animation-fill-mode: both;
     animation: scroll-in-right linear forwards;
     animation-range-start: entry 800px;
@@ -495,7 +532,6 @@
   }
   .scroll-in-left-delay {
     position: absolute;
-    top: 330%;
     animation-fill-mode: both;
     animation: scroll-in-left linear forwards;
     animation-range-start: entry 1100px;
@@ -607,6 +643,15 @@
   }
 }
 /* HERO CSS -------------------------------------  */
+.hero-card {
+  position: absolute;
+  --hero-card-width: 25rem;
+  width: var(--hero-card-width);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /*  colors for hero svgs by theme */
 :root {
   --color-bg1: rgb(8, 10, 15);
@@ -645,7 +690,20 @@
   --color4: 80, 200, 220;
   --color5: 100, 60, 160;
   --color-interactive: 180, 150, 255;
-  --scroll-bar: white;
+  --scroll-bar: #e61010;
+  --bg-color: black;
+}
+
+.green {
+  --color-bg1: rgb(34, 218, 199);
+  --color-bg2: rgb(2, 56, 18);
+  --color1: 100, 200, 255;
+  --color2: 150, 100, 255;
+  --color3: 150, 150, 255;
+  --color4: 80, 200, 220;
+  --color5: 100, 60, 160;
+  --color-interactive: 180, 150, 255;
+  --scroll-bar: #10e654;
   --bg-color: black;
 }
 
@@ -778,78 +836,18 @@
   left: -50%;
   position: absolute;
   opacity: 0.7;
+}
+
+/* ******************************************************************************************************* */
+/* CONTACT */
+.contact-container {
+  background-image: url("/DarkGreenMarbleTextureBackground.png");
+  background-size: cover;
+  height: 100vh;
+}
+
+#hero1 {
+  background-image: url("/Black and White Aesthetic Forest Desktop Wallpaper.png");
+  background-size: cover;
+  height: 100vh;
 }/*# sourceMappingURL=globals.css.map */
-
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* Revolving card - resume > work experience */
-
-.flip-card {
-  width: 16rem; /* w-64 */
-  height: 20rem; /* h-80 */
-  perspective: 1000px;
-  position: relative;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  top: 0;
-  left: 0;
-}
-
-.flip-card-front {
-  transform: rotateY(0deg);
-  z-index: 2;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-
-
-
-
-
-
-
-/**/
-
-
-/**/
-.perspective {
-  perspective: 1000px;
-}
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-.backface-hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-.group-hover\:rotate-y-180:hover {
-  transform: rotateY(180deg);
-}
-
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */

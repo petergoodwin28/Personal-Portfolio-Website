@@ -4,6 +4,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Certifications from "./Certifications";
 import WorkExperience from "./WorkExperience";
+import Interests from "./Interests";
 
 function page() {
   return (
@@ -16,6 +17,8 @@ function page() {
       <Certifications></Certifications>
 
       <WorkExperience></WorkExperience>
+
+      <Interests></Interests>
     </div>
   );
 }

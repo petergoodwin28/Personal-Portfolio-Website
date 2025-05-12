@@ -68,6 +68,8 @@
     --chart-5: #ff7e39;
     /* 27 87% 67% */
     --radius: 0.5rem;
+
+    --shadow: rgb(115, 0, 255);
   }
 
   // prose formatting for root theme
@@ -139,6 +141,7 @@
     /* 280 65% 60% */
     --chart-5: #ff597d;
     /* 340 75% 55% */
+    --shadow: rgb(246, 246, 250);
   }
 }
 
@@ -214,6 +217,7 @@
   --chart-3: #e60000;
   --chart-4: #b30000;
   --chart-5: #800000;
+  --shadow: red;
 }
 
 // prose formatting for red theme
@@ -241,6 +245,45 @@
   background-color: #1a1a1a;
   /* Darker background for inline code */
 }
+
+/* Green */
+
+.green {
+  --background: #0a0a0a;                /* Black background */
+  --foreground: #00c805;                /* Robinhood green foreground */
+  --card: #1a1a1a;                      /* Darker black for cards */
+  --card-foreground: #00c805;          /* Green text on cards */
+  --popover: #1a1a1a;                   /* Dark background for popovers */
+  --popover-foreground: #00c805;       /* Green text in popovers */
+  --primary: #00c805;                  /* Green for primary elements */
+  --primary-foreground: #0a0a0a;       /* Black text for primary foregrounds */
+  --secondary: #333333;                /* Dark gray for secondary elements */
+  --secondary-foreground: #00c805;     /* Green text for secondary elements */
+  --muted: #333333;                    /* Muted background with dark gray */
+  --muted-foreground: #66ff66;         /* Lighter green for muted text */
+  --accent: #004d00;                   /* Dark green for accents */
+  --accent-foreground: #00c805;        /* Green text on accent elements */
+  --destructive: #006400;              /* Deep green (warning alternative) */
+  --destructive-foreground: #0a0a0a;   /* Black text for destructive actions */
+  --border: #262626;                   /* Dark gray for borders */
+  --input: #262626;                    /* Dark gray for inputs */
+  --ring: #00c805;                     /* Green for focus rings */
+
+  --chart-1: #33ff33;                  /* Different shades of green for charts */
+  --chart-2: #00e600;
+  --chart-3: #00b300;
+  --chart-4: #008000;
+  --chart-5: #004d00;
+  --shadow: #00c805;
+}
+
+
+
+
+
+
+
+
 
 // ABOUT SITE CARD ANIMATIONS
 
@@ -688,6 +731,19 @@
   --bg-color: black;
 }
 
+.green {
+  --color-bg1: rgb(34, 218, 199);
+  --color-bg2: rgb(2, 56, 18);
+  --color1: 100, 200, 255;
+  --color2: 150, 100, 255;
+  --color3: 150, 150, 255;
+  --color4: 80, 200, 220;
+  --color5: 100, 60, 160;
+  --color-interactive: 180, 150, 255;
+  --scroll-bar: #10e654;
+  --bg-color: black;
+}
+
 // g1 -g5 common attributes
 .g1,
 .g2,
@@ -864,4 +920,19 @@
   left: -50%;
   position: absolute;
   opacity: 0.7;
+}
+
+/* ******************************************************************************************************* */
+/* CONTACT */
+
+.contact-container {
+  background-image: url('/DarkGreenMarbleTextureBackground.png');
+  background-size: cover;
+  height: 100vh;
+}
+
+#hero1 {
+  background-image: url('/Black and White Aesthetic Forest Desktop Wallpaper.png');
+  background-size: cover;
+  height: 100vh;
 }
