@@ -1,17 +1,17 @@
 "use client";
-import React, { use, useState } from "react";
-import { Bold, Italic, Underline } from "lucide-react";
+import React, { useState } from "react";
+// import { Bold, Italic, Underline } from "lucide-react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 function Interests() {
-  const allInterests = [
-    "Gaming",
-    "Programming",
-    "Reading",
-    "Learning",
-    "Working out",
-  ];
+  // const allInterests = [
+  //   "Gaming",
+  //   "Programming",
+  //   "Reading",
+  //   "Learning",
+  //   "Working out",
+  // ];
 
   const [backgroundImage, setBackgroundImage] = useState("");
 

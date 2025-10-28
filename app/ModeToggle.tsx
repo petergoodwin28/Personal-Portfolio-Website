@@ -94,6 +94,9 @@ export function ModeToggle(props: { className: string | undefined; }) {
           <DropdownMenuItem onClick={() => handleThemeChange("green")}>
             Green
           </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleThemeChange("blue")}>
+            Blue
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

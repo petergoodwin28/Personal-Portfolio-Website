@@ -17,15 +17,8 @@ function WorkExperience() {
         <h1 className="text-center font-extralight text-5xl">
           Work Experience
         </h1>
-    
 
-
-
-
-
-
-
-        <div className="flex flex-row gap-x-20 mt-52 mb-96 work-card-container">
+        <div className="flex flex-row flex-wrap gap-x-20 mt-52 mb-96 work-card-container">
           <div className="gradient-border-wrapper">
             <Card className="work-card h-96 w-96 shadow-workCard ">
               <CardHeader>
@@ -40,30 +33,17 @@ function WorkExperience() {
                 </p>
                 <p>Helped with bussiness decisions and marketing plans.</p>
               </CardContent>
-              {/* <CardFooter>
+              {/* link to website
+               <CardFooter>
                 <p>Card Footer</p>
               </CardFooter> */}
+              <CardFooter>
+                <Button variant="outline" className="">
+                  Website
+                </Button>
+              </CardFooter>
             </Card>
           </div>
-
-          {/* <Card className="work-card w-64 shadow-lg">
-            <CardHeader>
-              <CardTitle>Front Desk Attendent</CardTitle>
-              <CardDescription>Midway Motion & Fitness</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Sells memberships to new members.</p>
-              <p>
-                Updates member and account information through a POS system.
-              </p>
-              <p>
-                Maintain the gym facilities and close up without supervision.
-              </p>
-            </CardContent>
-            {/* <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter> 
-          </Card> */}
 
           <Card className="work-card h-96 w-96 shadow-workCard ">
             <CardHeader>
@@ -80,12 +60,12 @@ function WorkExperience() {
                 IT Support <br />
                 Networking <br />
                 Windows OS <br />
-
-
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="">Website</Button>
+              <Button variant="outline" className="">
+                Website
+              </Button>
             </CardFooter>
           </Card>
         </div>
@@ -95,3 +75,23 @@ function WorkExperience() {
 }
 
 export default WorkExperience;
+{
+  /* <Card className="work-card w-64 shadow-lg">
+            <CardHeader>
+              <CardTitle>Front Desk Attendent</CardTitle>
+              <CardDescription>Midway Motion & Fitness</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Sells memberships to new members.</p>
+              <p>
+                Updates member and account information through a POS system.
+              </p>
+              <p>
+                Maintain the gym facilities and close up without supervision.
+              </p>
+            </CardContent>
+            {/* <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter> 
+          </Card> */
+}

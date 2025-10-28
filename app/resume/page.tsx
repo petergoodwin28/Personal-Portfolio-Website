@@ -3,12 +3,13 @@ import React from "react";
 import About from "./About";
 import Skills from "./Skills";
 import Certifications from "./Certifications";
-import WorkExperience from "./WorkExperience";
-import Interests from "./Interests";
+// import WorkExperience from "./WorkExperience";
+// import Interests from "./Interests";
+import Work from "./Work";
 
 function page() {
   return (
-    <div suppressHydrationWarning>
+    <main>
       <div className="scroll-watcher"></div>
       <About></About>
 
@@ -16,10 +17,13 @@ function page() {
 
       <Certifications></Certifications>
 
-      <WorkExperience></WorkExperience>
+      {/* <WorkExperience></WorkExperience> */}
 
-      <Interests></Interests>
-    </div>
+
+      <Work></Work>
+
+      {/* <Interests></Interests> */}
+    </main>
   );
 }
 

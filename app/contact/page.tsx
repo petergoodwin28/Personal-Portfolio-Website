@@ -4,13 +4,13 @@ import React from "react";
 
 function page() {
   return (
-    <div className="w-full h-[100vh] contact-container">
+    <main className="w-full h-[100vh] contact-container prose">
       <div className="scroll-watcher"></div>
 
-      <div className="w-70% h-[80vh] flex flex-col items-center mt-32 pt-20 bg-background">
-        <h1 className=" font-extralight text-3xl prose">Contact Me</h1>
-        <div className="flex flex-col gap-4 mt-24 p-10 rounded-lg  w-[50%]">
-          <div className="flex flex-row gap-x-10">
+      <div className="w-70% h-[80vh] flex flex-col items-center ">
+        <h1 className=" font-extralight text-3xl prose mt-28 ">Contact Me</h1>
+        <div className="flex flex-col gap-4 mt-24 p-10 rounded-lg  w-[50%] ">
+          <div className="flex flex-row gap-x-10 ">
             <Input type="text" placeholder="Name" className=""></Input>
             <Input type="email" placeholder="Email" className=""></Input>
             <Input type="text" placeholder="Phone" className=""></Input>
@@ -23,7 +23,7 @@ function page() {
           <Button variant="outline">Submit</Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

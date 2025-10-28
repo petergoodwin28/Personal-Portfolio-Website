@@ -26,13 +26,14 @@ export default function Navbar() {
           </Link>
         </NavigationMenuItem>
 
-        <NavigationMenuItem>
+        <NavigationMenuItem className="bg-blue">
           <Link
             href="https://github.com/petergoodwin28?tab=repositories"
             legacyBehavior
             passHref
+            className="bg-blue"
           >
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink  className={navigationMenuTriggerStyle() + " bg-blue"}>
               Github
             </NavigationMenuLink>
           </Link>
@@ -55,6 +56,13 @@ export default function Navbar() {
           <Link href="/contact" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Contact
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/work" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Work
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

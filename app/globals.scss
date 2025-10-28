@@ -250,9 +250,9 @@
 
 .green {
   --background: #0a0a0a;                /* Black background */
-  --foreground: #00c805;                /* Robinhood green foreground */
+  --foreground: #66ff66;                /* Robinhood green foreground */
   --card: #1a1a1a;                      /* Darker black for cards */
-  --card-foreground: #00c805;          /* Green text on cards */
+  --card-foreground: #66ff66;          /* Green text on cards */
   --popover: #1a1a1a;                   /* Dark background for popovers */
   --popover-foreground: #00c805;       /* Green text in popovers */
   --primary: #00c805;                  /* Green for primary elements */
@@ -274,9 +274,65 @@
   --chart-3: #00b300;
   --chart-4: #008000;
   --chart-5: #004d00;
-  --shadow: #00c805;
+  --shadow: #66ff66;
 }
 
+/* Green Theme */
+.green .prose {
+  color: var(--card-foreground);
+}
+.green .prose code {
+  color: var(--foreground);
+  background-color: #002200;
+}
+.green .prose pre {
+  color: var(--muted-foreground);
+  background-color: #001a00;
+}
+
+/* Blue */
+
+.blue {
+  --background: #0a0a0a;                /* Black background */
+  --foreground: #1d12eb;                /* Soft blue foreground */
+  --card: #1a1a1a;                      /* Darker black for cards */
+  --card-foreground: #66ccff;          /* Blue text on cards */
+  --popover: #1a1a1a;                   /* Dark background for popovers */
+  --popover-foreground: #00aaff;       /* Bright blue text in popovers */
+  --primary: #00aaff;                  /* Blue for primary elements */
+  --primary-foreground: #0a0a0a;       /* Black text for primary foregrounds */
+  --secondary: #333333;                /* Dark gray for secondary elements */
+  --secondary-foreground: #00aaff;     /* Blue text for secondary elements */
+  --muted: #333333;                    /* Muted background with dark gray */
+  --muted-foreground: #66ccff;         /* Lighter blue for muted text */
+  --accent: #00334d;                   /* Dark navy blue for accents */
+  --accent-foreground: #00aaff;        /* Blue text on accent elements */
+  --destructive: #004466;              /* Deep blue (used as warning alternative) */
+  --destructive-foreground: #0a0a0a;   /* Black text for destructive actions */
+  --border: #262626;                   /* Dark gray for borders */
+  --input: #262626;                    /* Dark gray for inputs */
+  --ring: #00aaff;                     /* Blue for focus rings */
+
+  --chart-1: #66ccff;                  /* Different shades of blue for charts */
+  --chart-2: #33bbff;
+  --chart-3: #00aaff;
+  --chart-4: #0088cc;
+  --chart-5: #006699;
+  --shadow: #2c12f3;
+}
+
+/* Blue Theme */
+.blue .prose {
+  color: var(--card-foreground);
+}
+.blue .prose code {
+  color: var(--foreground);
+  background-color: #001f3f;
+}
+.blue .prose pre {
+  color: var(--muted-foreground);
+  background-color: #001933;
+}
 
 
 
@@ -744,6 +800,19 @@
   --bg-color: black;
 }
 
+.blue {
+  --color-bg1: rgb(18, 66, 241);
+  --color-bg2: rgb(2, 56, 18);
+  --color1: 100, 200, 255;
+  --color2: 150, 100, 255;
+  --color3: 150, 150, 255;
+  --color4: 80, 200, 220;
+  --color5: 100, 60, 160;
+  --color-interactive: 180, 150, 255;
+  --scroll-bar: #105be6;
+  --bg-color: black;
+}
+
 // g1 -g5 common attributes
 .g1,
 .g2,
@@ -934,5 +1003,56 @@
 #hero1 {
   background-image: url('/Black and White Aesthetic Forest Desktop Wallpaper.png');
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
+  image-rendering: optimizeQuality;
+  background-position: center;
+}
+
+
+// #hero3 {
+//   background-color: var(--background);
+//   display: flex;
+//   justify-items: center;
+//   align-items: center;
+
+// }
+// .hero3-header {
+//   background-color: var(--background);
+//   color: var(--foreground);
+//   font-size: 2rem;
+//   font-weight: bold;
+//   text-align: center;
+//   padding: 1rem;
+// }
+
+@keyframes dotsAnimation {
+  0%   { content: ""; }
+  5%   { content: "P"; }
+  10%  { content: "Pi"; }
+  15%  { content: "Pic"; }
+  20%  { content: "Pick"; }
+  25%  { content: "Picki"; }
+  30%  { content: "Pickin"; }
+  35%  { content: "Picking"; }
+  40%  { content: "Picking "; }
+  45%  { content: "Picking t"; }
+  50%  { content: "Picking th"; }
+  55%  { content: "Picking the"; }
+  60%  { content: "Picking the "; }
+  65%  { content: "Picking the b"; }
+  70%  { content: "Picking the be"; }
+  75%  { content: "Picking the bes"; }
+  80%  { content: "Picking the best"; }
+  85%  { content: "Picking the best "; }
+  90%  { content: "Picking the best o"; }
+  95%  { content: "Picking the best one"; }
+  100% { content: "Picking the best one..."; }
+}
+
+.dots::after {
+  content: ""; /* Initial content */ 
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: dotsAnimation 6s infinite steps(1);
 }
