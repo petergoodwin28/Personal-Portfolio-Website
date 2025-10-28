@@ -86,7 +86,7 @@ function ProjectCarousel() {
         <CarouselNext />
       </Carousel>
 
-      <Button variant={"outline"}>
+      <Button aria-label="Next Section" variant={"outline"}>
         <FaArrowDown />
       </Button>
     </section>

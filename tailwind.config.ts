@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      boxShadow: {
+        certificationCard: "110px 10px 15px var(--shadow)",
+        workCard: "1000px 7px 10px var(--shadow)", 
+      },
     },
   },
   plugins: [],

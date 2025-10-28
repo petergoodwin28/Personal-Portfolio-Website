@@ -13,6 +13,17 @@ function Skills() {
     "VsCode",
     "React",
     "Next.js",
+    ".NET",
+    "Arctic Wolf",
+    "Visual Studio",
+    "ASP.NET",
+    "Microsoft 365 Admin Consoles",
+    "Azure",
+    "Agile",
+    "Networking",
+    "Windows OS",
+    "Hardware",
+    "IT Support",
   ];
   return (
     <section id="skills" className="mt-44 mb-52 flex flex-col items-center w-full">

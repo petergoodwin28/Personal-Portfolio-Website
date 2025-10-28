@@ -48,8 +48,8 @@ export default function AboutSiteCards() {
       <h1 className="font-extrabold text-3xl text-center m-20">
         About the Site
       </h1>
-      <div className="flex flex-row flex-wrap gap-x-20 gap-y-20 m-20 items-baseline">
-        <Card className="min-w-96 h-fit prose grow basis-2">
+      <div className="flex flex-row flex-wrap gap-x-10 m-10 items-center justify-center p-20 pl-32 pr-32 pb-32">
+        <Card className=" grow w-96 h-full prose ">
           <CardHeader>
             <CardTitle className="mb-5">Next.js</CardTitle>
             <CardDescription>
@@ -63,7 +63,7 @@ export default function AboutSiteCards() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline">
+                    <Button variant="outline" aria-label="Copy code">
                       <FiCopy />
                     </Button>
                   </TooltipTrigger>
@@ -86,7 +86,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* SHADCN/UI */}
-        <Card className="w-[500px] h-[700px] p-10 flex flex-col items-center grow basis-1">
+        <Card className="grow w-96 h-[700px] p-10 flex flex-col items-center">
           <CardHeader>
             <CardTitle>Shadcn/ui</CardTitle>
             <CardDescription>
@@ -100,9 +100,9 @@ export default function AboutSiteCards() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Select onValueChange={(value) => setComponent(value)}>
-              <SelectTrigger className="w-[180px] ml-auto mr-auto mt-auto mb-auto">
-                <SelectValue placeholder="Calendar" />
+            <Select  onValueChange={(value) => setComponent(value)}>
+              <SelectTrigger aria-label="Calander Select" className="w-[180px] ml-auto mr-auto mt-auto mb-auto">
+                <SelectValue placeholder="Calendar"  />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="Calendar">Calendar</SelectItem>
@@ -151,7 +151,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* Dark Mode */}
-        <Card className="w-[350px] grow h-fit p-10 ">
+        <Card className="grow w-96 h-fit p-10 ">
           <CardHeader>
             <CardTitle>Dark Mode</CardTitle>
             <CardDescription>
@@ -174,7 +174,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* TAILWINDCSS */}
-        <Card className="w-[500px] h-fit p-10">
+        <Card className=" grow w-96 h-fit p-10 mt-10">
           <CardHeader>
             <CardTitle>Tailwindcss</CardTitle>
             <CardDescription>
@@ -216,7 +216,7 @@ export default function AboutSiteCards() {
         </Card>
 
         {/* NEXT-THEMES */}
-        <Card className="w-[350px] grow">
+        <Card className="w-[90vw] grow  mt-10">
           <CardHeader>
             <CardTitle>CSS Animations</CardTitle>
             <CardDescription>
@@ -237,11 +237,11 @@ export default function AboutSiteCards() {
               <Button className="shake">Shake!</Button>
               Move right and left with Animation
               <div className="border move-left-right">
-                <button></button>
+                <button aria-label="Hover to see the effect"></button>
               </div>
               Move right with transitions
               <div className="border move-right">
-                <button></button>
+                <button aria-label="Hover to see the effect"></button>
               </div>
             </div>
           </CardContent>

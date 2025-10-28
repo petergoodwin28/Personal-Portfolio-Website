@@ -5,9 +5,9 @@ import Navbar from "./Navbar";
 
 function Navigation() {
   return (
-    <nav className=" w-full h-32 border-2">
-      <div className="flex justify-around mt-10">
-        <h1 className="prose font-extrabold">Peter Goodwin</h1>
+    <nav className=" w-full h-44 border-2">
+      <div className="h-full flex justify-around items-center mt-auto mb-auto">
+        <h1 className="prose text-2xl font-extralight">Peter Goodwin</h1>
         
         <Navbar></Navbar>
 

@@ -17,7 +17,7 @@ function Certifications() {
     if (about && skills && certifications && h1 && element1 instanceof HTMLElement && element2 instanceof HTMLElement && element3 instanceof HTMLElement) {
       const sectionHeight = certifications;
       const h1Height = h1;
-      element1.style.top = `${h1Height + sectionHeight + about + skills}px`;
+      element1.style.top = `${h1Height + sectionHeight + about + skills }px`;
       element2.style.top = `${h1Height + sectionHeight + about + skills + 150}px`;
       element3.style.top = `${h1Height + sectionHeight + about + skills + 300}px`;
     }
@@ -28,11 +28,11 @@ function Certifications() {
       id="certifications"
       className=" w-full flex flex-col items-center h-[100vh]"
     >
-      <h1 className="font-extralight text-5xl prose text-center lg:mt-32 md:mt-20">
+      <h1 className="font-extralight text-5xl prose text-center lg:mt-4 md:mt-20">
         Certifications
       </h1>
 
-      <div className="scroll-in-left overflow-x-hidden">
+      <div className="scroll-in-left  overflow-hidden shadow-certCard rounded-lg">
         <Card className="w-fit">
           <CardHeader>AWS Cloud Practitioner</CardHeader>
           <CardContent>
@@ -42,8 +42,8 @@ function Certifications() {
         </Card>
       </div>
 
-      <div className="scroll-in-right overflow-x-hidden">
-        <Card className="w-fit">
+      <div className="scroll-in-right  shadow-certCard m-10 rounded-lg">
+        <Card className=" ">
           <CardHeader>AWS Cloud Practitioner</CardHeader>
           <CardContent>
             Learned about AWS services, pricing, and responsibility. <br />
@@ -52,8 +52,8 @@ function Certifications() {
         </Card>
       </div>
 
-      <div className="scroll-in-left-delay overflow-x-hidden">
-        <Card className="w-fit">
+      <div className="scroll-in-left-delay  shadow-certCard m-20 rounded-lg">
+        <Card className="w-fit ">
           <CardHeader>Networking / IT </CardHeader>
           <CardContent>
             While I dont have any more certifications, I often watch youtube
