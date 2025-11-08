@@ -20,7 +20,7 @@ export default function Navbar() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Home
             </NavigationMenuLink>
           </Link>
@@ -31,37 +31,36 @@ export default function Navbar() {
             href="https://github.com/petergoodwin28?tab=repositories"
             legacyBehavior
             passHref
-            className="bg-blue"
           >
-            <NavigationMenuLink  className={navigationMenuTriggerStyle() + " bg-blue"}>
+            <NavigationMenuLink  className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Github
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/#portfolio" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Portfolio
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/resume" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Resume
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/contact" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Contact
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/work" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
               Work
             </NavigationMenuLink>
           </Link>

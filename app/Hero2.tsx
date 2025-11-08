@@ -55,8 +55,13 @@ function Hero2() {
     <div className="w-full h-[100vh]">
       <div className="grad-bg">
 
-        <Card className="hero-card">
-            <CardContent > Hello and Welcome! I hope you enjoy the Site!</CardContent>
+        <Card className="hero-card w-72">
+            <CardContent className="bg-black rounded-lg p-10 prose"> 
+              <strong  className="text-2xl">Hello and Welcome! </strong> <br></br>
+              --I hope you enjoy the Site! <br></br>
+              I am Peter, a Software Developer and IT Professional based in Ellicot City, Maryland.
+              Please take a look around and feel free to reach out if you have any questions!
+            </CardContent>
         </Card>
       
         <svg

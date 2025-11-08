@@ -914,8 +914,6 @@
 /* CONTACT */
 .contact-container {
   background-image: url("/DarkGreenMarbleTextureBackground.png");
-  background-size: cover;
-  height: 100vh;
 }
 
 #hero1 {
@@ -997,4 +995,159 @@
   font-size: 1.5rem;
   font-weight: bold;
   animation: dotsAnimation 6s infinite steps(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-x-left {
+    position: relative;
+    animation-fill-mode: both;
+    animation-name: scroll-x-left;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-range-start: entry 200px;
+    animation-range-end: 1500px;
+    animation-timeline: scroll();
+  }
+  .scroll-x-right {
+    position: relative;
+    animation-fill-mode: both;
+    animation: scroll-x-right linear both;
+    animation-range-start: entry 400px;
+    animation-range-end: 900px;
+    animation-timeline: scroll();
+  }
+  @keyframes scroll-x-left {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+  @keyframes scroll-x-right {
+    from {
+      transform: translateX(-200%);
+    }
+    to {
+      transform: translateX(25%);
+    }
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .appear-y-scroll {
+    position: relative;
+    animation-fill-mode: both;
+    animation: appear-lower linear both;
+    animation-range-start: entry 350px;
+    animation-range-end: 1500px;
+    animation-timeline: scroll();
+  }
+  @keyframes appear-lower {
+    from {
+      opacity: 0;
+      scale: 0.8;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+}
+/* fade-in border used by .fade-border elements */
+/* fade-in border used by .fade-border elements */
+.fade-border {
+  width: 100%;
+  height: 2px; /* thickness */
+  background: var(--border, #e20a0a);
+  margin: 0.75rem 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 600ms cubic-bezier(0.2, 0.9, 0.3, 1), transform 600ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  /* optional per-element delay via data-delay attribute */
+  transition-delay: var(--delay, 0ms);
+}
+
+.fade-border.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* helper to set different delays on elements if desired */
+.fade-border[data-delay="100ms"] {
+  --delay: 100ms;
+}
+
+.fade-border[data-delay="200ms"] {
+  --delay: 200ms;
+}
+
+.fade-border[data-delay="300ms"] {
+  --delay: 300ms;
+}
+
+.fade-border {
+  width: 100%;
+  height: 2px;
+  background: var(--border, #df0707);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 600ms cubic-bezier(0.2, 0.9, 0.3, 1), transform 600ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+/* set per-element delay from data-delay attr */
+.fade-border[data-delay] {
+  --delay: attr(data-delay ms);
+}
+
+/* visible state when intersecting */
+.fade-border.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-border {
+    width: 100%;
+    height: 2px;
+    background: var(--border, #ec0707);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: appear-lower 600ms ease both; /* uses appear-lower keyframes defined above */
+    animation-timeline: scroll();
+    animation-range-start: entry 350px; /* tune trigger */
+    animation-range-end: 1500px; /* tune end */
+    /* optionally stagger per-element with inline style: style={{ animationDelay: '120ms' }} */
+  }
+  /* fallback visible state when using IntersectionObserver */
+  .fade-border.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.bubble-hover {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.bubble-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: radial-gradient(200px circle at var(--x, 50%) var(--y, 50%), var(--foreground) 10%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bubble-hover:hover::before {
+  opacity: 0.1;
 }/*# sourceMappingURL=globals.css.map */

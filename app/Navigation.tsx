@@ -7,11 +7,14 @@ function Navigation() {
   return (
     <nav className=" w-full h-44 border-2">
       <div className="h-full flex justify-around items-center mt-auto mb-auto">
-        <h1 className="prose text-2xl font-extralight">Peter Goodwin</h1>
+        <h1 className="prose text-4xl font-extralight w-1/5">Peter Goodwin</h1>
         
-        <Navbar></Navbar>
+        <div className="w-3/5 flex items-center">
+<Navbar></Navbar>
+        </div>
+        
 
-        <ModeToggle className=""></ModeToggle>
+        <ModeToggle className="w-1/5"></ModeToggle>
       </div>
     </nav>
   );

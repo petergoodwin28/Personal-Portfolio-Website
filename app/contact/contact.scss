@@ -1,0 +1,126 @@
+.line-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Unified reveal layer that shows all four borders */
+.line-reveal-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --x: 0px;
+  --y: 0px;
+
+  /* Use theme colors for borders */
+  background:
+    linear-gradient(to right, var(--foreground), var(--foreground)) top / 100% 2px no-repeat,
+    linear-gradient(to right, var(--foreground), var(--foreground)) bottom / 100% 2px no-repeat,
+    linear-gradient(to bottom, var(--foreground), var(--foreground)) left / 2px 100% no-repeat,
+    linear-gradient(to bottom, var(--foreground), var(--foreground)) right / 2px 100% no-repeat;
+
+  opacity: 1;
+
+  /* Bubble mask reveal */
+  mask-image: radial-gradient(circle 250px at var(--x) var(--y), white 40%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle 250px at var(--x) var(--y), white 40%, transparent 75%);
+
+  transition: mask-image 0.15s ease-out;
+  z-index: 1;
+}
+
+/* Subtle glow layer using theme shadow/foreground colors */
+.line-reveal-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--shadow), var(--shadow)) top / 100% 2px no-repeat,
+    linear-gradient(to right, var(--shadow), var(--shadow)) bottom / 100% 2px no-repeat,
+    linear-gradient(to bottom, var(--shadow), var(--shadow)) left / 2px 100% no-repeat,
+    linear-gradient(to bottom, var(--shadow), var(--shadow)) right / 2px 100% no-repeat;
+  mask-image: inherit;
+  -webkit-mask-image: inherit;
+  filter: blur(4px);
+  opacity: 0.8;
+}
+
+/* Optional: smooth fade if you move quickly */
+.line-reveal-layer {
+  transition: mask-image 0.25s ease, opacity 0.25s ease;
+}
+
+/* Optional background fallback (only visible if mask off) */
+.line-container {
+  background-color: var(--background);
+}
+
+
+// -------------------------------------------
+
+
+/* Apply to input, textarea, and select elements */
+input,
+textarea,
+select {
+  position: relative;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* The hover bubble effect */
+input::before,
+textarea::before,
+select::before {
+  content: "";
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    var(--foreground) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Ensure stacking order */
+input,
+textarea,
+select {
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Show the bubble on hover */
+input:hover::before,
+textarea:hover::before,
+select:hover::before {
+  opacity: 0.15;
+  width: 150%;
+  height: 150%;
+}
+
+/* Focus glow */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 8px var(--ring);
+}
+
+/* Optional — smoother text & color */
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-foreground);
+}

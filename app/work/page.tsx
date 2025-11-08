@@ -19,7 +19,7 @@ function Page() {
     { name: "MongoDB", path: "/skills-images/open-mongodb-icon.png" },
     { name: "Python", path: "/skills-images/python-icon.png" },
     { name: "Tailwind CSS", path: "/skills-images/tailwind-css-icon.png" },
-    { name: "Visual Studio", path: "/skills-images/visual studio-iicon.jpg" },
+    { name: "Visual Studio", path: "/skills-images/visual studio-icon.jpg" },
     { name: "VS Code", path: "/skills-images/visual-studio-code-icon.png" },
     { name: "Wix", path: "/skills-images/Wix_logo.webp" },
     { name: "WordPress", path: "/skills-images/wordpress-icon.png" },
@@ -61,7 +61,7 @@ function Page() {
         {images.map((img, index) => (
           <div
             key={index}
-            className="transition-transform duration-200 hover:-translate-y-2 cursor-pointer border-x-red-900 m-10 gap-4"
+            className="transition-transform duration-200 hover:-translate-y-2 cursor-pointer border-x-red-900 m-10 gap-4 bg-white rounded-lg"
             onMouseEnter={() => handleMouseEnter(img.name)}
             onMouseLeave={() => handleMouseLeave()}
 
@@ -69,6 +69,8 @@ function Page() {
             <Image
               src={img.path}
               alt={img.name}
+              width={96}
+              height={96}
               className="w-24 h-24 object-contain rounded-lg shadow transition-transform duration-200 hover:rotate-12 hover:scale-110"
             />
             
