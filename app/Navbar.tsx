@@ -13,57 +13,91 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-
 export default function Navbar() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
+          >
+            <Link href="/" passHref>
               Home
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem className="bg-blue">
-          <Link
-            href="https://github.com/petergoodwin28?tab=repositories"
-            legacyBehavior
-            passHref
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
           >
-            <NavigationMenuLink  className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+            <Link
+              href="https://github.com/petergoodwin28?tab=repositories"
+              passHref
+            >
               Github
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/#portfolio" legacyBehavior passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
+          >
+            <Link href="/portfolio">
               Portfolio
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/resume" legacyBehavior passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
+          >
+            <Link href="/resume">
               Resume
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/contact" legacyBehavior passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
+          >
+            <Link href="/contact">
               Contact
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/work" legacyBehavior passHref>
-            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl font-extralight")}>
+          <NavigationMenuLink
+            asChild
+            className={cn(
+              navigationMenuTriggerStyle(),
+              "text-2xl font-extralight"
+            )}
+          >
+            <Link href="/work">
               Work
-            </NavigationMenuLink>
-          </Link>
+            </Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
