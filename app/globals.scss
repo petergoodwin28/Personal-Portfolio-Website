@@ -1,372 +1,614 @@
+/* ============================================================
+   TAILWIND (must be first)
+============================================================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    // @apply border-border;
-    @apply border-[var(--border)]
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-// font import
+/* ============================================================
+   FONTS
+============================================================ */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
+/* ============================================================
+   BASE STYLES
+============================================================ */
 @layer base {
-  :root {
-    --background: #ffffff;
-    /* 0 0% 100% */
-    --foreground: #0a0a0a;
-    /* 240 10% 3.9% */
-    --card: #ffffff;
-    /* 0 0% 100% */
-    --card-foreground: #0a0a0a;
-    /* 240 10% 3.9% */
-    --popover: #ffffff;
-    /* 0 0% 100% */
-    --popover-foreground: #0a0a0a;
-    /* 240 10% 3.9% */
-    --primary: #1a1a1a;
-    /* 240 5.9% 10% */
-    --primary-foreground: #fafafa;
-    /* 0 0% 98% */
-    --secondary: #f2f2f2;
-    /* 240 4.8% 95.9% */
-    --secondary-foreground: #1a1a1a;
-    /* 240 5.9% 10% */
-    --muted: #f2f2f2;
-    /* 240 4.8% 95.9% */
-    --muted-foreground: #787878;
-    /* 240 3.8% 46.1% */
-    --accent: #f2f2f2;
-    /* 240 4.8% 95.9% */
-    --accent-foreground: #1a1a1a;
-    /* 240 5.9% 10% */
-    --destructive: #ff6666;
-    /* 0 84.2% 60.2% */
-    --destructive-foreground: #fafafa;
-    /* 0 0% 98% */
-    --border: #e6e6e6;
-    /* 240 5.9% 90% */
-    --input: #e6e6e6;
-    /* 240 5.9% 90% */
-    --ring: #0a0a0a;
-    /* 240 10% 3.9% */
-
-    --chart-1: #ff7733;
-    /* 12 76% 61% */
-    --chart-2: #26a69a;
-    /* 173 58% 39% */
-    --chart-3: #3d6d9f;
-    /* 197 37% 24% */
-    --chart-4: #f5ba42;
-    /* 43 74% 66% */
-    --chart-5: #ff7e39;
-    /* 27 87% 67% */
-    --radius: 0.5rem;
-
-    --shadow: rgb(115, 0, 255);
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)];
+    font-family: "Montserrat", sans-serif;
   }
 
-  // prose formatting for root theme
-  :root .prose {
-    color: black;
+  .prose {
+    color: var(--foreground);
   }
 
-  :root .prose code {
-    color: black;
-    /* Adjust as needed for better contrast */
-    background-color: white;
-    /* Darker background for inline code */
+  .prose code {
+    color: var(--foreground);
+    background-color: var(--background);
   }
 
-  :root .prose pre {
-    color: #e5e7eb;
-    /* Light text color for code block */
-    background-color: #111827;
-    /* Dark background for code block */
-  }
-
-  .dark {
-    --background: #0a0a0a;
-    /* 240 10% 3.9% */
-    --foreground: #fafafa;
-    /* 0 0% 98% */
-    --card: #0a0a0a;
-    /* 240 10% 3.9% */
-    --card-foreground: #fafafa;
-    /* 0 0% 98% */
-    --popover: #0a0a0a;
-    /* 240 10% 3.9% */
-    --popover-foreground: #fafafa;
-    /* 0 0% 98% */
-    --primary: #fafafa;
-    /* 0 0% 98% */
-    --primary-foreground: #1a1a1a;
-    /* 240 5.9% 10% */
-    --secondary: #262626;
-    /* 240 3.7% 15.9% */
-    --secondary-foreground: #fafafa;
-    /* 0 0% 98% */
-    --muted: #262626;
-    /* 240 3.7% 15.9% */
-    --muted-foreground: #a3a3a3;
-    /* 240 5% 64.9% */
-    --accent: #262626;
-    /* 240 3.7% 15.9% */
-    --accent-foreground: #fafafa;
-    /* 0 0% 98% */
-    --destructive: #993333;
-    /* 0 62.8% 30.6% */
-    --destructive-foreground: #fafafa;
-    /* 0 0% 98% */
-    --border: #262626;
-    /* 240 3.7% 15.9% */
-    --input: #262626;
-    /* 240 3.7% 15.9% */
-    --ring: #d1d1d1;
-    /* 240 4.9% 83.9% */
-
-    --chart-1: #357edd;
-    /* 220 70% 50% */
-    --chart-2: #26a69a;
-    /* 160 60% 45% */
-    --chart-3: #ffbb55;
-    /* 30 80% 55% */
-    --chart-4: #d95fce;
-    /* 280 65% 60% */
-    --chart-5: #ff597d;
-    /* 340 75% 55% */
-    --shadow: rgb(246, 246, 250);
+  .dark .prose code {
+    color: var(--muted-foreground);
+    background-color: var(--background);
   }
 }
 
-// prose formatting for dark theme
-.dark .prose {
-  color: white;
+/* ============================================================
+   DEFAULT (LIGHT) THEME VARIABLES
+============================================================ */
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 4%);
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 4%);
+
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 4%);
+
+  --primary: hsl(0 0% 10%);
+  --primary-foreground: hsl(0 0% 98%);
+
+  --secondary: hsl(0, 0%, 95%);
+  --secondary-foreground: hsl(0 0% 10%);
+
+  --muted: hsl(0 0% 95%);
+  --muted-foreground: hsl(0 0% 47%);
+
+  --accent: hsl(0 0% 95%);
+  --accent-foreground: hsl(0 0% 10%);
+
+  --destructive: hsl(0 100% 70%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 90%);
+  --input: hsl(0 0% 90%);
+  --ring: hsl(0 0% 4%);
+
+  --radius: 0.5rem;
+
+  /* hero / gradients / misc */
+  --color-bg1: rgb(8, 10, 15);
+  --color-bg2: rgb(0, 17, 32);
+  --color1: 18, 113, 255;
+  --color2: 107, 74, 255;
+  --color3: 100, 100, 255;
+  --color4: 50, 160, 220;
+  --color5: 80, 47, 122;
+  --color-interactive: 140, 100, 255;
+  --circle-size: 80%;
+  --blending: hard-light;
+
+  --scroll-bar: hsl(280 74% 42%);
+  --shadow: hsl(270 100% 50%);
 }
 
-.dark .prose code {
-  color: #e5e7eb;
-  /* Adjust as needed for better contrast */
-  background-color: #0a0a0a;
-  /* Darker background for inline code */
+/* ============================================================
+   DARK MODE (separate from color themes)
+============================================================ */
+.dark {
+  --background: hsl(0 0% 4%);
+  --foreground: hsl(0 0% 98%);
+
+  --card: hsl(0 0% 4%);
+  --card-foreground: hsl(0 0% 98%);
+
+  --popover: hsl(0 0% 4%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 10%);
+
+  --secondary: hsl(0 0% 15%);
+  --secondary-foreground: hsl(0 0% 98%);
+
+  --muted: hsl(0 0% 15%);
+  --muted-foreground: hsl(0 0% 64%);
+
+  --accent: hsl(0 0% 15%);
+  --accent-foreground: hsl(0 0% 98%);
+
+  --destructive: hsl(0 67% 40%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 15%);
+  --input: hsl(0 0% 15%);
+  --ring: hsl(0 0% 82%);
+
+  // Hero gradient background colors 
+  --color-bg1: rgb(15, 15, 20);
+  --color-bg2: rgb(20, 20, 30);
+  --scroll-bar: white;
 }
 
-.dark .prose pre {
-  color: #e5e7eb;
-  /* Light text color for code block */
-  background-color: #111827;
-  /* Dark background for code block */
-}
+/* ============================================================
+   LIGHT COLOR THEMES (red / green / blue)
+   + Added full Hero gradient variable sets for each theme
+============================================================ */
 
-.dark .prose strong {
-  color: white;
-  /* Adjust as needed for better contrast */
-  background-color: #0a0a0a;
-  /* Darker background for inline code */
-}
-
+/* -----------------------------
+   🔴 RED THEME
+----------------------------- */
 .red {
   --background: #0a0a0a;
-  /* Black background */
   --foreground: #ff4d4d;
-  /* Red foreground */
+
   --card: #1a1a1a;
-  /* Darker black for cards */
   --card-foreground: #ff4d4d;
-  /* Red text on cards */
+
   --popover: #1a1a1a;
-  /* Dark background for popovers */
   --popover-foreground: #ff4d4d;
-  /* Red text in popovers */
+
   --primary: #ff4d4d;
-  /* Red for primary elements */
   --primary-foreground: #0a0a0a;
-  /* Black text for primary foregrounds */
+
   --secondary: #333333;
-  /* Dark gray for secondary elements */
   --secondary-foreground: #ff4d4d;
-  /* Red text for secondary elements */
+
   --muted: #333333;
-  /* Muted background with dark gray */
   --muted-foreground: #ff9999;
-  /* Lighter red for muted text */
+
   --accent: #4d0000;
-  /* Dark red for accents */
   --accent-foreground: #ff4d4d;
-  /* Red text on accent elements */
+
   --destructive: #b30000;
-  /* Stronger red for destructive actions */
   --destructive-foreground: #0a0a0a;
-  /* Black text for destructive actions */
+
   --border: #262626;
-  /* Dark gray for borders */
   --input: #262626;
-  /* Dark gray for inputs */
   --ring: #ff4d4d;
-  /* Red for focus rings */
 
-  --chart-1: #ff6666;
-  /* Different shades of red for charts */
-  --chart-2: #ff3333;
-  --chart-3: #e60000;
-  --chart-4: #b30000;
-  --chart-5: #800000;
   --shadow: red;
+  --scroll-bar: #e61010;
+
+  /* --------------------------
+     HERO GRADIENT COLORS
+     (in RGB only)
+  -------------------------- */
+  --color-bg1: rgb(60, 6, 6);
+  --color-bg2: rgb(120, 0, 0);
+
+  --color1: 255, 90, 90;     /* bright red */
+  --color2: 255, 30, 30;     /* neon red */
+  --color3: 255, 0, 80;      /* magenta red */
+  --color4: 200, 0, 0;       /* deep crimson */
+  --color5: 120, 0, 40;      /* blood plum */
+
+  --color-interactive: 255, 80, 120; /* warm neon red */
 }
 
-// prose formatting for red theme
-.red .prose {
-  color: #ff4d4d;
-}
 
-.red .prose code {
-  color: #f16c6c;
-  /* Adjust as needed for better contrast */
-  background-color: #1a1a1a;
-  /* Darker background for inline code */
-}
-
-.red .prose pre {
-  color: #e5e7eb;
-  /* Light text color for code block */
-  background-color: #111827;
-  /* Dark background for code block */
-}
-
-.red .prose strong {
-  color: #f16c6c;
-  /* Adjust as needed for better contrast */
-  background-color: #1a1a1a;
-  /* Darker background for inline code */
-}
-
-/* Green */
-
+/* -----------------------------
+   🟢 GREEN THEME
+----------------------------- */
 .green {
-  --background: #0a0a0a;                /* Black background */
-  --foreground: #66ff66;                /* Robinhood green foreground */
-  --card: #1a1a1a;                      /* Darker black for cards */
-  --card-foreground: #66ff66;          /* Green text on cards */
-  --popover: #1a1a1a;                   /* Dark background for popovers */
-  --popover-foreground: #00c805;       /* Green text in popovers */
-  --primary: #00c805;                  /* Green for primary elements */
-  --primary-foreground: #0a0a0a;       /* Black text for primary foregrounds */
-  --secondary: #333333;                /* Dark gray for secondary elements */
-  --secondary-foreground: #00c805;     /* Green text for secondary elements */
-  --muted: #333333;                    /* Muted background with dark gray */
-  --muted-foreground: #66ff66;         /* Lighter green for muted text */
-  --accent: #004d00;                   /* Dark green for accents */
-  --accent-foreground: #00c805;        /* Green text on accent elements */
-  --destructive: #006400;              /* Deep green (warning alternative) */
-  --destructive-foreground: #0a0a0a;   /* Black text for destructive actions */
-  --border: #262626;                   /* Dark gray for borders */
-  --input: #262626;                    /* Dark gray for inputs */
-  --ring: #00c805;                     /* Green for focus rings */
+  --background: #0a0a0a;
+  --foreground: #66ff66;
 
-  --chart-1: #33ff33;                  /* Different shades of green for charts */
-  --chart-2: #00e600;
-  --chart-3: #00b300;
-  --chart-4: #008000;
-  --chart-5: #004d00;
+  --card: #1a1a1a;
+  --card-foreground: #66ff66;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #00c805;
+
+  --primary: #00c805;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #333333;
+  --secondary-foreground: #00c805;
+
+  --muted: #333333;
+  --muted-foreground: #66ff66;
+
+  --accent: #004d00;
+  --accent-foreground: #00c805;
+
+  --destructive: #006400;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #00c805;
+
   --shadow: #66ff66;
+  --scroll-bar: #10e654;
+
+  /* --------------------------
+     HERO GRADIENT COLORS
+  -------------------------- */
+  --color-bg1: rgb(6, 40, 6);
+  --color-bg2: rgb(0, 90, 0);
+
+  --color1: 50, 255, 120;   /* neon mint */
+  --color2: 0, 200, 80;     /* cyber green */
+  --color3: 0, 255, 160;    /* aqua green */
+  --color4: 0, 150, 40;     /* forest green */
+  --color5: 0, 255, 60;     /* bright lime */
+
+  --color-interactive: 100, 255, 120; /* pulsing mint */
 }
 
-/* Green Theme */
-.green .prose {
-  color: var(--card-foreground);
-}
-.green .prose code {
-  color: var(--foreground);
-  background-color: #002200;
-}
-.green .prose pre {
-  color: var(--muted-foreground);
-  background-color: #001a00;
-}
 
-/* Blue */
-
+/* -----------------------------
+   🔵 BLUE THEME
+----------------------------- */
 .blue {
-  --background: #0a0a0a;                /* Black background */
-  --foreground: #1d12eb;                /* Soft blue foreground */
-  --card: #1a1a1a;                      /* Darker black for cards */
-  --card-foreground: #66ccff;          /* Blue text on cards */
-  --popover: #1a1a1a;                   /* Dark background for popovers */
-  --popover-foreground: #00aaff;       /* Bright blue text in popovers */
-  --primary: #00aaff;                  /* Blue for primary elements */
-  --primary-foreground: #0a0a0a;       /* Black text for primary foregrounds */
-  --secondary: #333333;                /* Dark gray for secondary elements */
-  --secondary-foreground: #00aaff;     /* Blue text for secondary elements */
-  --muted: #333333;                    /* Muted background with dark gray */
-  --muted-foreground: #66ccff;         /* Lighter blue for muted text */
-  --accent: #00334d;                   /* Dark navy blue for accents */
-  --accent-foreground: #00aaff;        /* Blue text on accent elements */
-  --destructive: #004466;              /* Deep blue (used as warning alternative) */
-  --destructive-foreground: #0a0a0a;   /* Black text for destructive actions */
-  --border: #262626;                   /* Dark gray for borders */
-  --input: #262626;                    /* Dark gray for inputs */
-  --ring: #00aaff;                     /* Blue for focus rings */
+  --background: #0a0a0a;
+  --foreground: #00aaff;
 
-  --chart-1: #66ccff;                  /* Different shades of blue for charts */
-  --chart-2: #33bbff;
-  --chart-3: #00aaff;
-  --chart-4: #0088cc;
-  --chart-5: #006699;
+  --card: #1a1a1a;
+  --card-foreground: #66ccff;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #00aaff;
+
+  --primary: #00aaff;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #333333;
+  --secondary-foreground: #00aaff;
+
+  --muted: #333333;
+  --muted-foreground: #66ccff;
+
+  --accent: #00334d;
+  --accent-foreground: #00aaff;
+
+  --destructive: #004466;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #00aaff;
+
   --shadow: #2c12f3;
+  --scroll-bar: #105be6;
+
+  /* --------------------------
+     HERO GRADIENT COLORS
+  -------------------------- */
+  --color-bg1: rgb(0, 20, 40);
+  --color-bg2: rgb(0, 80, 140);
+
+  --color1: 0, 180, 255;    /* electric aqua */
+  --color2: 0, 130, 255;    /* neon sky blue */
+  --color3: 80, 160, 255;   /* soft cobalt */
+  --color4: 0, 100, 200;    /* darker azure */
+  --color5: 40, 60, 140;    /* deep indigo */
+
+  --color-interactive: 0, 190, 255; /* cyan pulse */
 }
 
-/* Blue Theme */
-.blue .prose {
-  color: var(--card-foreground);
+
+
+/* ================================
+   BASE PROSE CODE STYLE (DEFAULT)
+   ================================ */
+.prose code {
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  background: hsl(var(--muted)); /* soft tint */
+  border: 1px solid hsl(var(--border));
 }
+
+/* Dark mode override */
+.dark .prose code {
+  color: hsl(var(--foreground));
+  background: hsl(var(--muted));
+  border-color: hsl(var(--border));
+}
+
+/* ================================
+   THEME OVERRIDES
+   Each theme has its own palette
+   ================================ */
+
+/* ---- RED THEME ---- */
+.red .prose code {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.15);
+  border: 1px solid #ff4d4d33;
+}
+
+/* ---- GREEN THEME ---- */
+.green .prose code {
+  color: #00c805;
+  background: rgba(0, 200, 5, 0.15);
+  border: 1px solid #00c80533;
+}
+
+/* ---- BLUE THEME ---- */
 .blue .prose code {
-  color: var(--foreground);
-  background-color: #001f3f;
-}
-.blue .prose pre {
-  color: var(--muted-foreground);
-  background-color: #001933;
+  color: #00aaff;
+  background: rgba(0, 170, 255, 0.15);
+  border: 1px solid #00aaff33;
 }
 
+/* ================================
+   BLOCK CODE (<pre><code>)
+   ================================ */
+.prose pre code {
+  display: block;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+/* theme overrides */
+.red .prose pre code {
+  background: rgba(255, 77, 77, 0.09);
+  color: #ffcccc;
+}
+
+.green .prose pre code {
+  background: rgba(0, 200, 5, 0.09);
+  color: #ccffcc;
+}
+
+.blue .prose pre code {
+  background: rgba(0, 170, 255, 0.09);
+  color: #cce9ff;
+}
+
+
+/* ============================================
+   ScrollWork — CLEAN & CORRECTED
+============================================ */
+
+/* -------------------------------------------
+   Glass Panel
+------------------------------------------- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* -------------------------------------------
+   Base Fade-In (Fallback)
+------------------------------------------- */
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out,
+    filter 0.7s ease-out;
+}
+
+.fade-in-text.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* -------------------------------------------
+   Hover Underline Glow
+------------------------------------------- */
+.hr-glow {
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  box-shadow: 0 0 14px var(--primary);
+  transition: width 0.4s ease;
+}
+li:hover .hr-glow {
+  width: 100%;
+}
+
+/* -------------------------------------------
+   Image Animation
+------------------------------------------- */
+@keyframes subtleZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+.animate-subtleZoom {
+  animation: subtleZoom 12s ease-in-out alternate infinite;
+}
+
+/* ============================================
+   Scroll-Timeline Animation
+============================================ */
+@supports (animation-timeline: scroll()) {
+
+  /* baseline */
+  .fade-in-text {
+    animation-name: fadeInScroll;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+    animation-timeline: scroll(root);
+  }
+
+  /* KEYFRAMES */
+  @keyframes fadeInScroll {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* -------------------------------------------
+     SUBTITLE CUSTOM RANGE (NOW WORKS)
+  ------------------------------------------- */
+  .fade-in-subtitle {
+    animation-range-start: entry 5%;
+    animation-range-end: entry 19%;
+  }
+  // Image fade 
+@supports (animation-timeline: scroll()) {
+  .fade-in-image {
+    animation-range-start: entry 10%;
+    animation-range-end: entry 20%;
+  }
+}
+// Heading Fade
+@supports (animation-timeline: scroll()) {
+  .fade-in-heading {
+    animation-range-start: entry 8%;
+    animation-range-end: entry 17%;
+  }
+}
+
+  /* -------------------------------------------
+     STAGGERED LIST ITEMS (ONLY list items)
+     — this was your problem earlier —
+     nth-child was matching your H2 + P block!
+  ------------------------------------------- */
+  ul li.fade-in-text:nth-child(1) {
+    animation-range-start: entry 10%;
+    animation-range-end: entry 24%;
+  }
+
+  ul li.fade-in-text:nth-child(2) {
+    animation-range-start: entry 12%;
+    animation-range-end: entry 25%;
+  }
+
+  ul li.fade-in-text:nth-child(3) {
+    animation-range-start: entry 14%;
+    animation-range-end: entry 26%;
+  }
+
+  ul li.fade-in-text:nth-child(4) {
+    animation-range-start: entry 16%;
+    animation-range-end: entry 27%;
+  }
+}
+
+/* ============================================
+   Project SHOWCASE  
+============================================ */
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Floating panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Fade up */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation-range-start: entry 16%;
+    animation-range-end: entry 27%;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+/* ============================================
+   ABOUT SITE CARDS
+============================================ */
+/* Glassy card */
+.site-card {
+  @apply transition-all duration-500 rounded-2xl shadow-xl;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark .site-card {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Hover float */
+.site-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Fade-in on scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  animation: fadeUp 0.9s ease-out forwards;
+  animation-timeline: view();
+  animation-range-start: 0%;
+  animation-range-end: 40%;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
 
 
 
 
 
 
-
-// ABOUT SITE CARD ANIMATIONS
+/* ============================================================
+   BASIC INTERACTION / MICRO ANIMATIONS
+============================================================ */
 
 .shake:hover {
   animation: shake 1.5s linear both;
 }
 
 @keyframes shake {
-  0% {
+  0%, 50%, 100% {
     transform: rotateZ(0deg);
   }
   25% {
     transform: rotateZ(10deg);
   }
-  50% {
-    transform: rotateZ(0deg);
-  }
   75% {
     transform: rotateZ(-10deg);
   }
-
-  100% {
-    transform: rotateZ(0deg);
-  }
 }
 
-// -----------------------------------------
 .move-right {
   --move-button-container-width: 600px;
   width: var(--move-button-container-width);
@@ -381,20 +623,15 @@
   height: 40px;
   background-color: var(--foreground);
   border-radius: 10%;
-
-  /* Initial transform and transition setup */
   transform: translateX(0);
-  transition: transform 2s ease; /* Smooth transition */
+  transition: transform 2s ease;
 }
 
 .move-right:hover button {
-  /* Use transform instead of animation to move the button */
   transform: translateX(
     calc(var(--move-button-container-width) - var(--move-button-width))
   );
 }
-
-// -----------------------------------------------------------
 
 .move-left-right {
   --move-button-container-width: 600px;
@@ -405,19 +642,16 @@
 
 .move-left-right button {
   --move-button-width: 50px;
+  width: var(--move-button-width);
   height: 40px;
   background-color: var(--foreground);
   border-radius: 10%;
-
   transform: translateX(0);
   transition: transform 3s ease;
-  width: var(--move-button-width);
-  -webkit-transition: transform 2s ease;
 }
 
 .move-left-right:hover button {
   animation: move-left-right 3s ease-in-out forwards infinite;
-  // animation-fill-mode: forwards;
 }
 
 @keyframes move-left-right {
@@ -429,7 +663,6 @@
       calc(var(--move-button-container-width) - var(--move-button-width))
     );
   }
-
   100% {
     transform: translateX(0);
   }
@@ -439,35 +672,31 @@
   border: 10px solid black;
   padding: 10px;
   border-radius: 5px;
-
-  /* HOVER OFF */
-  -webkit-transition: padding 2s;
+  transition: padding 2s, border-radius 2s, border-width 2s;
 }
 
 .thing:hover {
-  border: 2px solid black;
+  border-width: 2px;
   padding: 20px;
   border-radius: 15px;
-
-  /* HOVER ON */
-  -webkit-transition: border-radius 2s;
 }
 
-// ABOUT SECTION ELEVATE TEXT -------------------------------
+/* ============================================================
+   ABOUT SECTION – ELEVATE TEXT / APPEAR
+============================================================ */
 
 @for $i from 1 through 10 {
-  .elevate-text-container .elevate-text:nth-child(#{$i}n) {
-    animation-delay: #{$i * 0.5}s;
+  .elevate-text-container .elevate-text:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.4}s;
   }
 }
 
 .elevate-text {
   padding-left: 8rem;
   padding-right: 8rem;
-
   animation: elevate-text 3s linear forwards;
   animation-timeline: scroll();
-  animation-range-start: entry;
+  animation-range-start: entry 0px;
   animation-range-end: 550px;
 }
 
@@ -475,16 +704,15 @@
   from {
     transform: translateY(700%);
   }
-
   to {
     transform: translateY(0%);
   }
 }
 
 .appear {
-  animation: appear 3s ease-in-out;
+  animation: appear 1.5s ease-in-out both;
   animation-timeline: scroll();
-  animation-range-start: entry;
+  animation-range-start: entry 0px;
   animation-range-end: 400px;
 }
 
@@ -497,8 +725,10 @@
   }
 }
 
-/* SCROLL ANIMATIONS -------------------------------------- */
-/* Side scroll watcher */
+/* ============================================================
+   SCROLL WATCHERS
+============================================================ */
+
 .scroll-watcher {
   width: 2px;
   position: fixed;
@@ -509,48 +739,8 @@
   height: 100%;
   scale: 1 0;
   transform-origin: top;
-
-  animation: scroll-watcher linear;
+  animation: scroll-watcher linear both;
   animation-timeline: scroll();
-}
-.scroll-watcher-right-horizontal {
-  width: 100%; /* Full width of the screen */
-  height: 2px; /* Thickness of the scroll bar */
-  position: relative;
-  // top: 170%; /* Position at the top of the screen */
-  left: 0;
-  z-index: 1000;
-  background-color: var(--scroll-bar);
-
-  /* Horizontal scale animation */
-  scale: 0 1;
-  transform-origin: left;
-
-  /* Animation properties */
-  animation: scroll-watcher 5s linear forwards;
-  animation-timeline: scroll();
-  animation-range-start: entry();
-  animation-range-end: 1400px;
-}
-
-.scroll-watcher-left-horizontal {
-  width: 100%; /* Full width of the screen */
-  height: 2px; /* Thickness of the scroll bar */
-
-  /* Position at the top of the screen */
-  left: 0;
-  z-index: 1000;
-  background-color: var(--scroll-bar);
-
-  /* Horizontal scale animation */
-  scale: 0 1;
-  transform-origin: right;
-
-  /* Animation properties */
-  animation: scroll-watcher 5s linear forwards;
-  animation-timeline: scroll();
-  animation-range-start: entry();
-  animation-range-end: 1800px;
 }
 
 @keyframes scroll-watcher {
@@ -559,19 +749,18 @@
   }
 }
 
-/* AUTOSCROLL ------------------------------------------- */
+/* ============================================================
+   AUTOSCROLL STRIP
+============================================================ */
 
-/* Autoscroll container */
 .autoscroll {
   font-size: 15px;
   padding-block: 8px;
   border-block: 1px solid;
   overflow: hidden;
   user-select: none;
-
-  --gap: 10px;
   display: flex;
-  gap: var(--gap);
+  gap: 10px;
 }
 
 .autoscroll ul {
@@ -581,55 +770,101 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--gap);
-
-  animation: scroll 10s linear infinite;
+  gap: 10px;
+  animation: scroll-x 10s linear infinite;
 }
 
 .autoscroll:hover ul {
   animation-play-state: paused;
 }
 
-/* Keyframes for smooth scrolling */
-@keyframes scroll {
+@keyframes scroll-x {
   to {
-    transform: translateX(calc(-100% - var(--gap)));
+    transform: translateX(calc(-100% - 10px));
   }
 }
 
-/* SCROLL-IN-LEFT/RIGHT --------------------------------------- */
+/* ============================================================
+   CERTIFICATIONS – SLIDE IN + UP
+============================================================ */
+
+@keyframes cert-in-right {
+  from {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cert-in-left {
+  from {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cert-in-up {
+  from {
+    transform: translateY(150px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
-  .scroll-in-left {
-    position: absolute;
-    // top: 290%;
-    animation-fill-mode: both;
-    animation: scroll-in-left linear forwards;
-    animation-range-start: entry 600px;
-    animation-range-end: 2200px;
+  .cert-anim-right {
+    animation: cert-in-right 0.8s ease-out forwards;
     animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 700px;
+  }
+
+  .cert-anim-left {
+    animation: cert-in-left 0.8s ease-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: entry 250px;
+    animation-range-end: 750px;
+  }
+
+  .cert-anim-up {
+    animation: cert-in-up 0.8s ease-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: entry 300px;
+    animation-range-end: 800px;
+  }
+}
+
+/* Legacy scroll-in-left/right (if still used elsewhere) */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-in-left {
+    animation: scroll-in-left 0.9s ease-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 400px;
+    animation-range-end: 1000px;
   }
 
   .scroll-in-right {
-    position: absolute;
-    // top: 310%;
-
-    animation-fill-mode: both;
-    animation: scroll-in-right linear forwards;
-    animation-range-start: entry 800px;
-    animation-range-end: 2300px;
+    animation: scroll-in-right 0.9s ease-out both;
     animation-timeline: scroll();
+    animation-range-start: entry 400px;
+    animation-range-end: 1000px;
   }
 
   .scroll-in-left-delay {
-    position: absolute;
-    // top: 330%;
-
-    animation-fill-mode: both;
-    animation: scroll-in-left linear forwards;
-    animation-range-start: entry 1100px;
-    animation-range-end: 2350px;
+    animation: scroll-in-left 0.9s ease-out both;
     animation-timeline: scroll();
+    animation-range-start: entry 600px;
+    animation-range-end: 1200px;
   }
 
   @keyframes scroll-in-left {
@@ -637,7 +872,6 @@
       transform: translateX(100%);
       opacity: 0;
     }
-
     to {
       transform: translateX(0%);
       opacity: 1;
@@ -649,7 +883,6 @@
       transform: translateX(-100%);
       opacity: 0;
     }
-
     to {
       transform: translateX(0%);
       opacity: 1;
@@ -657,28 +890,92 @@
   }
 }
 
-/* Image Scroll Fade ------------------------------ */
+/* ============================================================
+   IMAGE SCROLL – X + APPEAR-Y
+============================================================ */
 
-.fade-out-scroll {
-  animation: fade-out linear;
-  animation-timeline: view();
-  animation-range-start: 800px;
-  animation-range-end: 1700px;
-}
-
-@keyframes fade-out {
-  from {
-    scale: 1;
-    opacity: 1;
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-x-left {
+    position: relative;
+    animation: scroll-x-left 0.9s ease-in-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 800px;
   }
 
-  to {
-    scale: 0.5;
-    opacity: 0;
+  .scroll-x-right {
+    position: relative;
+    animation: scroll-x-right 0.9s ease-in-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 800px;
+  }
+
+  @keyframes scroll-x-left {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes scroll-x-right {
+    from {
+      transform: translateX(-200%);
+    }
+    to {
+      transform: translateX(25%);
+    }
+  }
+
+  .appear-y-scroll {
+    position: relative;
+    animation: appear-lower 0.7s ease-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 700px;
+  }
+
+  @keyframes appear-lower {
+    from {
+      opacity: 0;
+      scale: 0.8;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-// Resume Work Card CSS
+/* ============================================================
+   FADE-IN BORDER
+============================================================ */
+
+.fade-border {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  margin: 0.75rem 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 600ms cubic-bezier(.2,.9,.3,1),
+    transform 600ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: var(--delay, 0ms);
+}
+
+.fade-border.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   WORK CARD – ELEVATE
+============================================================ */
 
 .work-card {
   position: relative;
@@ -689,42 +986,21 @@
   justify-content: center;
   align-items: center;
 
-  /* Animation shorthand */
-  animation: elevate 5s ease-in-out forwards;
+  animation: elevate 2s ease-out forwards;
   animation-timeline: scroll();
-  animation-range-start: entry -900px;
-  animation-range-end: 3600px;
+  animation-range-start: entry 200px;
+  animation-range-end: 800px;
 }
 
-// .gradient-border-wrapper::after {
-//   content: "";
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: inherit;
-//   background-image: linear-gradient(to bottom right, red, purple);
-//   z-index: -1;
-//   transform: scale(1.02); /* Slight scale for the border effect */
-// }
-
-// .work-card:hover{
-//   // h-offset v-offset blur spread color
-//   box-shadow: 0 0 10px 5px red, 0 0 20px 10px purple;
-
-//    //z-index: 0;
-// }
-
 @for $i from 1 through 10 {
-  .work-card-container .work-card:nth-child(#{$i}n) {
-    animation-delay: #{$i * 0.5}s;
+  .work-card-container .work-card:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.3}s;
   }
 }
 
 @keyframes elevate {
   from {
-    transform: translateY(-400%);
+    transform: translateY(200%);
     opacity: 0;
   }
   to {
@@ -733,152 +1009,24 @@
   }
 }
 
-/* HERO CSS -------------------------------------  */
+/* ============================================================
+   HERO GRADIENTS & BUBBLES
+============================================================ */
 
 .hero-card {
   position: absolute;
   --hero-card-width: 25rem;
   width: var(--hero-card-width);
- // absolute top-[50%] left-1/2 
   top: 50%;
-  left: calc(50% );
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
-/*  colors for hero svgs by theme */
-:root {
-  --color-bg1: rgb(8, 10, 15);
-  --color-bg2: rgb(0, 17, 32);
-  --color1: 18, 113, 255;
-  --color2: 107, 74, 255;
-  --color3: 100, 100, 255;
-  --color4: 50, 160, 220;
-  --color5: 80, 47, 122;
-  --color-interactive: 140, 100, 255;
-  --circle-size: 80%;
-  --blending: hard-light;
-  --scroll-bar: #7e1eba;
-  --bg-color: white;
-}
-
-.dark {
-  --color-bg1: rgb(15, 15, 20);
-  --color-bg2: rgb(20, 20, 30);
-  --color1: 100, 200, 255;
-  --color2: 150, 100, 255;
-  --color3: 150, 150, 255;
-  --color4: 80, 200, 220;
-  --color5: 100, 60, 160;
-  --color-interactive: 180, 150, 255;
-  --scroll-bar: white;
-  --bg-color: black;
-}
-
-.red {
-  --color-bg1: rgb(15, 15, 20);
-  --color-bg2: rgb(56, 2, 12);
-  --color1: 100, 200, 255;
-  --color2: 150, 100, 255;
-  --color3: 150, 150, 255;
-  --color4: 80, 200, 220;
-  --color5: 100, 60, 160;
-  --color-interactive: 180, 150, 255;
-  --scroll-bar: #e61010;
-  --bg-color: black;
-}
-
-.green {
-  --color-bg1: rgb(34, 218, 199);
-  --color-bg2: rgb(2, 56, 18);
-  --color1: 100, 200, 255;
-  --color2: 150, 100, 255;
-  --color3: 150, 150, 255;
-  --color4: 80, 200, 220;
-  --color5: 100, 60, 160;
-  --color-interactive: 180, 150, 255;
-  --scroll-bar: #10e654;
-  --bg-color: black;
-}
-
-.blue {
-  --color-bg1: rgb(18, 66, 241);
-  --color-bg2: rgb(2, 56, 18);
-  --color1: 100, 200, 255;
-  --color2: 150, 100, 255;
-  --color3: 150, 150, 255;
-  --color4: 80, 200, 220;
-  --color5: 100, 60, 160;
-  --color-interactive: 180, 150, 255;
-  --scroll-bar: #105be6;
-  --bg-color: black;
-}
-
-// g1 -g5 common attributes
-.g1,
-.g2,
-.g3,
-.g4,
-.g5 {
-  position: absolute;
-  width: var(--circle-size);
-  height: var(--circle-size);
-  mix-blend-mode: var(--blending);
-  opacity: 0.8;
-}
-
-// Hero animations ------------------------
-@keyframes moveInCircle {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes moveVertical {
-  0% {
-    transform: translateY(-50%);
-  }
-
-  50% {
-    transform: translateY(50%);
-  }
-
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes moveHorizontal {
-  0% {
-    transform: translateX(-50%) translateY(-10%);
-  }
-
-  50% {
-    transform: translateX(50%) translateY(10%);
-  }
-
-  100% {
-    transform: translateX(-50%) translateY(-10%);
-  }
-}
-
-// -----------------------------------------------
-
-// HERO CSS --------------------------------------
-// big container
 .grad-bg {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
-
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
 }
 
@@ -895,9 +1043,8 @@
   mix-blend-mode: soft-light;
   opacity: 0.3;
   position: absolute;
-  /* Positioned within .gradient-bg */
 }
-// container of g1-g5 bubbles
+
 .gradients-container {
   position: absolute;
   width: 100%;
@@ -905,29 +1052,37 @@
   top: 0;
   left: 0;
 }
-// gradient bubbles for hero
-.g1 {
+
+.g1,
+.g2,
+.g3,
+.g4,
+.g5 {
   position: absolute;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  mix-blend-mode: var(--blending);
+  opacity: 0.8;
+}
+
+.g1 {
   background: radial-gradient(
     circle,
     rgba(var(--color1), 0.8) 0,
     rgba(var(--color1), 0) 30%
   );
-
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
-
   opacity: 1;
   animation: moveVertical 30s ease infinite;
 }
 
 .g2 {
   background: radial-gradient(
-      circle,
-      rgba(var(--color2), 0.8) 0,
-      rgba(var(--color2), 0) 30%
-    )
-    no-repeat;
+    circle,
+    rgba(var(--color2), 0.8) 0,
+    rgba(var(--color2), 0) 30%
+  ) no-repeat;
   top: calc(50% - var(--circle-size));
   left: calc(50% - var(--circle-size));
   transform-origin: calc(50% - 400px);
@@ -936,11 +1091,10 @@
 
 .g3 {
   background: radial-gradient(
-      circle at center,
-      rgba(var(--color3), 0.8) 0,
-      rgba(var(--color3), 0) 30%
-    )
-    no-repeat;
+    circle at center,
+    rgba(var(--color3), 0.8) 0,
+    rgba(var(--color3), 0) 30%
+  ) no-repeat;
   top: calc(50% - var(--circle-size) / 2 + 200px);
   left: calc(50% - var(--circle-size) / 2 - 500px);
   transform-origin: calc(50% + 400px);
@@ -949,11 +1103,10 @@
 
 .g4 {
   background: radial-gradient(
-      circle at center,
-      rgba(var(--color4), 0.8) 0,
-      rgba(var(--color4), 0) 30%
-    )
-    no-repeat;
+    circle at center,
+    rgba(var(--color4), 0.8) 0,
+    rgba(var(--color4), 0) 30%
+  ) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: calc(50% - 200px);
@@ -963,11 +1116,10 @@
 
 .g5 {
   background: radial-gradient(
-      circle,
-      rgba(var(--color5), 0.8) 0,
-      rgba(var(--color5), 0) 30%
-    )
-    no-repeat;
+    circle,
+    rgba(var(--color5), 0.8) 0,
+    rgba(var(--color5), 0) 30%
+  ) no-repeat;
   width: calc(var(--circle-size) * 2);
   height: calc(var(--circle-size) * 2);
   top: calc(50% - var(--circle-size));
@@ -975,14 +1127,13 @@
   transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveInCircle 20s ease infinite;
 }
-// mouse drag bubble
+
 .interactive {
   background: radial-gradient(
-      circle,
-      rgba(var(--color-interactive), 0.8) 0,
-      rgba(var(--color-interactive), 0) 10%
-    )
-    no-repeat;
+    circle,
+    rgba(var(--color-interactive), 0.8) 0,
+    rgba(var(--color-interactive), 0) 10%
+  ) no-repeat;
   width: 100%;
   height: 100%;
   top: -50%;
@@ -991,39 +1142,61 @@
   opacity: 0.7;
 }
 
-/* ******************************************************************************************************* */
-/* CONTACT */
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+/* ============================================================
+   CONTACT / HERO BACKGROUNDS
+============================================================ */
 
 .contact-container {
-  background-image: url('/DarkGreenMarbleTextureBackground.png');
-  background-size: cover;
-  height: 100vh;
+  background-image: url("/DarkGreenMarbleTextureBackground.png");
 }
 
 #hero1 {
-  background-image: url('/Black and White Aesthetic Forest Desktop Wallpaper.png');
+  background-image: url("/Black and White Aesthetic Forest Desktop Wallpaper.png");
   background-size: cover;
   height: 80vh;
   image-rendering: optimizeQuality;
   background-position: center;
 }
 
-
-// #hero3 {
-//   background-color: var(--background);
-//   display: flex;
-//   justify-items: center;
-//   align-items: center;
-
-// }
-// .hero3-header {
-//   background-color: var(--background);
-//   color: var(--foreground);
-//   font-size: 2rem;
-//   font-weight: bold;
-//   text-align: center;
-//   padding: 1rem;
-// }
+/* ============================================================
+   TYPING / DOTS EFFECT
+============================================================ */
 
 @keyframes dotsAnimation {
   0%   { content: ""; }
@@ -1050,9 +1223,101 @@
 }
 
 .dots::after {
-  content: ""; /* Initial content */ 
+  content: "";
   display: inline-block;
   font-size: 1.5rem;
   font-weight: bold;
   animation: dotsAnimation 6s infinite steps(1);
+}
+
+/* ============================================================
+   BUBBLE HOVER EFFECT
+============================================================ */
+
+.bubble-hover {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.bubble-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: radial-gradient(
+    200px circle at var(--x, 50%) var(--y, 50%),
+    var(--foreground) 10%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bubble-hover:hover::before {
+  opacity: 0.1;
+}
+
+/* -----------------------------------------------------
+   SKILL GALAXY (floating skills animation)
+------------------------------------------------------ */
+.galaxy-container {
+  --orbit-size: 260px;
+  --icon-size: 70px;
+}
+
+.galaxy-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(var(--foreground), 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galaxy-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: -150px -150px; /* Creates a circular orbit */
+  animation: galaxy-spin 16s linear infinite;
+}
+
+.galaxy-orbit:hover .galaxy-icon {
+  transform: scale(1.25);
+  box-shadow: 0 0 15px rgba(var(--primary), 0.7);
+}
+
+.galaxy-label {
+  opacity: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  transition: opacity 0.25s ease;
+  color: hsl(var(--foreground));
+}
+
+.galaxy-orbit:hover .galaxy-label {
+  opacity: 1;
+}
+
+/* Make each orbit rotate at a different speed */
+.orbit-0 { animation-duration: 14s; }
+.orbit-1 { animation-duration: 17s; }
+.orbit-2 { animation-duration: 20s; }
+.orbit-3 { animation-duration: 23s; }
+.orbit-4 { animation-duration: 26s; }
+.orbit-5 { animation-duration: 18s; }
+.orbit-6 { animation-duration: 22s; }
+.orbit-7 { animation-duration: 16s; }
+.orbit-8 { animation-duration: 19s; }
+
+@keyframes galaxy-spin {
+  from { transform: rotate(0deg) translate(calc(var(--orbit-size))) rotate(0deg); }
+  to { transform: rotate(360deg) translate(calc(var(--orbit-size))) rotate(-360deg); }
 }

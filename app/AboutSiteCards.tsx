@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+"use client";
 
-import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,6 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "./ModeToggle";
+
+import { Calendar } from "@/components/ui/calendar";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+
 import {
   Select,
   SelectContent,
@@ -16,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import {
   Tooltip,
   TooltipContent,
@@ -24,233 +34,470 @@ import {
 } from "@/components/ui/tooltip";
 
 import { FiCopy } from "react-icons/fi";
-import { ModeToggle } from "./ModeToggle";
-import { Calendar } from "@/components/ui/calendar";
-import { Skeleton } from "@/components/ui/skeleton";
-
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
-// import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 export default function AboutSiteCards() {
-  // calander
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
-
-  // select component - shadcn card
+  const [date, setDate] = useState<Date | undefined>(new Date());
   const [component, setComponent] = useState("Calendar");
-  // scroll area
+
   const tags = Array.from({ length: 50 }).map(
     (_, i, a) => `v1.2.0-beta.${a.length - i}`
   );
 
   return (
-    <section className="border-2">
-      <h1 className="font-extrabold text-3xl text-center m-20">
-        About the Site
-      </h1>
-      <div className="flex flex-row flex-wrap gap-x-10 m-10 items-center justify-center p-20 pl-32 pr-32 pb-32">
-        <Card className=" grow w-96 h-full prose ">
+    <section className="relative w-full py-32 px-6">
+      {/* SECTION TITLE */}
+      <div className="text-center mb-20 fade-in-up">
+        <h1 className="text-5xl font-light tracking-wide">About The Site</h1>
+        <p className="opacity-70 mt-3 max-w-2xl mx-auto">
+          A behind-the-scenes look at the tools and technologies powering this portfolio.
+        </p>
+      </div>
+
+      {/* GRID */}
+      <div className="
+        grid 
+        grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 
+        gap-10 
+        max-w-7xl mx-auto
+      ">
+
+        {/* ----------------------------- */}
+        {/* NEXT JS CARD */}
+        {/* ----------------------------- */}
+        <Card className="site-card fade-in-up glass-card">
           <CardHeader>
-            <CardTitle className="mb-5">Next.js</CardTitle>
-            <CardDescription>
-              The app itself was created in a powershell terminal, uing the
-              command <br />
-              <br />
-              <code className="text-white light:text-red mr-3">
-                npx create-next-app@latest project-name
-                {/* --tailwindcss --eslint.{" "} */}
-              </code>
+            <CardTitle className="mb-3 text-2xl">Next.js</CardTitle>
+            <CardDescription className="leading-relaxed">
+              This app was created using:
+              <br /><br />
+              <code>npx create-next-app@latest project-name</code>
+
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" aria-label="Copy code">
+                    <Button variant="outline" size="icon" className="ml-2">
                       <FiCopy />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Copy Code</p>
+                    <p>Copy Command</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              <br />
-              <br />I have found next.js to be very useful as the app router
-              simplifies routes and reduces the amount of code neccesary. You
-              can still use everything you would in react, with some bonus
-              features!
+
+              <br /><br />
+              Next.js simplifies routing, supports server & client components,
+              and keeps the codebase clean and scalable.
             </CardDescription>
           </CardHeader>
-          <CardContent>I recomend trying it out ...</CardContent>
-          <CardFooter className="flex justify-around">
-            <Button variant="outline">Next.js</Button>
+
+          <CardContent className="flex-1 opacity-90">
+            I highly recommend trying it for full-stack projects.
+          </CardContent>
+
+          <CardFooter>
+            <Button variant="outline" className="w-full">Next.js</Button>
           </CardFooter>
         </Card>
 
-        {/* SHADCN/UI */}
-        <Card className="grow w-96 h-[700px] p-10 flex flex-col items-center">
+        {/* ----------------------------- */}
+        {/* SHADCN CARD */}
+        {/* ----------------------------- */}
+        <Card className="site-card fade-in-up glass-card">
           <CardHeader>
-            <CardTitle>Shadcn/ui</CardTitle>
+            <CardTitle className="text-2xl">shadcn/ui</CardTitle>
             <CardDescription>
-              Shadcn/ui is{" "}
-              <em>
-                <strong>Not a component library</strong>{" "}
-              </em>{" "}
-              <br />
-              They say this because you only download what you need. <br />
-              This site uses a variety of their components like <br />
+              A copy-paste component system where you own the code.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <Select  onValueChange={(value) => setComponent(value)}>
-              <SelectTrigger aria-label="Calander Select" className="w-[180px] ml-auto mr-auto mt-auto mb-auto">
-                <SelectValue placeholder="Calendar"  />
+
+          <CardContent className="flex-1">
+            <Select onValueChange={setComponent}>
+              <SelectTrigger className="w-[180px] mx-auto my-6">
+                <SelectValue placeholder="Pick demo" />
               </SelectTrigger>
+
               <SelectContent>
                 <SelectItem value="Calendar">Calendar</SelectItem>
                 <SelectItem value="Skeleton">Skeleton</SelectItem>
                 <SelectItem value="Scroll Area">Scroll Area</SelectItem>
               </SelectContent>
             </Select>
-            <div className="">
-              {component == "Calendar" && (
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  className="rounded-md border shadow w-fit h-fit ml-auto mr-auto mt-12 mb-auto"
-                />
-              )}
-              {component == "Skeleton" && (
-                <div className="flex items-center space-x-4 space-y-32 ">
-                  <Skeleton className="h-12 w-12 mt-28 rounded-full " />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                  </div>
+
+            {/* Dynamic Components */}
+            {component === "Calendar" && (
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                className="rounded-md border shadow mx-auto mt-6"
+              />
+            )}
+
+            {component === "Skeleton" && (
+              <div className="flex items-center space-x-4 mt-10 justify-center">
+                <Skeleton className="h-12 w-12 rounded-full" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-[250px]" />
+                  <Skeleton className="h-4 w-[200px]" />
                 </div>
-              )}
-              {component == "Scroll Area" && (
-                <ScrollArea className="h-72 w-48 rounded-md border ml-auto mr-auto mt-10 mb-auto">
-                  <div className="p-4">
-                    <h4 className="mb-4 text-sm font-medium leading-none">
-                      Tags
-                    </h4>
-                    {tags.map((tag) => (
-                      <div key={tag} className="text-sm">
-                        {tag}
-                        <Separator className="my-2" />
-                      </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              )}
-            </div>
+              </div>
+            )}
+
+            {component === "Scroll Area" && (
+              <ScrollArea className="h-72 w-48 rounded-md border mx-auto mt-10">
+                <div className="p-4">
+                  <h4 className="text-sm mb-3 font-medium">Tags</h4>
+                  {tags.map(tag => (
+                    <div key={tag} className="text-sm">
+                      {tag}
+                      <Separator className="my-2" />
+                    </div>
+                  ))}
+                </div>
+              </ScrollArea>
+            )}
           </CardContent>
-          <CardFooter className="flex justify-around ml-auto mr-auto mt-auto mb-1">
-            <Button variant="outline">Shadcn/ui</Button>
+
+          <CardFooter>
+            <Button variant="outline" className="w-full">shadcn/ui</Button>
           </CardFooter>
         </Card>
 
-        {/* Dark Mode */}
-        <Card className="grow w-96 h-fit p-10 ">
+        {/* ----------------------------- */}
+        {/* DARK MODE */}
+        {/* ----------------------------- */}
+        <Card className="site-card fade-in-up glass-card">
           <CardHeader>
-            <CardTitle>Dark Mode</CardTitle>
+            <CardTitle className="text-2xl">Dark Mode</CardTitle>
             <CardDescription>
-              Try it out here or in the navigation menu!
+              Powered by next-themes and shadcn/ui.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="flex flex-col items-center text-left prose">
-              <ModeToggle className="m-10"></ModeToggle>
-              This is created using Shadcn/ui&apos;s DarkMode which uses next-themes.
-              Simply enter <code>npm install next-themes</code>
-              into your console, then wrap your root layout in a theme provider
-              and finally, create a toggle button that uses
-              <code> useTheme() </code> to communicate with the theme provider.
-            </div>
+
+          <CardContent className="flex-1 text-center">
+            <ModeToggle className="my-8 mx-auto" />
+            <p className="opacity-90">
+              Install it with:
+              <br />
+              <code>npm install next-themes</code>
+              <br /><br />
+              Then wrap your root layout in the provider and toggle via{" "}
+              <code>useTheme()</code>.
+            </p>
           </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button variant="outline">DarkMode</Button>
+
+          <CardFooter>
+            <Button variant="outline" className="w-full">Dark Mode</Button>
           </CardFooter>
         </Card>
 
-        {/* TAILWINDCSS */}
-        <Card className=" grow w-96 h-fit p-10 mt-10">
+        {/* ----------------------------- */}
+        {/* TAILWIND */}
+        {/* ----------------------------- */}
+        <Card className="site-card fade-in-up glass-card">
           <CardHeader>
-            <CardTitle>Tailwindcss</CardTitle>
+            <CardTitle className="text-2xl">TailwindCSS</CardTitle>
             <CardDescription>
-              Tailwindcss makes creating projects a lot quicker.
+              Utility-first styling that keeps everything fast.
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="prose">
-              Instead of writing out seperate <code>.css</code> files, you
-              simply write your css directly with your html tags. Here is an
-              example in css and html:
-              <br />
-              <strong>HTML : </strong> <br />
-              <code>
-                &lt;button class=&quot;button-red&quot;&gt; <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;Click Me <br /> &lt;/button&gt;
-              </code>
-              <br />
-              <br />
-              <strong>CSS : </strong> <br />
-              <code>
-                .button-red &#123; <br />
-                &nbsp;&nbsp;&nbsp;color: red; <br />
-                &nbsp;&nbsp;&nbsp;border: solid red 4px <br /> &#125;
-              </code>
-              <br /> <br />
-              <strong>In Tailwind : </strong> <br />
-              <code>
-                &lt;button className=&quot;text-red-600 border-4 border-red-600&quot; &gt;
-                Click Me &lt;/button&gt;
-              </code>
-            </div>
+
+          <CardContent className="prose flex-1">
+            <p>Traditional CSS:</p>
+            <code>&lt;button class="button-red"&gt;Click Me&lt;/button&gt;</code>
+            <br />
+            <code>
+              .button-red &#123; color:red; border:4px solid red; &#125;
+            </code>
+
+            <p>Tailwind version:</p>
+            <code>
+              &lt;button className="text-red-600 border-4 border-red-600"&gt;Click Me&lt;/button&gt;
+            </code>
           </CardContent>
-          <CardFooter className="flex flex-col justify-between ">
-            As you can see, it makes development quicker as you don&apos;t need to
-            create more files or remember class or id names. <br />
-            <Button variant="outline">Tailwindcss</Button>
+
+          <CardFooter>
+            <Button variant="outline" className="w-full">TailwindCSS</Button>
           </CardFooter>
         </Card>
 
-        {/* NEXT-THEMES */}
-        <Card className="w-[90vw] grow  mt-10">
+        {/* ----------------------------- */}
+        {/* CSS ANIMATIONS */}
+        {/* ----------------------------- */}
+        <Card className="site-card fade-in-up glass-card col-span-full">
           <CardHeader>
-            <CardTitle>CSS Animations</CardTitle>
+            <CardTitle className="text-2xl">CSS Animations</CardTitle>
             <CardDescription>
-              This website uses CSS animations and avoids assistance from
-              javascript.
-              <strong>
-                
-                Some animations may only be visible to browsers like Chrome and
-                and Microsoft Edge. Also recommended is using a laptop or
-                monitor to view the site.
-              </strong>
-              Here are some examples using transitions and animations:
+              Powered entirely by CSS — scroll-timeline, hover effects, transitions, and keyframes.
             </CardDescription>
           </CardHeader>
+
           <CardContent>
-            <div className="flex flex-col justify-around items-center gap-y-5">
-              Button shake
+            <div className="flex flex-col gap-6 items-center">
               <Button className="shake">Shake!</Button>
-              Move right and left with Animation
+
               <div className="border move-left-right">
-                <button aria-label="Hover to see the effect"></button>
+                <button aria-label="Hover to see movement"></button>
               </div>
-              Move right with transitions
+
               <div className="border move-right">
-                <button aria-label="Hover to see the effect"></button>
+                <button aria-label="Hover to see movement"></button>
               </div>
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between">
-            {/* <Button variant="outline">Cancel</Button>
-            <Button>Deploy</Button> */}
-          </CardFooter>
+
+          <CardFooter />
         </Card>
+
       </div>
     </section>
   );
 }
+
+
+// "use client";
+// import React, { useState } from "react";
+
+// import { Button } from "@/components/ui/button";
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "@/components/ui/tooltip";
+
+// import { FiCopy } from "react-icons/fi";
+// import { ModeToggle } from "./ModeToggle";
+// import { Calendar } from "@/components/ui/calendar";
+// import { Skeleton } from "@/components/ui/skeleton";
+// import { ScrollArea } from "@/components/ui/scroll-area";
+// import { Separator } from "@/components/ui/separator";
+
+// export default function AboutSiteCards() {
+//   // Calendar
+//   const [date, setDate] = useState<Date | undefined>(new Date());
+
+//   // Dynamic component selection
+//   const [component, setComponent] = useState("Calendar");
+
+//   // ScrollArea tags list
+//   const tags = Array.from({ length: 50 }).map(
+//     (_, i, a) => `v1.2.0-beta.${a.length - i}`
+//   );
+
+//   return (
+//     <section className="">
+//       <h1 className="font-extrabold text-3xl text-center my-20">
+//         About the Site
+//       </h1>
+
+//       {/* CARD GRID */}
+//       <div className="flex flex-wrap justify-center items-stretch gap-10 px-20 pb-32">
+
+//         {/* NEXT.JS CARD */}
+//         <Card className="grow w-96 flex flex-col">
+//           <CardHeader>
+//             <CardTitle className="mb-5">Next.js</CardTitle>
+//             <CardDescription>
+//               This app was created using:
+//               <br /><br />
+//               <code className="text-foreground">
+//                 npx create-next-app@latest project-name
+//               </code>
+
+//               <TooltipProvider>
+//                 <Tooltip>
+//                   <TooltipTrigger asChild>
+//                     <Button variant="outline" aria-label="Copy code" className="ml-2">
+//                       <FiCopy />
+//                     </Button>
+//                   </TooltipTrigger>
+//                   <TooltipContent>
+//                     <p>Copy Code</p>
+//                   </TooltipContent>
+//                 </Tooltip>
+//               </TooltipProvider>
+
+//               <br /><br />
+//               Next.js simplifies routing, enhances server-side capabilities, and
+//               provides an efficient development environment while still letting
+//               you write React in the same familiar way.
+//             </CardDescription>
+//           </CardHeader>
+
+//           <CardContent className="flex-1">
+//             Highly recommended for building full-stack web apps.
+//           </CardContent>
+
+//           <CardFooter className="flex justify-around">
+//             <Button variant="outline">Next.js</Button>
+//           </CardFooter>
+//         </Card>
+
+//         {/* SHADCN CARD */}
+//         <Card className="grow w-96 flex flex-col p-6">
+//           <CardHeader>
+//             <CardTitle>Shadcn/ui</CardTitle>
+//             <CardDescription>
+//               shadcn/ui is <strong>not</strong> a typical component library—you
+//               install only what you need. This site uses many of their components.
+//             </CardDescription>
+//           </CardHeader>
+
+//           <CardContent className="flex-1 flex flex-col items-center">
+//             <Select onValueChange={setComponent}>
+//               <SelectTrigger className="w-[180px] mx-auto my-6">
+//                 <SelectValue placeholder="Calendar" />
+//               </SelectTrigger>
+
+//               <SelectContent>
+//                 <SelectItem value="Calendar">Calendar</SelectItem>
+//                 <SelectItem value="Skeleton">Skeleton</SelectItem>
+//                 <SelectItem value="Scroll Area">Scroll Area</SelectItem>
+//               </SelectContent>
+//             </Select>
+
+//             {/* Dynamic components */}
+//             {component === "Calendar" && (
+//               <Calendar
+//                 mode="single"
+//                 selected={date}
+//                 onSelect={setDate}
+//                 className="rounded-md border shadow w-fit mx-auto mt-8"
+//               />
+//             )}
+
+//             {component === "Skeleton" && (
+//               <div className="flex items-center space-x-4 mt-16">
+//                 <Skeleton className="h-12 w-12 rounded-full" />
+//                 <div className="space-y-2">
+//                   <Skeleton className="h-4 w-[250px]" />
+//                   <Skeleton className="h-4 w-[200px]" />
+//                 </div>
+//               </div>
+//             )}
+
+//             {component === "Scroll Area" && (
+//               <ScrollArea className="h-72 w-48 rounded-md border mx-auto mt-10">
+//                 <div className="p-4">
+//                   <h4 className="mb-4 text-sm font-medium">Tags</h4>
+//                   {tags.map((tag) => (
+//                     <div key={tag} className="text-sm">
+//                       {tag}
+//                       <Separator className="my-2" />
+//                     </div>
+//                   ))}
+//                 </div>
+//               </ScrollArea>
+//             )}
+//           </CardContent>
+
+//           <CardFooter className="flex justify-center mt-auto">
+//             <Button variant="outline">Shadcn/ui</Button>
+//           </CardFooter>
+//         </Card>
+
+//         {/* DARK MODE CARD */}
+//         <Card className="grow w-96 flex flex-col p-6">
+//           <CardHeader>
+//             <CardTitle>Dark Mode</CardTitle>
+//             <CardDescription>Try it out here or in the navigation menu!</CardDescription>
+//           </CardHeader>
+
+//           <CardContent className="flex-1 flex flex-col items-center text-center">
+//             <ModeToggle className="my-10" />
+//             <p>
+//               Dark mode uses <code>next-themes</code>.  
+//               Install with: <code>npm install next-themes</code><br/>
+//               Wrap your root layout in a theme provider and toggle the theme using{" "}
+//               <code>useTheme()</code>.
+//             </p>
+//           </CardContent>
+
+//           <CardFooter className="flex justify-center">
+//             <Button variant="outline">Dark Mode</Button>
+//           </CardFooter>
+//         </Card>
+
+//         {/* TAILWINDCSS CARD */}
+//         <Card className="grow w-96 flex flex-col p-6">
+//           <CardHeader>
+//             <CardTitle>TailwindCSS</CardTitle>
+//             <CardDescription>
+//               Tailwind makes styling extremely fast and efficient.
+//             </CardDescription>
+//           </CardHeader>
+
+//           <CardContent className="prose flex-1">
+//             <p>Example in normal HTML/CSS:</p>
+//             <code>
+//               &lt;button class="button-red"&gt;Click Me&lt;/button&gt;
+//             </code>
+//             <br />
+//             <code>
+//               .button-red &#123; color: red; border: solid red 4px; &#125;
+//             </code>
+
+//             <p>And the same in Tailwind:</p>
+//             <code>
+//               &lt;button className="text-red-600 border-4 border-red-600"&gt;  
+//               Click Me  
+//               &lt;/button&gt;
+//             </code>
+//           </CardContent>
+
+//           <CardFooter>
+//             <Button variant="outline">TailwindCSS</Button>
+//           </CardFooter>
+//         </Card>
+
+//         {/* CSS ANIMATIONS CARD */}
+//         <Card className="grow w-full max-w-5xl flex flex-col p-6 mt-10">
+//           <CardHeader>
+//             <CardTitle>CSS Animations</CardTitle>
+//             <CardDescription>
+//               This site uses pure CSS animations (no JS).  
+//               Some animations work best in Chrome/Edge on desktop.
+//             </CardDescription>
+//           </CardHeader>
+
+//           <CardContent className="flex-1">
+//             <div className="flex flex-col gap-6 items-center">
+//               Button shake:
+//               <Button className="shake">Shake!</Button>
+
+//               Move left & right:
+//               <div className="border move-left-right">
+//                 <button aria-label="Hover to see the effect"></button>
+//               </div>
+
+//               Move right:
+//               <div className="border move-right">
+//                 <button aria-label="Hover to see the effect"></button>
+//               </div>
+//             </div>
+//           </CardContent>
+
+//           <CardFooter />
+//         </Card>
+
+//       </div>
+//     </section>
+//   );
+// }
