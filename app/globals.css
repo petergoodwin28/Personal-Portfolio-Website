@@ -1,50 +1,975 @@
-/* --------------------------------------------------------------
-   Tailwind (must be first)
--------------------------------------------------------------- */
+/* ============================================================
+   TAILWIND (must be first)
+============================================================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* --------------------------------------------------------------
-   Base Styles
--------------------------------------------------------------- */
-@layer base {
-  * {
-    @apply border-[hsl(var(--border))];
+/* ============================================================
+   FONTS
+============================================================ */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+/* ============================================================
+   BASE STYLES
+============================================================ */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Montserrat", sans-serif;
+}
+
+.prose {
+  color: var(--foreground);
+}
+
+.prose code {
+  color: var(--foreground);
+  background-color: var(--background);
+}
+
+.dark .prose code {
+  color: var(--muted-foreground);
+  background-color: var(--background);
+}
+
+/* ============================================================
+   DEFAULT (LIGHT) THEME VARIABLES
+============================================================ */
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 4%);
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 4%);
+
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 4%);
+
+  --primary: hsl(0 0% 10%);
+  --primary-foreground: hsl(0 0% 98%);
+
+  --secondary: hsl(0 0% 95%);
+  --secondary-foreground: hsl(0 0% 10%);
+
+  --muted: hsl(0 0% 95%);
+  --muted-foreground: hsl(0 0% 47%);
+
+  --accent: hsl(0 0% 95%);
+  --accent-foreground: hsl(0 0% 10%);
+
+  --destructive: hsl(0 100% 70%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 90%);
+  --input: hsl(0 0% 90%);
+  --ring: hsl(0 0% 4%);
+
+  --radius: 0.5rem;
+
+  --color-bg1: rgb(8, 10, 15);
+  --color-bg2: rgb(0, 17, 32);
+  --color1: 18, 113, 255;
+  --color2: 107, 74, 255;
+  --color3: 100, 100, 255;
+  --color4: 50, 160, 220;
+  --color5: 80, 47, 122;
+  --color-interactive: 140, 100, 255;
+  --circle-size: 80%;
+  --blending: hard-light;
+  --scroll-bar: hsl(280 74% 42%);
+  --shadow: hsl(270 100% 50%);
+}
+
+/* ============================================================
+   DARK MODE VARIABLES
+============================================================ */
+.dark {
+  --background: hsl(0 0% 4%);
+  --foreground: hsl(0 0% 98%);
+
+  --card: hsl(0 0% 4%);
+  --card-foreground: hsl(0 0% 98%);
+
+  --popover: hsl(0 0% 4%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 10%);
+
+  --secondary: hsl(0 0% 15%);
+  --secondary-foreground: hsl(0 0% 98%);
+
+  --muted: hsl(0 0% 15%);
+  --muted-foreground: hsl(0 0% 64%);
+
+  --accent: hsl(0 0% 15%);
+  --accent-foreground: hsl(0 0% 98%);
+
+  --destructive: hsl(0 67% 40%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 15%);
+  --input: hsl(0 0% 15%);
+  --ring: hsl(0 0% 82%);
+
+  --color-bg1: rgb(15, 15, 20);
+  --color-bg2: rgb(20, 20, 30);
+
+  --scroll-bar: white;
+}
+
+/* ============================================================
+   RED THEME
+============================================================ */
+.red {
+  --background: #0a0a0a;
+  --foreground: #ff4d4d;
+
+  --card: #1a1a1a;
+  --card-foreground: #ff4d4d;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #ff4d4d;
+
+  --primary: #ff4d4d;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #333333;
+  --secondary-foreground: #ff4d4d;
+
+  --muted: #333333;
+  --muted-foreground: #ff9999;
+
+  --accent: #4d0000;
+  --accent-foreground: #ff4d4d;
+
+  --destructive: #b30000;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #ff4d4d;
+
+  --shadow: red;
+  --scroll-bar: #e61010;
+
+  --color-bg1: rgb(60, 6, 6);
+  --color-bg2: rgb(120, 0, 0);
+  --color1: 255, 90, 90;
+  --color2: 255, 30, 30;
+  --color3: 255, 0, 80;
+  --color4: 200, 0, 0;
+  --color5: 120, 0, 40;
+  --color-interactive: 255, 80, 120;
+}
+
+/* ============================================================
+   GREEN THEME
+============================================================ */
+.green {
+  --background: #0a0a0a;
+  --foreground: #66ff66;
+
+  --card: #1a1a1a;
+  --card-foreground: #66ff66;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #00c805;
+
+  --primary: #00c805;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #333333;
+  --secondary-foreground: #00c805;
+
+  --muted: #333333;
+  --muted-foreground: #66ff66;
+
+  --accent: #004d00;
+  --accent-foreground: #00c805;
+
+  --destructive: #006400;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #00c805;
+
+  --shadow: #66ff66;
+  --scroll-bar: #10e654;
+
+  --color-bg1: rgb(6, 40, 6);
+  --color-bg2: rgb(0, 90, 0);
+  --color1: 50, 255, 120;
+  --color2: 0, 200, 80;
+  --color3: 0, 255, 160;
+  --color4: 0, 150, 40;
+  --color5: 0, 255, 60;
+  --color-interactive: 100, 255, 120;
+}
+
+/* ============================================================
+   BLUE THEME
+============================================================ */
+.blue {
+  --background: #0a0a0a;
+  --foreground: #00aaff;
+
+  --card: #1a1a1a;
+  --card-foreground: #66ccff;
+
+  --popover: #1a1a1a;
+  --popover-foreground: #00aaff;
+
+  --primary: #00aaff;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #333333;
+  --secondary-foreground: #00aaff;
+
+  --muted: #333333;
+  --muted-foreground: #66ccff;
+
+  --accent: #00334d;
+  --accent-foreground: #00aaff;
+
+  --destructive: #004466;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #00aaff;
+
+  --shadow: #2c12f3;
+  --scroll-bar: #105be6;
+
+  --color-bg1: rgb(0, 20, 40);
+  --color-bg2: rgb(0, 80, 140);
+  --color1: 0, 180, 255;
+  --color2: 0, 130, 255;
+  --color3: 80, 160, 255;
+  --color4: 0, 100, 200;
+  --color5: 40, 60, 140;
+  --color-interactive: 0, 190, 255;
+}
+
+/* ============================================================
+   (SCSS LOOP REPLACEMENT) elevate-text DELAYS
+============================================================ */
+
+.elevate-text-container .elevate-text:nth-child(1) { animation-delay: 0.4s; }
+.elevate-text-container .elevate-text:nth-child(2) { animation-delay: 0.8s; }
+.elevate-text-container .elevate-text:nth-child(3) { animation-delay: 1.2s; }
+.elevate-text-container .elevate-text:nth-child(4) { animation-delay: 1.6s; }
+.elevate-text-container .elevate-text:nth-child(5) { animation-delay: 2.0s; }
+.elevate-text-container .elevate-text:nth-child(6) { animation-delay: 2.4s; }
+.elevate-text-container .elevate-text:nth-child(7) { animation-delay: 2.8s; }
+.elevate-text-container .elevate-text:nth-child(8) { animation-delay: 3.2s; }
+.elevate-text-container .elevate-text:nth-child(9) { animation-delay: 3.6s; }
+.elevate-text-container .elevate-text:nth-child(10) { animation-delay: 4.0s; }
+
+/* ============================================================
+   WORK CARD — DELAYS (SCSS loop replaced)
+============================================================ */
+.work-card-container .work-card:nth-child(1) { animation-delay: 0.3s; }
+.work-card-container .work-card:nth-child(2) { animation-delay: 0.6s; }
+.work-card-container .work-card:nth-child(3) { animation-delay: 0.9s; }
+.work-card-container .work-card:nth-child(4) { animation-delay: 1.2s; }
+.work-card-container .work-card:nth-child(5) { animation-delay: 1.5s; }
+.work-card-container .work-card:nth-child(6) { animation-delay: 1.8s; }
+.work-card-container .work-card:nth-child(7) { animation-delay: 2.1s; }
+.work-card-container .work-card:nth-child(8) { animation-delay: 2.4s; }
+.work-card-container .work-card:nth-child(9) { animation-delay: 2.7s; }
+.work-card-container .work-card:nth-child(10) { animation-delay: 3.0s; }
+
+/* ============================================================
+   (ALL OTHER CSS — YOUR ANIMATIONS, CARDS, HERO, BUBBLES)
+============================================================ */
+
+/* ============================================================
+   FADE-IN / FLOAT / GLASS PANEL UTILITIES
+============================================================ */
+
+/* Glass Panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Base fade-in */
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+  transition:
+    opacity .7s ease-out,
+    transform .7s ease-out,
+    filter .7s ease-out;
+}
+.fade-in-text.in-view {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Hover underline glow */
+.hr-glow {
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  box-shadow: 0 0 14px var(--primary);
+  transition: width .4s ease;
+}
+li:hover .hr-glow {
+  width: 100%;
+}
+
+/* Image subtle zoom */
+@keyframes subtleZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+.animate-subtleZoom {
+  animation: subtleZoom 12s ease-in-out alternate infinite;
+}
+
+/* ============================================================
+   SCROLL-TIMELINE (when supported)
+============================================================ */
+@supports (animation-timeline: scroll()) {
+  .fade-in-text {
+    animation-name: fadeInScroll;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+    animation-timeline: scroll(root);
   }
 
-  body {
-    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
-    font-family: "Montserrat", sans-serif;
+  @keyframes fadeInScroll {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
   }
 
-  :root .prose {
-    color: hsl(var(--foreground));
+  /* Subtitle / Heading / Image custom range */
+  .fade-in-subtitle {
+    animation-range-start: entry 5%;
+    animation-range-end: entry 19%;
+  }
+  .fade-in-heading {
+    animation-range-start: entry 8%;
+    animation-range-end: entry 17%;
+  }
+  .fade-in-image {
+    animation-range-start: entry 10%;
+    animation-range-end: entry 20%;
   }
 
-  :root .prose code {
-    color: hsl(var(--foreground));
-    background-color: hsl(var(--background));
-  }
+  /* Stagger list items */
+  ul li.fade-in-text:nth-child(1) { animation-range-start: entry 10%; animation-range-end: entry 24%; }
+  ul li.fade-in-text:nth-child(2) { animation-range-start: entry 12%; animation-range-end: entry 25%; }
+  ul li.fade-in-text:nth-child(3) { animation-range-start: entry 14%; animation-range-end: entry 26%; }
+  ul li.fade-in-text:nth-child(4) { animation-range-start: entry 16%; animation-range-end: entry 27%; }
+}
 
-  .dark .prose {
-    color: hsl(var(--foreground));
-  }
+/* ============================================================
+   PROJECT SHOWCASE — GLASS CARDS
+============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
 
-  .dark .prose code {
-    color: hsl(var(--muted-foreground));
-    background-color: hsl(var(--background));
+/* Floating panel (duplicate intentional – preserve behavior) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Fade up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeUp {
+  animation: fadeUp .8s ease-out forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry 16%;
+  animation-range-end: entry 27%;
+}
+
+/* ============================================================
+   ABOUT SITE CARDS — GLASS + HOVER FLOAT + FADE-IN
+============================================================ */
+.site-card {
+  transition: all .5s;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.dark .site-card {
+  background: rgba(0,0,0,0.25);
+}
+
+.site-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  animation: fadeUp .9s ease-out forwards;
+  animation-timeline: view();
+  animation-range-start: 0%;
+  animation-range-end: 40%;
+}
+
+/* ============================================================
+   BASIC INTERACTION / MICRO-ANIMATIONS
+============================================================ */
+.shake:hover {
+  animation: shake 1.5s linear both;
+}
+@keyframes shake {
+  0%, 50%, 100% { transform: rotateZ(0deg); }
+  25% { transform: rotateZ(10deg); }
+  75% { transform: rotateZ(-10deg); }
+}
+
+/* Move right */
+.move-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.move-right button {
+  --move-button-width: 50px;
+  width: var(--move-button-width);
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
+  transform: translateX(0);
+  transition: transform 2s ease;
+}
+.move-right:hover button {
+  transform: translateX(calc(var(--move-button-container-width) - var(--move-button-width)));
+}
+
+/* Move left-right */
+.move-left-right {
+  --move-button-container-width: 600px;
+  width: var(--move-button-container-width);
+  height: 43px;
+  overflow: hidden;
+}
+.move-left-right button {
+  --move-button-width: 50px;
+  width: var(--move-button-width);
+  height: 40px;
+  background-color: var(--foreground);
+  border-radius: 10%;
+  transform: translateX(0);
+  transition: transform 3s ease;
+}
+.move-left-right:hover button {
+  animation: move-left-right 3s ease-in-out forwards infinite;
+}
+@keyframes move-left-right {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(calc(var(--move-button-container-width) - var(--move-button-width))); }
+  100% { transform: translateX(0); }
+}
+
+/* ============================================================
+   TEXT ELEVATION / APPEAR
+============================================================ */
+.elevate-text {
+  padding-left: 8rem;
+  padding-right: 8rem;
+  animation: elevate-text 3s linear forwards;
+  animation-timeline: scroll();
+  animation-range-start: entry 0px;
+  animation-range-end: 550px;
+}
+@keyframes elevate-text {
+  from { transform: translateY(700%); }
+  to   { transform: translateY(0%); }
+}
+
+.appear {
+  animation: appear 1.5s ease-in-out both;
+  animation-timeline: scroll();
+  animation-range-start: entry 0px;
+  animation-range-end: 400px;
+}
+@keyframes appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   SCROLL WATCHER BAR
+============================================================ */
+.scroll-watcher {
+  width: 2px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--scroll-bar);
+  height: 100%;
+  scale: 1 0;
+  transform-origin: top;
+  animation: scroll-watcher linear both;
+  animation-timeline: scroll();
+}
+@keyframes scroll-watcher {
+  to { scale: 1 1; }
+}
+
+/* ============================================================
+   AUTOSCROLL STRIP
+============================================================ */
+.autoscroll {
+  font-size: 15px;
+  padding-block: 8px;
+  border-block: 1px solid;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  gap: 10px;
+}
+.autoscroll ul {
+  list-style: none;
+  flex-shrink: 0;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  animation: scroll-x 10s linear infinite;
+}
+.autoscroll:hover ul {
+  animation-play-state: paused;
+}
+@keyframes scroll-x {
+  to { transform: translateX(calc(-100% - 10px)); }
+}
+
+/* ============================================================
+   CERTIFICATIONS — SLIDE IN + UP
+============================================================ */
+@keyframes cert-in-right {
+  from { transform: translateX(150px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes cert-in-left {
+  from { transform: translateX(-150px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes cert-in-up {
+  from { transform: translateY(150px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cert-anim-right {
+    animation: cert-in-right .8s ease-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 700px;
+  }
+  .cert-anim-left {
+    animation: cert-in-left .8s ease-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: entry 250px;
+    animation-range-end: 750px;
+  }
+  .cert-anim-up {
+    animation: cert-in-up .8s ease-out forwards;
+    animation-timeline: scroll();
+    animation-range-start: entry 300px;
+    animation-range-end: 800px;
   }
 }
 
-/* --------------------------------------------------------------
-   Fonts
--------------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+/* Legacy helpers */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-in-left {
+    animation: scroll-in-left .9s ease-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 400px;
+    animation-range-end: 1000px;
+  }
+  .scroll-in-right {
+    animation: scroll-in-right .9s ease-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 400px;
+    animation-range-end: 1000px;
+  }
+  @keyframes scroll-in-left {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes scroll-in-right {
+    from { transform: translateX(-100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+  }
+}
 
-/* --------------------------------------------------------------
-   All theme variables (root + dark + red + green + blue)
-   — PUT THE VARIABLE SECTION HERE ONLY —
--------------------------------------------------------------- */
+/* ============================================================
+   IMAGE SCROLL — X + APPEAR-Y
+============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-x-left {
+    position: relative;
+    animation: scroll-x-left .9s ease-in-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 800px;
+  }
+  .scroll-x-right {
+    position: relative;
+    animation: scroll-x-right .9s ease-in-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 800px;
+  }
+  @keyframes scroll-x-left {
+    from { transform: translateX(200%); }
+    to   { transform: translateX(0%); }
+  }
+  @keyframes scroll-x-right {
+    from { transform: translateX(-200%); }
+    to   { transform: translateX(25%); }
+  }
 
-/* Paste ONLY your variable definitions here (NOT animations!) */
+  .appear-y-scroll {
+    position: relative;
+    animation: appear-lower .7s ease-out both;
+    animation-timeline: scroll();
+    animation-range-start: entry 200px;
+    animation-range-end: 700px;
+  }
+  @keyframes appear-lower {
+    from { opacity: 0; scale: 0.8; transform: translateY(-20%); }
+    to   { opacity: 1; scale: 1; transform: translateY(0); }
+  }
+}
+
+/* ============================================================
+   FADE-IN BORDER
+============================================================ */
+.fade-border {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  margin: .75rem 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 600ms cubic-bezier(.2,.9,.3,1),
+    transform 600ms cubic-bezier(.2,.9,.3,1);
+  transition-delay: var(--delay, 0ms);
+}
+.fade-border.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   HERO GRADIENTS & BUBBLES
+============================================================ */
+.hero-card {
+  position: absolute;
+  --hero-card-width: 25rem;
+  width: var(--hero-card-width);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.grad-bg {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+}
+.svgBlur { display: none; }
+
+.noiseBg {
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: 1;
+  mix-blend-mode: soft-light;
+  opacity: .3;
+  position: absolute;
+}
+
+.gradients-container {
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+}
+
+.g1, .g2, .g3, .g4, .g5 {
+  position: absolute;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  mix-blend-mode: var(--blending);
+  opacity: .8;
+}
+
+/* bubble positions/animations */
+.g1 {
+  background: radial-gradient(circle,
+    rgba(var(--color1),0.8) 0,
+    rgba(var(--color1),0) 30%
+  );
+  top: calc(50% - var(--circle-size)/2);
+  left: calc(50% - var(--circle-size)/2);
+  opacity: 1;
+  animation: moveVertical 30s ease infinite;
+}
+
+.g2 {
+  background: radial-gradient(circle,
+    rgba(var(--color2),0.8) 0,
+    rgba(var(--color2),0) 30%
+  );
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+  transform-origin: calc(50% - 400px);
+  animation: moveInCircle 20s reverse infinite;
+}
+
+.g3 {
+  background: radial-gradient(circle at center,
+    rgba(var(--color3),0.8) 0,
+    rgba(var(--color3),0) 30%
+  );
+  top: calc(50% - var(--circle-size)/2 + 200px);
+  left: calc(50% - var(--circle-size)/2 - 500px);
+  transform-origin: calc(50% + 400px);
+  animation: moveInCircle 40s linear infinite;
+}
+
+.g4 {
+  background: radial-gradient(circle,
+    rgba(var(--color4),0.8) 0,
+    rgba(var(--color4),0) 30%
+  );
+  top: calc(50% - var(--circle-size)/2);
+  left: calc(50% - var(--circle-size)/2);
+  transform-origin: calc(50% - 200px);
+  animation: moveHorizontal 40s ease infinite;
+  opacity: .7;
+}
+
+.g5 {
+  background: radial-gradient(circle,
+    rgba(var(--color5),0.8) 0,
+    rgba(var(--color5),0) 30%
+  );
+  width: calc(var(--circle-size)*2);
+  height: calc(var(--circle-size)*2);
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
+  animation: moveInCircle 20s ease infinite;
+}
+
+.interactive {
+  background: radial-gradient(circle,
+    rgba(var(--color-interactive),0.8) 0,
+    rgba(var(--color-interactive),0) 10%
+  );
+  width: 100%;
+  height: 100%;
+  top: -50%; left: -50%;
+  position: absolute;
+  opacity: .7;
+}
+
+@keyframes moveInCircle {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes moveVertical {
+  0%   { transform: translateY(-50%); }
+  50%  { transform: translateY(50%); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes moveHorizontal {
+  0%   { transform: translateX(-50%) translateY(-10%); }
+  50%  { transform: translateX(50%) translateY(10%); }
+  100% { transform: translateX(-50%) translateY(-10%); }
+}
+
+/* ============================================================
+   CONTACT / HERO BACKGROUNDS
+============================================================ */
+.contact-container {
+  background-image: url("/DarkGreenMarbleTextureBackground.png");
+}
+
+#hero1 {
+  background-image: url("/Black and White Aesthetic Forest Desktop Wallpaper.png");
+  background-size: cover;
+  height: 80vh;
+  image-rendering: optimizeQuality;
+  background-position: center;
+}
+
+/* ============================================================
+   TYPING / DOTS EFFECT
+============================================================ */
+@keyframes dotsAnimation {
+  0% { content:""; }
+  5% { content:"P"; }
+  10% { content:"Pi"; }
+  15% { content:"Pic"; }
+  20% { content:"Pick"; }
+  25% { content:"Picki"; }
+  30% { content:"Pickin"; }
+  35% { content:"Picking"; }
+  40% { content:"Picking "; }
+  45% { content:"Picking t"; }
+  50% { content:"Picking th"; }
+  55% { content:"Picking the"; }
+  60% { content:"Picking the "; }
+  65% { content:"Picking the b"; }
+  70% { content:"Picking the be"; }
+  75% { content:"Picking the bes"; }
+  80% { content:"Picking the best"; }
+  85% { content:"Picking the best "; }
+  90% { content:"Picking the best o"; }
+  95% { content:"Picking the best one"; }
+  100% { content:"Picking the best one..."; }
+}
+.dots::after {
+  content: "";
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: dotsAnimation 6s infinite steps(1);
+}
+
+/* ============================================================
+   BUBBLE HOVER EFFECT (Buttons, Cards)
+============================================================ */
+.bubble-hover {
+  position: relative;
+  overflow: hidden;
+  transition: background .3s ease;
+  background: var(--background);
+  color: var(--foreground);
+}
+.bubble-hover::before {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:200%;
+  height:200%;
+  pointer-events:none;
+  background: radial-gradient(
+    200px circle at var(--x,50%) var(--y,50%),
+    var(--foreground) 10%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  opacity:0;
+  transition: opacity .2s ease;
+}
+.bubble-hover:hover::before {
+  opacity:.1;
+}
+
+/* ============================================================
+   SKILL GALAXY – FLOATING ORBITS
+============================================================ */
+.galaxy-container {
+  --orbit-size: 260px;
+  --icon-size: 70px;
+}
+
+.galaxy-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(var(--foreground), 0.2);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.galaxy-orbit {
+  position: absolute;
+  top:50%; left:50%;
+  transform-origin: -150px -150px;
+  animation: galaxy-spin 16s linear infinite;
+}
+
+.galaxy-orbit:hover .galaxy-icon {
+  transform: scale(1.25);
+  box-shadow: 0 0 15px rgba(var(--primary), 0.7);
+}
+
+.galaxy-label {
+  opacity: 0;
+  text-align: center;
+  font-size: .9rem;
+  margin-top: 4px;
+  transition: opacity .25s ease;
+  color: var(--foreground);
+}
+.galaxy-orbit:hover .galaxy-label {
+  opacity: 1;
+}
+
+.orbit-0 { animation-duration: 14s; }
+.orbit-1 { animation-duration: 17s; }
+.orbit-2 { animation-duration: 20s; }
+.orbit-3 { animation-duration: 23s; }
+.orbit-4 { animation-duration: 26s; }
+.orbit-5 { animation-duration: 18s; }
+.orbit-6 { animation-duration: 22s; }
+.orbit-7 { animation-duration: 16s; }
+.orbit-8 { animation-duration: 19s; }
+
+@keyframes galaxy-spin {
+  from { transform: rotate(0deg) translate(var(--orbit-size)) rotate(0deg); }
+  to   { transform: rotate(360deg) translate(var(--orbit-size)) rotate(-360deg); }
+}
