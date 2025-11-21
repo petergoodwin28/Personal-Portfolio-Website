@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { FiCopy } from "react-icons/fi";
+import { easeOut, motion, useReducedMotion } from "framer-motion";
 
 export default function AboutSiteCards() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -43,213 +44,289 @@ export default function AboutSiteCards() {
     (_, i, a) => `v1.2.0-beta.${a.length - i}`
   );
 
+  const prefersReducedMotion = useReducedMotion();
+
+  // Shared variants for the header
+  const headingVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: easeOut
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.92, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: easeOut
+    }
+  }
+};
+
+
+  // Helper to build motion props per card (for staggered delays)
+  const buildCardMotion = (index: number) => {
+  if (prefersReducedMotion) {
+    return {
+      initial: false,
+      animate: false,
+      viewport: { once: true, amount: 0 },
+      variants: undefined,
+      transition: undefined,
+    };
+  }
+
+  return {
+    initial: "hidden",
+    whileInView: "visible",
+    viewport: { once: true, amount: 0.25 },
+    variants: cardVariants,
+    transition: {
+      duration: 0.45,
+      ease: easeOut,
+      delay: index * 0.08,
+    },
+  };
+};
+
+
   return (
     <section className="relative w-full py-32 px-6">
       {/* SECTION TITLE */}
-      <div className="text-center mb-20 fade-in-up">
+      <motion.div
+        className="text-center mb-20"
+        variants={headingVariants}
+        initial={prefersReducedMotion ? undefined : "hidden"}
+        whileInView={prefersReducedMotion ? undefined : "visible"}
+        viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.5 }}
+      >
         <h1 className="text-5xl font-light tracking-wide">About The Site</h1>
         <p className="opacity-70 mt-3 max-w-2xl mx-auto">
-          A behind-the-scenes look at the tools and technologies powering this portfolio.
+          A behind-the-scenes look at the tools and technologies powering this
+          portfolio.
         </p>
-      </div>
+      </motion.div>
 
       {/* GRID */}
-      <div className="
-        grid 
-        grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 
-        gap-10 
-        max-w-7xl mx-auto
-      ">
-
-        {/* ----------------------------- */}
+      <div
+        className="
+          grid 
+          grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 
+          gap-10 
+          max-w-7xl mx-auto
+        "
+      >
         {/* NEXT JS CARD */}
-        {/* ----------------------------- */}
-        <Card className="site-card fade-in-up glass-card">
-          <CardHeader>
-            <CardTitle className="mb-3 text-2xl">Next.js</CardTitle>
-            <CardDescription className="leading-relaxed">
-              This app was created using:
-              <br /><br />
-              <code>npx create-next-app@latest project-name</code>
+        <motion.div {...buildCardMotion(0)}>
+          <Card className="site-card glass-card h-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="mb-3 text-2xl">Next.js</CardTitle>
+              <CardDescription className="leading-relaxed">
+                This app was created using:
+                <br />
+                <br />
+                <code>npx create-next-app@latest project-name</code>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" className="ml-2">
+                        <FiCopy />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Copy Command</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+                <br />
+                <br />
+                Next.js simplifies routing, supports server & client components,
+                and keeps the codebase clean and scalable.
+              </CardDescription>
+            </CardHeader>
 
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="ml-2">
-                      <FiCopy />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Copy Command</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+            <CardContent className="flex-1 opacity-90">
+              I highly recommend trying it for full-stack projects.
+            </CardContent>
 
-              <br /><br />
-              Next.js simplifies routing, supports server & client components,
-              and keeps the codebase clean and scalable.
-            </CardDescription>
-          </CardHeader>
+            <CardFooter>
+              <Button variant="outline" className="w-full">
+                Next.js
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
 
-          <CardContent className="flex-1 opacity-90">
-            I highly recommend trying it for full-stack projects.
-          </CardContent>
-
-          <CardFooter>
-            <Button variant="outline" className="w-full">Next.js</Button>
-          </CardFooter>
-        </Card>
-
-        {/* ----------------------------- */}
         {/* SHADCN CARD */}
-        {/* ----------------------------- */}
-        <Card className="site-card fade-in-up glass-card">
-          <CardHeader>
-            <CardTitle className="text-2xl">shadcn/ui</CardTitle>
-            <CardDescription>
-              A copy-paste component system where you own the code.
-            </CardDescription>
-          </CardHeader>
+        <motion.div {...buildCardMotion(1)}>
+          <Card className="site-card glass-card h-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-2xl">shadcn/ui</CardTitle>
+              <CardDescription>
+                A copy-paste component system where you own the code.
+              </CardDescription>
+            </CardHeader>
 
-          <CardContent className="flex-1">
-            <Select onValueChange={setComponent}>
-              <SelectTrigger className="w-[180px] mx-auto my-6">
-                <SelectValue placeholder="Pick demo" />
-              </SelectTrigger>
+            <CardContent className="flex-1">
+              <Select onValueChange={setComponent}>
+                <SelectTrigger className="w-[180px] mx-auto my-6">
+                  <SelectValue placeholder="Pick demo" />
+                </SelectTrigger>
 
-              <SelectContent>
-                <SelectItem value="Calendar">Calendar</SelectItem>
-                <SelectItem value="Skeleton">Skeleton</SelectItem>
-                <SelectItem value="Scroll Area">Scroll Area</SelectItem>
-              </SelectContent>
-            </Select>
+                <SelectContent>
+                  <SelectItem value="Calendar">Calendar</SelectItem>
+                  <SelectItem value="Skeleton">Skeleton</SelectItem>
+                  <SelectItem value="Scroll Area">Scroll Area</SelectItem>
+                </SelectContent>
+              </Select>
 
-            {/* Dynamic Components */}
-            {component === "Calendar" && (
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-md border shadow mx-auto mt-6"
-              />
-            )}
+              {/* Dynamic Components */}
+              {component === "Calendar" && (
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  className="rounded-md border shadow mx-auto mt-6"
+                />
+              )}
 
-            {component === "Skeleton" && (
-              <div className="flex items-center space-x-4 mt-10 justify-center">
-                <Skeleton className="h-12 w-12 rounded-full" />
-                <div className="space-y-2">
-                  <Skeleton className="h-4 w-[250px]" />
-                  <Skeleton className="h-4 w-[200px]" />
+              {component === "Skeleton" && (
+                <div className="flex items-center space-x-4 mt-10 justify-center">
+                  <Skeleton className="h-12 w-12 rounded-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[250px]" />
+                    <Skeleton className="h-4 w-[200px]" />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {component === "Scroll Area" && (
-              <ScrollArea className="h-72 w-48 rounded-md border mx-auto mt-10">
-                <div className="p-4">
-                  <h4 className="text-sm mb-3 font-medium">Tags</h4>
-                  {tags.map(tag => (
-                    <div key={tag} className="text-sm">
-                      {tag}
-                      <Separator className="my-2" />
-                    </div>
-                  ))}
-                </div>
-              </ScrollArea>
-            )}
-          </CardContent>
+              {component === "Scroll Area" && (
+                <ScrollArea className="h-72 w-48 rounded-md border mx-auto mt-10">
+                  <div className="p-4">
+                    <h4 className="text-sm mb-3 font-medium">Tags</h4>
+                    {tags.map((tag) => (
+                      <div key={tag} className="text-sm">
+                        {tag}
+                        <Separator className="my-2" />
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              )}
+            </CardContent>
 
-          <CardFooter>
-            <Button variant="outline" className="w-full">shadcn/ui</Button>
-          </CardFooter>
-        </Card>
+            <CardFooter>
+              <Button variant="outline" className="w-full">
+                shadcn/ui
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
 
-        {/* ----------------------------- */}
-        {/* DARK MODE */}
-        {/* ----------------------------- */}
-        <Card className="site-card fade-in-up glass-card">
-          <CardHeader>
-            <CardTitle className="text-2xl">Dark Mode</CardTitle>
-            <CardDescription>
-              Powered by next-themes and shadcn/ui.
-            </CardDescription>
-          </CardHeader>
+        {/* DARK MODE CARD */}
+        <motion.div {...buildCardMotion(2)}>
+          <Card className="site-card glass-card h-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-2xl">Dark Mode</CardTitle>
+              <CardDescription>
+                Powered by next-themes and shadcn/ui.
+              </CardDescription>
+            </CardHeader>
 
-          <CardContent className="flex-1 text-center">
-            <ModeToggle className="my-8 mx-auto" />
-            <p className="opacity-90">
-              Install it with:
+            <CardContent className="flex-1 text-center">
+              <ModeToggle className="my-8 mx-auto" />
+              <p className="opacity-90">
+                Install it with:
+                <br />
+                <code>npm install next-themes</code>
+                <br />
+                <br />
+                Then wrap your root layout in the provider and toggle via{" "}
+                <code>useTheme()</code>.
+              </p>
+            </CardContent>
+
+            <CardFooter>
+              <Button variant="outline" className="w-full">
+                Dark Mode
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
+
+        {/* TAILWIND CARD */}
+        <motion.div {...buildCardMotion(3)}>
+          <Card className="site-card glass-card h-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-2xl">TailwindCSS</CardTitle>
+              <CardDescription>
+                Utility-first styling that keeps everything fast.
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="prose flex-1">
+              <p>Traditional CSS:</p>
+              <code>
+                &lt;button class="button-red"&gt;Click Me&lt;/button&gt;
+              </code>
               <br />
-              <code>npm install next-themes</code>
-              <br /><br />
-              Then wrap your root layout in the provider and toggle via{" "}
-              <code>useTheme()</code>.
-            </p>
-          </CardContent>
+              <code>
+                .button-red &#123; color:red; border:4px solid red; &#125;
+              </code>
 
-          <CardFooter>
-            <Button variant="outline" className="w-full">Dark Mode</Button>
-          </CardFooter>
-        </Card>
+              <p>Tailwind version:</p>
+              <code>
+                &lt;button className="text-red-600 border-4 border-red-600"&gt;
+                Click Me
+                &lt;/button&gt;
+              </code>
+            </CardContent>
 
-        {/* ----------------------------- */}
-        {/* TAILWIND */}
-        {/* ----------------------------- */}
-        <Card className="site-card fade-in-up glass-card">
-          <CardHeader>
-            <CardTitle className="text-2xl">TailwindCSS</CardTitle>
-            <CardDescription>
-              Utility-first styling that keeps everything fast.
-            </CardDescription>
-          </CardHeader>
+            <CardFooter>
+              <Button variant="outline" className="w-full">
+                TailwindCSS
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
 
-          <CardContent className="prose flex-1">
-            <p>Traditional CSS:</p>
-            <code>&lt;button class="button-red"&gt;Click Me&lt;/button&gt;</code>
-            <br />
-            <code>
-              .button-red &#123; color:red; border:4px solid red; &#125;
-            </code>
+        {/* CSS ANIMATIONS CARD */}
+        <motion.div className="col-span-full" {...buildCardMotion(4)}>
+          <Card className="site-card glass-card w-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-2xl">CSS Animations</CardTitle>
+              <CardDescription>
+                Powered entirely by CSS — scroll-timeline, hover effects,
+                transitions, and keyframes.
+              </CardDescription>
+            </CardHeader>
 
-            <p>Tailwind version:</p>
-            <code>
-              &lt;button className="text-red-600 border-4 border-red-600"&gt;Click Me&lt;/button&gt;
-            </code>
-          </CardContent>
+            <CardContent>
+              <div className="flex flex-col gap-6 items-center">
+                <Button className="shake">Shake!</Button>
 
-          <CardFooter>
-            <Button variant="outline" className="w-full">TailwindCSS</Button>
-          </CardFooter>
-        </Card>
+                <div className="border move-left-right">
+                  <button aria-label="Hover to see movement"></button>
+                </div>
 
-        {/* ----------------------------- */}
-        {/* CSS ANIMATIONS */}
-        {/* ----------------------------- */}
-        <Card className="site-card fade-in-up glass-card col-span-full">
-          <CardHeader>
-            <CardTitle className="text-2xl">CSS Animations</CardTitle>
-            <CardDescription>
-              Powered entirely by CSS — scroll-timeline, hover effects, transitions, and keyframes.
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <div className="flex flex-col gap-6 items-center">
-              <Button className="shake">Shake!</Button>
-
-              <div className="border move-left-right">
-                <button aria-label="Hover to see movement"></button>
+                <div className="border move-right">
+                  <button aria-label="Hover to see movement"></button>
+                </div>
               </div>
+            </CardContent>
 
-              <div className="border move-right">
-                <button aria-label="Hover to see movement"></button>
-              </div>
-            </div>
-          </CardContent>
-
-          <CardFooter />
-        </Card>
-
+            <CardFooter />
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
