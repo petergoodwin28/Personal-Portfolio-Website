@@ -25,6 +25,8 @@ export default function Home() {
   return (
     <main className="flex flex-col" suppressHydrationWarning>
       <div className="scroll-watcher"></div>
+      <div className="bg-red-500 text-white p-10">TEST</div>
+
       <Hero2 />
       {/* <Transition></Transition> */}
       <ScrollWork></ScrollWork>

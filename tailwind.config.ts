@@ -10,12 +10,19 @@ const config: Config = {
   //   "./pages/**/*.{ts,tsx,js,jsx,mdx}",
   //   "./src/**/*.{ts,tsx,js,jsx,mdx}",
   // ],
-  content: [
-  "./app/**/*.{ts,tsx,mdx}",
-  "./components/**/*.{ts,tsx}",
-  "./components/ui/**/*.{ts,tsx}",
-  "./pages/**/*.{ts,tsx}",
-  "./src/**/*.{ts,tsx}",
+//   content: [
+//   "./app/**/*.{ts,tsx,mdx}",
+//   "./components/**/*.{ts,tsx}",
+//   "./components/ui/**/*.{ts,tsx}",
+//   "./pages/**/*.{ts,tsx}",
+//   "./src/**/*.{ts,tsx}",
+// ]
+content: [
+  "./app/**/*.{js,jsx,ts,tsx,mdx}",
+  "./components/**/*.{js,jsx,ts,tsx}",
+  "./components/ui/**/*.{js,jsx,ts,tsx}",
+  "./pages/**/*.{js,jsx,ts,tsx}",
+  "./src/**/*.{js,jsx,ts,tsx}",
 ]
 
 ,
