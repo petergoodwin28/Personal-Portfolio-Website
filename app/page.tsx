@@ -1,7 +1,7 @@
 "use client";
 
-import AboutSiteCards from "./AboutSiteCards";
-import ProjectCarousel from "./ProjectCarousel";
+import AboutSiteCards from "../components/AboutSiteCards";
+import ProjectCarousel from "../components/ProjectCarousel";
 // import Hero2 from "./Hero2";
 // import Hero1 from "./Hero1";
 //import Hero3 from "./Hero3";
@@ -9,13 +9,13 @@ import ProjectCarousel from "./ProjectCarousel";
 // import Hero5 from "./Hero5";
 // import Hero6 from "./Hero6";
 
-import Transition from "./Transition";
-import Hero2 from "./Hero2";
+import Transition from "../components/Transition";
+import Hero2 from "../components/Hero2";
 import { Scroll } from "lucide-react";
-import ScrollWork from "./Scroll-Work";
+import ScrollWork from "../components/Scroll-Work";
 import { initBubbleEffect } from "@/lib/bubble-effect";
 import { use, useEffect } from "react";
-import ProjectShowcase from "./ProjectShowcase";
+import ProjectShowcase from "../components/ProjectShowcase";
 
 export default function Home() {
   useEffect(() => {
