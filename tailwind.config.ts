@@ -11,7 +11,7 @@ const config: Config = {
   //   "./src/**/*.{ts,tsx,js,jsx,mdx}",
   // ],
   content: [
-  "./app/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
+  "./app/**/*.{ts,tsx,js,jsx,mdx}",
   "./components/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
   "./components/ui/**/*.{ts,tsx}",
   "./pages/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
