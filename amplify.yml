@@ -6,10 +6,6 @@ frontend:
         - npm ci
     build:
       commands:
-        # Force Tailwind to compile your globals.css
-        - npx tailwindcss -i ./app/globals.css -o ./public/tw.css
-
-        # Then build Next.js AFTER Tailwind is generated
         - npm run build
   artifacts:
     baseDirectory: .next
