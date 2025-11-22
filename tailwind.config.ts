@@ -11,12 +11,13 @@ const config: Config = {
   //   "./src/**/*.{ts,tsx,js,jsx,mdx}",
   // ],
   content: [
-  "./app/**/*.{ts,tsx,js,jsx,mdx}",
-  "./components/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
+  "./app/**/*.{ts,tsx,mdx}",
+  "./components/**/*.{ts,tsx}",
   "./components/ui/**/*.{ts,tsx}",
-  "./pages/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
-  "./src/**/*.{ts,tsx,js,jsx,mdx,css,scss}",
+  "./pages/**/*.{ts,tsx}",
+  "./src/**/*.{ts,tsx}",
 ]
+
 ,
 
   theme: {
