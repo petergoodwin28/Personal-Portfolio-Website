@@ -26,12 +26,20 @@ function Skills() {
     "IT Support",
   ];
   return (
-    <section id="skills" className="mt-44 mb-52 flex flex-col items-center w-full">
+    <section id="skills" className="mt-44 mb-18 flex flex-col items-center w-full">
       {/* className="autoscroll-container ml-auto mr-auto" */}
-      <h1 className="prose font-extralight text-3xl mb-20 ">
+      {/* <h1 className="prose font-extralight text-3xl mb-20 ">
+        Skills, Languages, and Tools
+      </h1> */}
+      <h1 className="font-extralight text-5xl mb-6 prose text-center">
         Skills, Languages, and Tools
       </h1>
-      <div className="autoscroll w-[50%] mt-32">
+
+      <p className="opacity-70 text-lg text-center max-w-2xl mb-16">
+       Browse all the various technologies and tools I have worked with.
+      </p>
+
+      <div className="autoscroll w-[50%] mt-20">
         <ul className="">
           {allLangsAndTools.map((item, index) => (
             <li key={index}>

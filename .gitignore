@@ -50,8 +50,8 @@ Thumbs.db
 desktop.ini
 
 # TailwindCSS and PostCSS
-tailwind.config.js
-postcss.config.js
+# tailwind.config.js
+# postcss.config.js
 
 # cache and temporary files
 .cache/

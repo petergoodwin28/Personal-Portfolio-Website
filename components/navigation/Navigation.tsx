@@ -55,7 +55,7 @@
 //"use client";
 
 import React, { useState } from "react";
-import { ModeToggle } from "../../app/ModeToggle";
+import { ModeToggle } from "../ModeToggle";
 import NavbarLinks from "./NavbarLinks";
 import { Menu, X } from "lucide-react";
 
