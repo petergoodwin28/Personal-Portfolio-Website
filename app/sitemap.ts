@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site-config";
+import { getAllProjects } from "@/lib/project-data";
 
 const routes = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
@@ -11,8 +12,14 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
+  const projectRoutes = getAllProjects().map((project) => ({
+    path: `/projects/${project.slug}`,
+    priority: 0.75,
+    changeFrequency: "monthly" as const,
+  }));
+  const allRoutes = [...routes, ...projectRoutes];
 
-  return routes.map((route) => ({
+  return allRoutes.map((route) => ({
     url: absoluteUrl(route.path),
     lastModified,
     changeFrequency: route.changeFrequency,

@@ -302,8 +302,62 @@ const cardVariants = {
           </Card>
         </motion.div>
 
+        {/* AI DEVELOPMENT CARD */}
+        <motion.div className="col-span-full xl:col-span-2" {...buildCardMotion(4)}>
+          <Card className="site-card home-card-surface h-full flex flex-col">
+            <CardHeader>
+              <CardTitle className="text-2xl">AI-Assisted Development</CardTitle>
+              <CardDescription className="leading-relaxed">
+                This portfolio is my project and my engineering work. Over time,
+                I incorporated AI assistants to speed up planning, iteration,
+                debugging, and performance hardening.
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="flex-1 space-y-4">
+              <div className="grid gap-3 md:grid-cols-3">
+                <div className="rounded-xl border border-border/70 bg-background/45 px-3.5 py-3">
+                  <p className="text-xs uppercase tracking-[0.14em] opacity-70">
+                    Planning
+                  </p>
+                  <p className="mt-1 text-sm opacity-90">
+                    Used for scoping implementation phases and sequencing risk.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-border/70 bg-background/45 px-3.5 py-3">
+                  <p className="text-xs uppercase tracking-[0.14em] opacity-70">
+                    Iteration
+                  </p>
+                  <p className="mt-1 text-sm opacity-90">
+                    Assisted with rapid UI/content iteration while I kept final direction.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-border/70 bg-background/45 px-3.5 py-3">
+                  <p className="text-xs uppercase tracking-[0.14em] opacity-70">
+                    Validation
+                  </p>
+                  <p className="mt-1 text-sm opacity-90">
+                    Helpful for debugging and performance checks before release passes.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-sm leading-relaxed opacity-85">
+                Final architecture, code decisions, and quality standards remain my
+                responsibility end-to-end.
+              </p>
+            </CardContent>
+
+            <CardFooter>
+              <Button variant="outline" className="w-full bubble-hover">
+                Engineering With AI Support
+              </Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
+
         {/* CSS ANIMATIONS CARD */}
-        <motion.div className="col-span-full" {...buildCardMotion(4)}>
+        <motion.div className="col-span-full" {...buildCardMotion(5)}>
           <Card className="site-card home-card-surface w-full flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl">CSS Animations</CardTitle>
