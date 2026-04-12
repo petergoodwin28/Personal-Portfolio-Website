@@ -100,17 +100,20 @@ const cardVariants = {
 
 
   return (
-    <section className="relative w-full py-32 px-6">
+    <section className="home-section relative w-full py-24 sm:py-28 md:py-32 px-4 sm:px-6">
+      <div className="home-section-accent home-section-accent--soft" aria-hidden />
+      <div className="home-section-inner">
       {/* SECTION TITLE */}
       <motion.div
-        className="text-center mb-20"
+        className="home-section-header mb-20"
         variants={headingVariants}
         initial={prefersReducedMotion ? undefined : "hidden"}
         whileInView={prefersReducedMotion ? undefined : "visible"}
         viewport={prefersReducedMotion ? undefined : { once: true, amount: 0.5 }}
       >
-        <h1 className="text-5xl font-light tracking-wide">About The Site</h1>
-        <p className="opacity-70 mt-3 max-w-2xl mx-auto">
+        <p className="home-section-kicker">Stack & Craft</p>
+        <h2 className="home-section-title">About The Site</h2>
+        <p className="home-section-subtitle mt-3">
           A behind-the-scenes look at the tools and technologies powering this
           portfolio.
         </p>
@@ -127,7 +130,7 @@ const cardVariants = {
       >
         {/* NEXT JS CARD */}
         <motion.div {...buildCardMotion(0)}>
-          <Card className="site-card glass-card h-full flex flex-col">
+          <Card className="site-card home-card-surface h-full flex flex-col">
             <CardHeader>
               <CardTitle className="mb-3 text-2xl">Next.js</CardTitle>
               <CardDescription className="leading-relaxed">
@@ -159,7 +162,7 @@ const cardVariants = {
             </CardContent>
 
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full bubble-hover">
                 Next.js
               </Button>
             </CardFooter>
@@ -168,7 +171,7 @@ const cardVariants = {
 
         {/* SHADCN CARD */}
         <motion.div {...buildCardMotion(1)}>
-          <Card className="site-card glass-card h-full flex flex-col">
+          <Card className="site-card home-card-surface h-full flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl">shadcn/ui</CardTitle>
               <CardDescription>
@@ -225,7 +228,7 @@ const cardVariants = {
             </CardContent>
 
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full bubble-hover">
                 shadcn/ui
               </Button>
             </CardFooter>
@@ -234,7 +237,7 @@ const cardVariants = {
 
         {/* DARK MODE CARD */}
         <motion.div {...buildCardMotion(2)}>
-          <Card className="site-card glass-card h-full flex flex-col">
+          <Card className="site-card home-card-surface h-full flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl">Dark Mode</CardTitle>
               <CardDescription>
@@ -256,7 +259,7 @@ const cardVariants = {
             </CardContent>
 
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full bubble-hover">
                 Dark Mode
               </Button>
             </CardFooter>
@@ -265,7 +268,7 @@ const cardVariants = {
 
         {/* TAILWIND CARD */}
         <motion.div {...buildCardMotion(3)}>
-          <Card className="site-card glass-card h-full flex flex-col">
+          <Card className="site-card home-card-surface h-full flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl">TailwindCSS</CardTitle>
               <CardDescription>
@@ -292,7 +295,7 @@ const cardVariants = {
             </CardContent>
 
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full bubble-hover">
                 TailwindCSS
               </Button>
             </CardFooter>
@@ -301,7 +304,7 @@ const cardVariants = {
 
         {/* CSS ANIMATIONS CARD */}
         <motion.div className="col-span-full" {...buildCardMotion(4)}>
-          <Card className="site-card glass-card w-full flex flex-col">
+          <Card className="site-card home-card-surface w-full flex flex-col">
             <CardHeader>
               <CardTitle className="text-2xl">CSS Animations</CardTitle>
               <CardDescription>
@@ -327,6 +330,7 @@ const cardVariants = {
             <CardFooter />
           </Card>
         </motion.div>
+      </div>
       </div>
     </section>
   );

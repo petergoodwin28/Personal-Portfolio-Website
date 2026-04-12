@@ -2,16 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+const SHAPE_COUNT = 12;
+const RADIUS = 100; // radius of the circle around heading in px
+const PIN_POSITIONS = [0, 120, 240]; // degrees where pins are located
+
 export default function RotateLock() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const shapeRefs = useRef<HTMLDivElement[]>([]);
   const rotationRef = useRef(0);
   const lastPinHitRef = useRef<number | null>(null);
   const [pinHitCount, setPinHitCount] = useState(0);
-
-  const SHAPE_COUNT = 12;
-  const RADIUS = 100; // radius of the circle around heading in px
-  const PIN_POSITIONS = [0, 120, 240]; // degrees where pins are located
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -108,7 +108,7 @@ export default function RotateLock() {
     onScroll(); // initialize on mount
 
     return () => window.removeEventListener('scroll', onScroll);
-  }, [pinHitCount, PIN_POSITIONS]);
+  }, [pinHitCount]);
 
   return (
     <div>

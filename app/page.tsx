@@ -1,25 +1,19 @@
 "use client";
 
-import AboutSiteCards from "../components/AboutSiteCards";
-import ProjectCarousel from "../components/ProjectCarousel";
-// import Hero2 from "./Hero2";
-// import Hero1 from "./Hero1";
-//import Hero3 from "./Hero3";
-// import Hero4 from "./Hero4";
-// import Hero5 from "./Hero5";
-// import Hero6 from "./Hero6";
-
-import Transition from "../components/Transition";
 import Hero2 from "../components/Hero2";
-import { Scroll } from "lucide-react";
 import ScrollWork from "../components/Scroll-Work";
 import { initBubbleEffect } from "@/lib/bubble-effect";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import ProjectShowcase from "../components/ProjectShowcase";
+import dynamic from "next/dynamic";
+import DeferredRender from "@/components/DeferredRender";
+
+const AboutSiteCards = dynamic(() => import("../components/AboutSiteCards"));
 
 export default function Home() {
   useEffect(() => {
-    initBubbleEffect();
+    const cleanupBubbleEffect = initBubbleEffect();
+    return cleanupBubbleEffect;
   }, []);
 
   return (
@@ -27,13 +21,24 @@ export default function Home() {
       <div className="scroll-watcher"></div>
 
       <Hero2 />
-      {/* <Transition></Transition> */}
-      <ScrollWork></ScrollWork>
+      <ScrollWork />
 
-      {/* <ProjectCarousel></ProjectCarousel> */}
-      <ProjectShowcase></ProjectShowcase>
+      <ProjectShowcase />
 
-      <AboutSiteCards></AboutSiteCards>
+      <DeferredRender
+        rootMargin="280px 0px"
+        placeholder={
+          <section className="home-section w-full py-24 sm:py-28 md:py-32 px-4 sm:px-6">
+            <div className="home-section-inner">
+              <div className="h-10 w-40 mx-auto rounded-full bg-foreground/10 animate-pulse" />
+              <div className="h-10 w-72 mx-auto mt-6 rounded-lg bg-foreground/10 animate-pulse" />
+              <div className="h-6 w-full max-w-2xl mx-auto mt-4 rounded-lg bg-foreground/10 animate-pulse" />
+            </div>
+          </section>
+        }
+      >
+        <AboutSiteCards />
+      </DeferredRender>
     </main>
   );
 }

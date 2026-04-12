@@ -60,15 +60,11 @@ export default function About() {
   const p3Opacity = useTransform(scrollYProgress, [0.29, 0.6], [0, 1]);
   const p3Y = useTransform(scrollYProgress, [0.29, 0.8], [30, 0]);
 
-  // MOBILE: smaller movements
-  const mobileAdjustment = (val: any) =>
-    isMobile ? useTransform(val, () => undefined) : val;
-
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="flex flex-col items-center mt-20 px-4"
+      className="resume-section content-page-inner flex flex-col items-center mt-10 px-4"
     >
       {/* IMAGE */}
       <motion.div
@@ -77,37 +73,37 @@ export default function About() {
             ? {}
             : {
                 opacity: fadeIn,
-                y: mobileAdjustment(imgY),
-                scale: mobileAdjustment(imgScale),
+                y: isMobile ? 0 : imgY,
+                scale: isMobile ? 1 : imgScale,
               }
         }
-        className="border-2 rounded-full overflow-hidden mb-32
-                   w-[500px] h-[500px] max-w-[80vw] max-h-[80vw]"
+        className="content-surface content-surface-circle border overflow-hidden mb-20
+                   w-[420px] h-[420px] max-w-[76vw] max-h-[76vw] p-1"
       >
         <Image
           src="/meImage1.jpg"
           width={500}
           height={500}
-          alt="image"
-          className="transform translate-y-[-170px]"
+          alt="Portrait of Peter Goodwin"
+          className="transform translate-y-[-140px] rounded-full"
         />
       </motion.div>
 
       {/* HEADER */}
-      <motion.h1
+      <motion.h2
         style={
           prefersReducedMotion
             ? {}
-            : { opacity: titleOpacity, y: mobileAdjustment(titleY) }
+            : { opacity: titleOpacity, y: titleY }
         }
-        className="mb-10 font-extralight text-3xl prose"
+        className="mb-6 font-light text-3xl sm:text-4xl tracking-wide prose text-center"
       >
         About Me
-      </motion.h1>
+      </motion.h2>
 
       {/* PARAGRAPHS */}
       <div
-        className={`text-center font-extralight mt-20 ${
+        className={`resume-about-copy content-surface text-center font-extralight mt-8 ${
           isMobile ? "text-lg" : "text-2xl"
         }`}
       >
@@ -115,7 +111,7 @@ export default function About() {
           style={
             prefersReducedMotion ? {} : { opacity: p1Opacity, y: p1Y }
           }
-          className="px-8"
+          className="px-4 sm:px-8"
         >
           I am an aspiring web developer! I love taking time to code out
           projects and since graduating with my bachelors in Computer Science, I
@@ -126,7 +122,7 @@ export default function About() {
           style={
             prefersReducedMotion ? {} : { opacity: p2Opacity, y: p2Y }
           }
-          className="px-8 mt-32"
+          className="px-4 sm:px-8 mt-14"
         >
           Making this website has been a lot of learning and a lot of fun!
         </motion.p>
@@ -135,7 +131,7 @@ export default function About() {
           style={
             prefersReducedMotion ? {} : { opacity: p3Opacity, y: p3Y }
           }
-          className="px-8 mt-32"
+          className="px-4 sm:px-8 mt-14"
         >
           I hope you enjoy the effects that I have put in place!
         </motion.p>

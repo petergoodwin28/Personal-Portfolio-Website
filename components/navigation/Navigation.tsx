@@ -1,100 +1,49 @@
-'use client';
-// import React from "react";
-
-// import { ModeToggle } from "./ModeToggle";
-// import Navbar from "./Navbar";
-
-// function Navigation() {
-//   return (
-//     <nav className=" w-full h-44 border-2">
-//       <div className="h-full flex justify-around items-center mt-auto mb-auto">
-//         <h1 className="prose text-4xl font-extralight w-1/5">Peter Goodwin</h1>
-
-//         <div className="w-3/5 flex items-center">
-//           <Navbar></Navbar>
-//         </div>
-
-//         <ModeToggle className="w-1/5"></ModeToggle>
-//       </div>
-//     </nav>
-//   );
-// }
-
-// export default Navigation;
-
-
-
-// import React from "react";
-// import { ModeToggle } from "./ModeToggle";
-// import Navbar from "./Navbar";
-
-// export default function Navigation() {
-//   return (
-//     <nav className="w-full border-b backdrop-blur-sm bg-background/80 sticky top-0 z-50">
-//       <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-        
-//         {/* Left — Name */}
-//         <h1 className="text-2xl font-light tracking-wide">
-//           Peter Goodwin
-//         </h1>
-
-//         {/* Center — Navbar */}
-//         <div className="hidden md:flex">
-//           <Navbar />
-//         </div>
-
-//         {/* Right — Toggle */}
-//         <div>
-//           <ModeToggle className="w-1/5"/>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// }
-
-//"use client";
+"use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { ModeToggle } from "../ModeToggle";
 import NavbarLinks from "./NavbarLinks";
-import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const mobileMenuId = "site-mobile-menu";
 
   return (
-    <nav className="w-full border-b backdrop-blur-sm bg-background/80 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+    <nav className="site-header">
+      <div className="site-header-inner">
+        <Link href="/" className="site-brand" aria-label="Go to homepage">
+          Peter Goodwin
+        </Link>
 
-        {/* Left — Name */}
-        <h1 className="text-2xl font-light tracking-wide">Peter Goodwin</h1>
-
-        {/* Desktop Navbar */}
         <div className="hidden md:flex">
           <NavbarLinks />
         </div>
 
-        {/* Right — Toggle + Hamburger */}
-        <div className="flex items-center gap-10">
-          <ModeToggle className="w-1/5"/>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <ModeToggle className="site-theme-toggle" />
           <button
-            className="md:hidden"
-            aria-label="Toggle Menu"
-            onClick={() => setOpen(!open)}
+            className="site-nav-trigger md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls={mobileMenuId}
+            onClick={() => setOpen((prev) => !prev)}
           >
             {open ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
-        className={`
-          md:hidden overflow-hidden transition-all duration-300 
-          ${open ? "max-h-96" : "max-h-0"}
-        `}
+        id={mobileMenuId}
+        className={cn(
+          "site-mobile-menu md:hidden overflow-hidden transition-all duration-300",
+          open ? "max-h-96 is-open" : "max-h-0"
+        )}
       >
-        <div className="px-6 py-4 flex flex-col gap-4 border-t">
+        <div className="px-4 sm:px-6 py-4 flex flex-col gap-4">
           <NavbarLinks mobile onClickLink={() => setOpen(false)} />
         </div>
       </div>

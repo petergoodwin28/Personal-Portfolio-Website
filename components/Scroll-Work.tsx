@@ -88,8 +88,10 @@ const titleVariants = {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-32 px-6 overflow-hidden relative"
+      className="home-section w-full py-24 sm:py-28 md:py-32 px-4 sm:px-6 overflow-hidden relative"
     >
+      <div className="home-section-accent" aria-hidden />
+      <div className="home-section-inner">
       {/* ---------------------------------------- */}
       {/* Section Title */}
       {/* ---------------------------------------- */}
@@ -98,11 +100,13 @@ const titleVariants = {
         initial={prefersReducedMotion ? undefined : "hidden"}
         whileInView={prefersReducedMotion ? undefined : "visible"}
         viewport={{ once: true, amount: 0.4 }}
-        className="text-center mb-20"
+        className="home-section-header mb-20"
       >
-        <h2 className="text-5xl font-light tracking-wide">Who Am I?</h2>
-        <p className="mt-3 text-lg opacity-80">
-          A few roles that define my work — and who I am outside of it.
+        <p className="home-section-kicker">Identity</p>
+        <h2 className="home-section-title">Who I Am</h2>
+        <p className="home-section-subtitle mt-3">
+          A few roles that shape my work and the way I approach building on the
+          web.
         </p>
       </motion.div>
 
@@ -123,13 +127,15 @@ const titleVariants = {
           }
           className="relative"
         >
-          <div className="glass-panel w-72 h-72 rounded-3xl shadow-xl overflow-hidden border border-white/20">
+          <div className="home-panel-surface w-72 h-72 rounded-3xl overflow-hidden p-1">
             <Image
               src="/meImage1.jpg"
               alt="Profile"
               width={500}
               height={500}
-              className="object-cover w-full h-full animate-subtleZoom"
+              sizes="(min-width: 1280px) 288px, (min-width: 640px) 320px, 72vw"
+              quality={72}
+              className="object-cover w-full h-full animate-subtleZoom rounded-[1.2rem]"
             />
           </div>
 
@@ -139,7 +145,7 @@ const titleVariants = {
         {/* ---------------------------------------- */}
         {/* Role Text List */}
         {/* ---------------------------------------- */}
-        <ul className="flex flex-col gap-12 w-full max-w-xl">
+        <ul className="flex flex-col gap-6 w-full max-w-xl">
           {roles.map((item, i) => (
             <motion.li
               key={i}
@@ -148,11 +154,11 @@ const titleVariants = {
               whileInView={prefersReducedMotion ? undefined : "visible"}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ delay: i * 0.12 }}
-              className="cursor-default"
+              className="home-role-item cursor-default"
             >
               <motion.h3
                 className="
-                  text-4xl xl:text-5xl font-medium tracking-wide
+                  text-3xl xl:text-4xl font-medium tracking-wide
                   transition-all duration-300
                   hover:text-primary hover:scale-[1.03]
                 "
@@ -168,6 +174,7 @@ const titleVariants = {
             </motion.li>
           ))}
         </ul>
+      </div>
       </div>
     </section>
   );

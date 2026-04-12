@@ -21,13 +21,14 @@ import { BadgeCheckIcon, BriefcaseIcon } from "lucide-react";
 
 export default function Work() {
   return (
-    <section id="work" className="min-h-screen py-24 space-y-20">
+    <section id="work" className="resume-section content-page-inner min-h-screen py-16 space-y-16">
       {/* ================================
           SECTION HEADER
       ================================= */}
       <div className="text-center space-y-4 mb-16">
-        <h2 className="text-5xl font-light tracking-wide">Work Experience</h2>
-        <p className="text-lg opacity-80 max-w-2xl mx-auto">
+        <p className="content-page-kicker mb-4">Career</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-wide">Work Experience</h2>
+        <p className="text-base sm:text-lg opacity-75 max-w-2xl mx-auto">
           A blend of professional IT work and hands-on jobs that shaped my work ethic,
           reliability, and technical foundation.
         </p>
@@ -36,11 +37,11 @@ export default function Work() {
       {/* =======================================================
           ⭐ SERIGOR — MAIN TECHNICAL JOB (FEATURED)
       ======================================================== */}
-      <Card className="w-full max-w-6xl mx-auto p-8 rounded-2xl shadow-lg border">
-        <CardHeader className="flex flex-row items-center justify-between pb-10">
+      <Card className="home-card-surface w-full max-w-6xl mx-auto p-5 sm:p-8 rounded-2xl">
+        <CardHeader className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between pb-10">
           <div>
-            <CardTitle className="text-4xl font-light">Serigor Inc.</CardTitle>
-            <CardDescription className="text-xl mt-2">
+            <CardTitle className="text-3xl sm:text-4xl font-light">Serigor Inc.</CardTitle>
+            <CardDescription className="text-lg sm:text-xl mt-2">
               Web Developer • IT System Administrator  
             </CardDescription>
 
@@ -78,7 +79,7 @@ export default function Work() {
                 ["IT Support", "Troubleshooting, networking, ticket systems"],
                 ["Security & Compliance", "NIST 800-171, device hardening, MFA"],
               ].map(([title, desc], i) => (
-                <Item variant="outline" key={i}>
+                <Item variant="outline" className="content-surface" key={i}>
                   <ItemMedia>
                     <BadgeCheckIcon className="size-5" />
                   </ItemMedia>
@@ -119,12 +120,12 @@ export default function Work() {
       {/* =======================================================
           ⭐ GENERAL WORK EXPERIENCE — SECOND CARD
       ======================================================== */}
-      <Card className="w-full max-w-6xl mx-auto p-8 rounded-2xl border shadow-md">
-        <CardHeader className="flex flex-row items-center gap-4 pb-8">
+      <Card className="home-card-surface w-full max-w-6xl mx-auto p-5 sm:p-8 rounded-2xl">
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-8">
           <BriefcaseIcon className="size-10 opacity-80" />
           <div>
-            <CardTitle className="text-3xl font-light">General Work Experience</CardTitle>
-            <CardDescription className="text-lg mt-2 opacity-80">
+            <CardTitle className="text-2xl sm:text-3xl font-light">General Work Experience</CardTitle>
+            <CardDescription className="text-base sm:text-lg mt-2 opacity-80">
               Jobs that developed discipline, customer service, and physical work ethic.
             </CardDescription>
           </div>
@@ -136,7 +137,7 @@ export default function Work() {
             ["Restaurant Work", "Waiting tables, barbacking, customer service"],
             ["Gym Attendant", "Maintenance, member support, equipment setup"],
           ].map(([title, desc], i) => (
-            <Item variant="outline" key={i}>
+            <Item variant="outline" className="content-surface" key={i}>
               <ItemMedia>
                 <BadgeCheckIcon className="size-5" />
               </ItemMedia>

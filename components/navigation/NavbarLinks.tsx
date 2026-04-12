@@ -1,21 +1,34 @@
 "use client";
 
-// 
-// This file defines the mobile 
-// 
-
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "https://github.com/petergoodwin28?tab=repositories", label: "Github" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/projects", label: "Projects" },
+  { href: "/work", label: "Work" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
-  { href: "/work", label: "Work" },
+  {
+    href: "https://github.com/petergoodwin28?tab=repositories",
+    label: "Github",
+    external: true,
+  },
 ];
+
+function isActive(pathname: string, href: string) {
+  if (!href.startsWith("/")) {
+    return false;
+  }
+
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function NavbarLinks({
   mobile = false,
@@ -24,21 +37,27 @@ export default function NavbarLinks({
   mobile?: boolean;
   onClickLink?: () => void;
 }) {
+  const pathname = usePathname();
+
   return (
     <div
       className={cn(
-        "flex gap-8",
-        mobile && "flex-col gap-6 text-xl font-light"
+        "flex items-center gap-2 lg:gap-4",
+        mobile && "flex-col items-start gap-2 w-full"
       )}
     >
-      {links.map(({ href, label }) => (
+      {links.map(({ href, label, external }) => (
         <Link
           key={href}
           href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noreferrer noopener" : undefined}
           onClick={onClickLink}
+          aria-current={isActive(pathname, href) ? "page" : undefined}
           className={cn(
-            "text-lg font-extralight transition-opacity hover:opacity-60",
-            mobile && "text-2xl"
+            "site-nav-link",
+            isActive(pathname, href) && "is-active",
+            mobile && "site-nav-link-mobile"
           )}
         >
           {label}

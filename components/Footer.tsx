@@ -5,54 +5,82 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Footer() {
-  return (
-    <footer
-      id="footer"
-      className="h-44 flex flex-row space-around items-center bg-background text-foreground p-4 border-t-2"
-    >
-      <div className="flex flex-col w-1/3 items-center">
-        
-          <Link href="/resume" className="extra-light ">
-          <Button variant="link">
-            Resume
-            </Button>
-          </Link>
-        
-        
-          <Link href="/contact" className="extra-light  ">
-          <Button variant="link">
-            Contact
-            </Button>
-          </Link>
-        
+  const year = new Date().getFullYear();
 
-        
-          <Link href="/portfolio" className="extra-light  ">
-          <Button variant="link">
-            Portfolio
-            </Button>
-          </Link>
-        
-        
-          <Link href="/#portfolio" className="extra-light  ">
-          <Button variant="link">
-            Github
-            </Button>
-          </Link>
-        
-      </div>
-      <div className="flex flex-col w-1/3 items-center">
-        <Avatar className="w-32 h-32">
-          <AvatarImage src="/meImage1.jpg" alt="@petergoodwin" />
-          <AvatarFallback>PG</AvatarFallback>
-        </Avatar>
-      </div>
-      <div className="flex flex-col w-1/3 items-center">
-        <ul>
-          <li>Phone: 123-456-7890</li>
-          <li>petergoodwin28@gmail.com</li>
-          <li>Ellicot City, Maryland</li>
-        </ul>
+  const quickLinks = [
+    { href: "/", label: "Home" },
+    { href: "/projects", label: "Projects" },
+    { href: "/work", label: "Work" },
+    { href: "/resume", label: "Resume" },
+  ];
+
+  return (
+    <footer id="footer" className="site-footer">
+      <div className="site-footer-inner">
+        <div className="site-footer-surface">
+          <div className="site-footer-grid">
+            <section className="space-y-3">
+              <p className="site-footer-kicker">Peter Goodwin</p>
+              <div className="flex items-center gap-3">
+                <Avatar className="h-14 w-14 border border-border/60">
+                  <AvatarImage src="/meImage1.jpg" alt="@petergoodwin" />
+                  <AvatarFallback>PG</AvatarFallback>
+                </Avatar>
+                <div>
+                  <h2 className="text-xl font-medium tracking-wide">
+                    Web Developer
+                  </h2>
+                  <p className="site-footer-muted">Ellicott City, Maryland</p>
+                </div>
+              </div>
+              <p className="site-footer-muted max-w-sm">
+                Building modern, theme-aware interfaces with polished
+                interaction and clean frontend architecture.
+              </p>
+            </section>
+
+            <nav aria-label="Footer navigation">
+              <h3 className="site-footer-heading">Quick Links</h3>
+              <ul className="site-footer-list">
+                {quickLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="site-footer-link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <section>
+              <h3 className="site-footer-heading">Connect</h3>
+              <div className="site-footer-list">
+                <a
+                  href="mailto:petergoodwin28@gmail.com"
+                  className="site-footer-link"
+                >
+                  petergoodwin28@gmail.com
+                </a>
+                <a
+                  href="https://github.com/petergoodwin28?tab=repositories"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="site-footer-link"
+                >
+                  GitHub
+                </a>
+                <Button asChild variant="outline" className="bubble-hover mt-1 w-full sm:w-fit">
+                  <Link href="/contact">Start a Conversation</Link>
+                </Button>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div className="site-footer-meta">
+          <p>© {year} Peter Goodwin</p>
+          <p>Built with Next.js, Tailwind CSS, and shadcn/ui.</p>
+        </div>
       </div>
     </footer>
   );

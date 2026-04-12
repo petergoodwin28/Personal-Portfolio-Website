@@ -33,30 +33,30 @@ export default function Certifications() {
     if (typeof window === "undefined") return;
 
     const mq = window.matchMedia("(max-width: 768px)");
+    const legacyMq = mq as MediaQueryList & {
+      addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+      removeListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+    };
 
-    const handleChange = (event: MediaQueryListEvent | MediaQueryList) => {
-      const matches =
-        "matches" in event ? event.matches : (event as MediaQueryList).matches;
-      setIsMobile(matches);
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
     };
 
     // init
-    handleChange(mq);
+    setIsMobile(mq.matches);
 
-    if (mq.addEventListener) {
+    if (typeof mq.addEventListener === "function") {
       mq.addEventListener("change", handleChange);
-    } else {
+    } else if (typeof legacyMq.addListener === "function") {
       // Safari / older
-      // @ts-ignore
-      mq.addListener(handleChange);
+      legacyMq.addListener(handleChange);
     }
 
     return () => {
-      if (mq.removeEventListener) {
+      if (typeof mq.removeEventListener === "function") {
         mq.removeEventListener("change", handleChange);
-      } else {
-        // @ts-ignore
-        mq.removeListener(handleChange);
+      } else if (typeof legacyMq.removeListener === "function") {
+        legacyMq.removeListener(handleChange);
       }
     };
   }, []);
@@ -95,13 +95,14 @@ export default function Certifications() {
     <section
       id="certifications"
       ref={sectionRef}
-      className="w-full min-h-screen flex flex-col items-center py-32"
+      className="resume-section content-page-inner w-full min-h-screen flex flex-col items-center py-20"
     >
-      <h1 className="font-extralight text-5xl mb-6 prose text-center">
+      <p className="content-page-kicker mb-4">Credentials</p>
+      <h2 className="font-light text-3xl sm:text-4xl md:text-5xl mb-6 prose text-center tracking-wide">
         Certifications
-      </h1>
+      </h2>
 
-      <p className="opacity-70 text-lg text-center max-w-2xl mb-16">
+      <p className="opacity-75 text-base sm:text-lg text-center max-w-2xl mb-14">
         Industry-recognized credentials demonstrating my commitment to
         continuous learning and cloud technologies.
       </p>
@@ -109,7 +110,7 @@ export default function Certifications() {
       <div className="flex flex-col gap-12 w-full max-w-5xl">
         {/* CARD 1 — From RIGHT */}
         <motion.div style={card1Style}>
-          <Card className="shadow-lg border rounded-2xl p-6">
+          <Card className="home-card-surface rounded-2xl p-5 sm:p-6">
             <CardHeader>
               <CardTitle>Microsoft 365 / Intune</CardTitle>
               <CardDescription>
@@ -126,7 +127,7 @@ export default function Certifications() {
 
         {/* CARD 2 — From LEFT */}
         <motion.div style={card2Style}>
-          <Card className="shadow-lg border rounded-2xl p-6">
+          <Card className="home-card-surface rounded-2xl p-5 sm:p-6">
             <CardHeader>
               <CardTitle>AWS Cloud Practitioner</CardTitle>
               <CardDescription>Amazon Web Services — 2024</CardDescription>
@@ -140,7 +141,7 @@ export default function Certifications() {
 
         {/* CARD 3 — From BOTTOM (UP) */}
         <motion.div style={card3Style}>
-          <Card className="shadow-lg border rounded-2xl p-6">
+          <Card className="home-card-surface rounded-2xl p-5 sm:p-6">
             <CardHeader>
               <CardTitle>Continuous Learning</CardTitle>
               <CardDescription>

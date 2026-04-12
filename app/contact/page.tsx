@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import "./contact.css";
 import { initBubbleEffect } from "@/lib/bubble-effect";
 
@@ -29,35 +30,104 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-      initBubbleEffect();
-    }, []);
+    const cleanupBubbleEffect = initBubbleEffect();
+    return cleanupBubbleEffect;
+  }, []);
   
   return (
-    
-    <main className="w-full h-[100vh] flex flex-col items-center justify-center relative prose bg-black text-white">
-      <div
-        ref={containerRef}
-        className="line-container relative w-[70%] h-[80vh] flex flex-col items-center justify-center"
-      >
-        {/* unified reveal layer */}
-        <div ref={revealRef} className="line-reveal-layer"></div>
+    <main className="content-page-shell contact-page text-foreground">
+      <section className="content-page-inner">
+        <header className="content-page-header">
+          <p className="content-page-kicker">Get In Touch</p>
+          <h1 className="content-page-title">Contact</h1>
+          <p className="content-page-subtitle">
+            Have a project, collaboration, or opportunity in mind? Send me a
+            message and I will get back to you soon.
+          </p>
+        </header>
 
-        <h1 className="font-extralight text-3xl mt-10 z-10">Contact Me</h1>
+        <div
+          ref={containerRef}
+          className="line-container content-surface relative w-full max-w-5xl mx-auto p-5 md:p-8"
+        >
+          <div ref={revealRef} className="line-reveal-layer"></div>
 
-        <div className="flex flex-col gap-4 mt-12 p-10 rounded-lg w-[70%]  z-10 bg-cover">
-          {/* bg-[url('/DarkGreenMarbleTextureBackground.png')] */}
-          <div className="flex flex-row gap-x-10">
-            <Input type="text" placeholder="Name" autoComplete="off" />
-            <Input type="email" placeholder="Email" autoComplete="off" />
-            <Input type="text" placeholder="Phone" autoComplete="off" />
-          </div>
-          <div className="flex flex-col justify-around">
-            <Input type="text" placeholder="Subject" className="mb-4" autoComplete="off" />
-            <Input type="text" placeholder="Message" className="h-32" autoComplete="off" />
-          </div>
-          <Button variant="outline">Submit</Button>
+          <form
+            className="contact-form-grid relative z-10 flex flex-col gap-4 md:gap-5"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+              <div>
+                <label htmlFor="contact-name" className="sr-only">
+                  Name
+                </label>
+                <Input
+                  id="contact-name"
+                  type="text"
+                  placeholder="Name"
+                  autoComplete="name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-email" className="sr-only">
+                  Email
+                </label>
+                <Input
+                  id="contact-email"
+                  type="email"
+                  placeholder="Email"
+                  autoComplete="email"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-phone" className="sr-only">
+                  Phone
+                </label>
+                <Input
+                  id="contact-phone"
+                  type="text"
+                  placeholder="Phone"
+                  autoComplete="tel"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div>
+                <label htmlFor="contact-subject" className="sr-only">
+                  Subject
+                </label>
+                <Input
+                  id="contact-subject"
+                  type="text"
+                  placeholder="Subject"
+                  autoComplete="off"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-message" className="sr-only">
+                  Message
+                </label>
+                <Textarea
+                  id="contact-message"
+                  placeholder="Message"
+                  className="min-h-32 resize-y"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-start pt-2">
+              <Button type="submit" variant="outline" className="bubble-hover w-full sm:w-auto px-8">
+                Submit
+              </Button>
+            </div>
+          </form>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
